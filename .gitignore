@@ -1,0 +1,4 @@
+.vscode/settings.json
+.obsidian/*
+.DS_Store
+/docs/.DS_Store
