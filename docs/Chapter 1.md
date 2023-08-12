@@ -137,7 +137,7 @@ Latency 是 server side parameter，不考虑 network 之间的delay
 在measure response time 的时候，我们通常take sample of distribution. There are occasional *outliers* that can take much longer. 这里就需要用到 percentile 的概念了
 这张图描述得挺清晰
 ![percentile_exaple_ddia.png](percentile_exaple_ddia.png)
-pencentile 就是在这个 sample里面有多少 percent的值小于当前的数值
+percentile 就是在这个 sample里面有多少 percent的值小于当前的数值
 比如你有10个数，里面8个1，1个9和1个10，那么90th percentile 是9，但是50 percentile 只有1 
 
 percentile 在衡量performance 更有效因为大多数的data 一般都很低，而我们需要看的往往只是 outlier 在哪里，换句话说，我们保证即使在最坏的情况下，我们的performance (latency) 也不会高于这个值
