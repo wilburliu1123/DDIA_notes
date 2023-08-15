@@ -87,6 +87,59 @@ But it also has limitations:
 - range queries are not efficient
 
 ### SSTables and LSM-Trees
+SSTable 就是在之前 append only segments的基础上让 key sorted and unique。所以叫做 *Sorted String Table* (SSTable for short) 
+SSTables 相比于 hash indexed log segment 有几个好处
+1. *Merging segments is simple and efficient* (similar to mergesort)
+![[SSTable_Merge_example.png]]
+if one key appears more than 1 segment, keep the most recent one
+2. *No longer need to keep index of all the keys in memory*. 
+Just like binary search tree, you could get the floor key of current key your are looking for. Then get into the segment you need. 
+$handb < handi < hands$
+![[SSTable_sparse_in_memeory_index.png]]
+This way the index is sparse which allow us to store more keys (each segment can be few kilobytes so that it can be scanned quickly). Just like page fault in memory, it will also go to disk to bring relevant file content in memory
+3. Compress a segment into a block before write to disk and save I/O
+
+#### Constructing and maintaining SSTables
+How do you get your data to be sorted by key?
+In memory we have well known data structure 
+- BST
+- red black tree 
+- AVL trees
+We can now make our storage engine work as follows:
+- When write comes in, add it to our in memory balanced tree data structure (red black tree). Those in memory tree is sometimes called *memtable*
+- when the in memory tree gets bigger than some threshold (few megabytes), write it out to disk as an SSTable file. This file will become the most recent *segment* of the database. While SSTable is being written out to disk, writes can continue to a new memtable instance
+- In order to serve a read request, first try in memory tree. If key is not found, then most recent on-disk segment, then older etc.
+- From time to time, run merge and compaction process in the background to combine segment files and discard the overwritten and deleted value
+
+This technique works well except when database crashes. The most recent writes are lost (in memory). We can keep a separate log on disk to avoid this problem. This log is append only and does not require key to be sorted because it is for recovery only. We could discard the log once the in memory tree is written to disk
+
+#### Making an LSM-tree out of SSTables
+LevelDB and RocksDB essentially use the technique above to build their storage engine. 
+key-value engine libraries that are design to be embedded into other applications. 
+LevelDB can be used in Riak as an alternative to Bitcask. Similar storage engine are used in Cassandra and HBase [8](https://blog.cloudera.com/apache-hbase-i-o-hfile/), which are inspired by [BigTable](https://research.google/pubs/pub27898/) 
+
+*Log-Structured merge tree* (LSM tree) originated from [this paper](https://www.cs.umb.edu/~poneil/lsmtree.pdf). Storage engines based on this principle of merging and compacting sorted files are called *LSM* storage engines.
+
+Lucene(indexing engine for Elaticsearch and Solr) uses a similar method for storing its term dictionary, where key is the *term* (word) and the value is the list of IDs of all the documents (posting list) that contain the word 
+
+In Lucene, this this mapping from term to posting list is kept in SSTable-like sorted files
+
+#### Performance optimizations
+A lot of details when implementation happens. LSM-tree algorithm can be slow when looking up keys that do not exist. (check in memory tree, check all segment files etc) 
+
+In order to optimize this, storage engine often use [*Bloom filters*](https://people.cs.umass.edu/~emery/classes/cmpsci691st/readings/Misc/p422-bloom.pdf), which tells you if a key does not appear in the database, and thus saves many unnecessary disk reads for nonexistent keys.
+
+There are also different strategies of how SSTables are compact and merged.
+>The most common options are *size-tiered* and *leveled compaction*.
+
+In sized-tiered compaction, newer and smaller SSTables are successively merged into older and larger SSTables. 
+
+In leveled compaction, the key range is split up into smaller SSTables and older data is moved into separate "levels", which allows the compaction to proceed more incrementally and use less disk space.
+
+>the basic idea of LSM-trees—keeping a cascade of SSTables that are merged in the background—is simple and effective. Even when the dataset is much bigger than the available memory it continues to work well. Since data is stored in sorted order, you can efficiently perform range queries (scanning all keys above some minimum and up to some maximum), and because the disk writes are sequential the LSM-tree can support remarkably high write throughput.
+
+
+## B-Trees
 
 
 
