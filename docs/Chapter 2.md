@@ -40,7 +40,7 @@ chapter 3 会讨论如何存储这些数据，也就是上面第3点
 
 当时只是一个理论上的概念，不过后来1980年的时候 relational database management system (RDBMS) 以及 SQL 已经是开发者们的默认选项了
 
-relational database 的根在 *business data processing* 也就是 1960-70年大型机在做的事情 (银行交易，航空公司定机票，仓储管理这类的), 以及 *batch processing* (cus‐ tomer invoicing, payroll, reporting).
+relational database 的根在 *business data processing* 也就是 1960-70年大型机在做的事情 (银行交易，航空公司定机票，仓储管理这类的), 以及 *batch processing* (customer invoicing, payroll, reporting).
 
 >The goal of the relational model was to hide that implementation detail behind a cleaner interface.
 
@@ -71,6 +71,8 @@ ActiveRecord 没听说过，Hibernate 应该是 spring framework 里面用到的
 - Put career positions, education, contact information into separate tables (传统方式)
 - Add structured data type (XML, JSON) 在一个 column/attribute 上面 这样 query 的时候就可以一次查询多个值了 (MySQL, Oracle, DB2, SQL Server 支持这类的操作)
 - Encode jobs, education, contact info as JSON or XML document and store it on a text column. 然后在 application 层 parse 
+
+relation row (userid, first name + last name, job)
 
 像 resume 这种 self-contained document，JSON 这种格式可能更合适。MongoDB, RethinkDB, CouchDB, Espresso 这类的数据库就是基于 JSON 这种格式来存储数据的
 ```json
@@ -160,7 +162,7 @@ If data in your app has tree structure (tree of one to many relationships, where
 the relational technique of *shredding* 
 ![[figure_2_1.png]]
 
-这其实也是之前提到的 denormalization，这不过会造成app 层面的代码要更复杂一些
+这其实也是之前提到的 normalization，这不过会造成app 层面的代码要更复杂一些
 但 document model 也有局限，比如没法直接 reference 到 nested structure，而需要 tree traversal 
 > The poor support for joins in document databases may or may not be a problem, depending on the application. For example, many-to-many relationships may never be needed in an analytics application that uses a document database to record which events occurred at which time
 
@@ -175,6 +177,11 @@ the relational technique of *shredding*
 schema on read means data is only interpreted when it is read. 
 
 In contrast, *schema-on-write* (relational databases) ensures all written data conforms to the schema
+```sql
+INSERT user_id "123"
+SELECT * from user
+WHERE id = 123
+```
 
 schema on read 就像 dynamic type language (python, javascript) 一样， schema on write 则像是 static (compile time) checking language (c, c++, java) 
 各有优势，没有对错
@@ -354,7 +361,7 @@ bfs,dfs, disjktra, min span tree etc
 
 > graphs are not limited to such *homogeneous* data: an equally powerful use of graphs is to provide a consistent way of storing completely different types of objects in a single datastore.
 
-> Facebook maintains a single graph with many different types of vertices and edges: vertices represent people, locations, events, checkins, and comments made by users; edges indicate which people are friends with each other, which checkin hap‐ pened in which location, who commented on which post, who attended which event, and so on [35](https://www.usenix.org/conference/atc13/technical-sessions/presentation/bronson)
+> Facebook maintains a single graph with many different types of vertices and edges: vertices represent people, locations, events, checkins, and comments made by users; edges indicate which people are friends with each other, which checkin happened in which location, who commented on which post, who attended which event, and so on [35](https://www.usenix.org/conference/atc13/technical-sessions/presentation/bronson)
 
 ![[graph_example.png]]
 
@@ -375,12 +382,15 @@ Each edge consists of
 relational model representation of graph
 ```sql
 CREATE TABLE vertices (  
-    vertex_id integerPRIMARYKEY, properties json
+    vertex_id integer PRIMARYKEY, 
+    properties json
 );
 
 CREATE TABLE edges (  
     edge_id integer PRIMARY KEY,  
-    tail_vertex integer REFERENCES vertices (vertex_id), head_vertex integer REFERENCES vertices (vertex_id), label text,  
+    tail_vertex integer REFERENCES vertices (vertex_id), 
+    head_vertex integer REFERENCES vertices (vertex_id), 
+    label text,  
     properties json    
 );  
 
@@ -390,7 +400,7 @@ CREATE INDEX edges_heads ON edges (head_vertex);
 ```
 or just a map in programming language
 ```java
-Map<ID, Node, properties> nodes;
+Map<ID, (Node, properties)> nodes;
 Map<ID, (startNodeID, endNodeID, label, properties)> edges;
 ```
 Aspect of graph model 
@@ -524,6 +534,8 @@ otherwise its an edge
 </rdf:RDF>
 ```
 
+
+
 >The URL <http://my-company.com/namespace> doesn’t necessarily need to resolve to anything—from RDF’s point of view, it is simply a namespace. To avoid potential confusion with http:// URLs, the examples in this section use non-resolvable URIs such as urn:example:within. Fortunately, you can just specify this prefix once at the top of the file, and then forget about it.
 
 ant build tool 里面的 xml 应该也是一个原理，就是通过 namespace 来avoid name collision
@@ -569,7 +581,7 @@ this chapter talked about different data model, although is an overview，it is 
 
 Historically, data start out as *one big tree* (hierarchical model) but not good for many to many relationships
 
-Relational model was invented to solve this problem. More recently (2015 ish), non relational "NoSQL" datastore have gone to two direction 
+Relational model was invented to solve this problem. More recently (2010 ish), non relational "NoSQL" datastore have gone to two direction 
 1. *Document databases* self contained and relationship with other document are rare (another tree structure)
 2. *Graph databases* is opposite where anything could be related to everything
 
