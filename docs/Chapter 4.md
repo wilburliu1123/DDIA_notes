@@ -26,7 +26,7 @@ Programs 通常跟 2种数据打交道
 - In memory, data kept in objects, arrays, maps, trees, and these data structure are optimized for CPU access (pointers)
 - When write data to file or over network, you have to *encode* it as some kind of self-contained sequence of bytes (e.g. JSON document). Since a pointer wouldn't make sense to any other process, this sequence of bytes looks quite different from the data structures used in memory
 
-所以在这两种 representation 就需要一种转换  (translation), 从 in-memory 到 byte sequence is called *encoding* (also called *serialization* or *marshalling*), 反过来叫做 *decoing* (*parsing*, *deserialization*, *unmarshalling*)
+所以在这两种 representation 就需要一种转换  (translation), 从 in-memory 到 byte sequence is called *encoding* (also called *serialization* or *marshalling*), 反过来叫做 *decoding* (*parsing*, *deserialization*, *unmarshalling*)
 
 因为 *serialization* 这个词在 transaction isolation level 里面还会用到，这本书就用 *encoding* 这个词了，尽管现实普遍用 *serialization* 这个词
 
@@ -107,7 +107,7 @@ Instead, the encoded data contains *field tags*, which are numbers (1, 2, 3) Tho
 Thrift CompactProtocol encoding is semantically equivalent to BinaryProtocol, but it packs field type and tag number into a single byte and by using variable-length integers, (use 2 bytes rather than 8 bytes for number 1337)
 This way it can pack this message into 34 bytes
 ![[Thrift_Compact_Protocol.png]]
-ProtoBuf is very similar to Thrift's CompractProtocol
+ProtoBuf is very similar to Thrift's CompactProtocol
 ![[ProtoBuf.png]]
 
 #### Field tags and schema evolution 
@@ -155,7 +155,7 @@ equivalent JSON
 	"field": [
 		{"name": "userName", "type": "string"},
 		{"name": "favoriteNumber", "type": ["null", "long"], "default": null},
-		{"name": "interests", "type": "type": {"type": "array", "items"L "string"}},
+		{"name": "interests", "type": "type": {"type": "array", "items": "string"}},
 	]
 }
 ```
@@ -266,7 +266,7 @@ DB 通常接受任何时间的写入请求，这意味着你数据库里可能�
 #### Archival storage
 >Perhaps you take a snapshot of your database from time to time, say for backup pur‐ poses or for loading into a data warehouse
 
-是不是给 DB 做一次备份，而这一个时间点的备份也意味着当时的 schema 跟着被备份了，所以用最新的 schema 备份更好
+时不时给 DB 做一次备份，而这一个时间点的备份也意味着当时的 schema 跟着被备份了，所以用最新的 schema 备份更好
 ### Dataflow Through Services: REST and RPC
 当一个 process 要通过网络传输数据的时候，也有很多种方法可以选择。最常见的是 clients and servers. Server 提供一个 API 然后 client 可以用这个 API 发送请求，这个 server 提供的 API 也叫做 *service* 
 
