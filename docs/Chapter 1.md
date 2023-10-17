@@ -227,9 +227,9 @@ operation 主要负责下面的几点
 新的需求总会不断出现，所以一个系统能够根据新的需求进行进化就很有必要了
 比如用户想要新的功能，或者我们采用新的工具等等
 
->The ease with which you can modify a data system, and adapt it to changing require‐ ments, is closely linked to its simplicity and its abstractions: simple and easy-to- understand systems are usually easier to modify than complex ones. But since this is such an important idea, we will use a different word to refer to agility on a data sys‐ tem level: evolvability
+>The ease with which you can modify a data system, and adapt it to changing requirements, is closely linked to its simplicity and its abstractions: simple and easy-to- understand systems are usually easier to modify than complex ones. But since this is such an important idea, we will use a different word to refer to agility on a data system level: evolvability
 
-作者用了twitter 里面如何 "refactor" approach 1 to approach 2 的例子来表示他为什么用  *evolvability* instead of refectoring
+作者用了twitter 里面如何 "refactor" approach 1 to approach 2 的例子来表示他为什么用  *evolvability* instead of refactoring
 因为当一个系统足够复杂的时候，可能用进化会更恰当一点吧…… refactor 通常也只是几个 source file 的code
 
 ## Summary
