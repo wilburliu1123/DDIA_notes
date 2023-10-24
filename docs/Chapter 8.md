@@ -208,7 +208,7 @@ Some implementation generate timestamps on client rather than server, but does c
 [57] Sandeep Kulkarni, Murat Demirbas, Deepak Madeppa, et al.: “[Logical Physical Clocks and Consistent Snapshots in Globally Distributed Databases](https://cse.buffalo.edu/tech-reports/2014-04.pdf),” State University of New York at Buffalo, Computer Science and Engineering Technical Report 2014-04, May 2014.
 
 #### Clock readings have a confidence interval
->With an NTP server on the public internet, the best pos‐ sible accuracy is probably to the tens of milliseconds, and the error may easily spike to over 100 ms when there is network congestion [57].
+>With an NTP server on the public internet, the best possible accuracy is probably to the tens of milliseconds, and the error may easily spike to over 100 ms when there is network congestion [57].
 
 It makes sense to think of clock reading as range of times, within a confidence interval 
 
@@ -433,7 +433,7 @@ For node failures, we have 3 common system models:
 
 First is the definition, then go for proof of correctness
 #### Correctness of an algorithm 
-We have to know its properties in order to define what it means for an algorithms to be *correct*. For example, the output of sorting algo has the property that any two distinct elements of the output list, the left is smaller than the element on the right 
+We have to know its properties in order to define what it means for an algorithms to be *correct*. For example, the output of sorting algo has the *property* that any two distinct elements of the output list, the left is smaller than the element on the right 
 
 Similarly, we want to define the properties of distributed algorithm in order to know what it means to be *correct*. We require the algorithm to have the following properties 
 *Uniqueness*
@@ -485,3 +485,4 @@ Discussed in the introduction in part 2, scalability is not the only reason for 
 
 Unreliability of networks, clocks, and processes in inevitable in nature. This chapter is all about problems. In next chapter, we will move to solutions, and discuss some algorithms that can cope with problems in distributed systems.
 
+side note, [nuclear clock](https://www.scientificamerican.com/article/new-results-reveal-how-to-build-a-nuclear-clock/?mc_cid=a5a50ca368) seems possible now but not really relevant to our case
