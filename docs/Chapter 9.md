@@ -115,10 +115,11 @@ it seems as though strict quorum reads and writes should be linearizable in a Dy
 
 ![[not_linearizable_despite_strict_quorum.png]]
 B's read is after A but get old value 
-Same as Alice and Bos's situation 
+Same as Alice and Bobs's situation 
 It is possible to make Dynamo-style quorums linearizable at the cost of performance. For example, reader performs read repair
 ![[quorum_write_leader_less_example.png]]
-In summary, it is safest to assume that a leaderless system with Dynamo-style replica‐ tion does not provide linearizability.
+
+In summary, it is safest to assume that a leaderless system with Dynamo-style replication does not provide linearizability.
 
 ### The Cost of Linearizability
 #### CAP theorem 
@@ -193,7 +194,7 @@ Actually keeping track of all causal dependencies can become impractical. In man
 
 There is a better way. We can use *sequence numbers or timestamps* to order events. A timestamp need not come from a time-of-day clock (or physical clock). Logical clock would suffice. Typically using counters that are incremented for every operation. Sequence numbers provide *total order* that is, we can always compare two sequence numbers to determine which is greater or happens later
 
-Sequence numbers can be generated in a order that is *consistent with causality*. In a database with single-leader replication, the replication log defines a total order of write operations that is consistent with causality. The leader can simply increment a counter for each operation and assign this monotonically increasing sequence number to each operation in the replication log. 
+Sequence numbers can be generated in an order that is *consistent with causality*. In a database with single-leader replication, the replication log defines a total order of write operations that is consistent with causality. The leader can simply increment a counter for each operation and assign this monotonically increasing sequence number to each operation in the replication log. 
 
 #### Noncausal sequence number generators
 For non-single leader databases. Various methods are used in practice:
