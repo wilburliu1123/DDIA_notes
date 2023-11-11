@@ -140,12 +140,12 @@ Since input is left unchanged, we can experiment with it very easily. (no side e
 - If you introduce a bug into the code and the output is wrong or corrupted, you can simply roll back to a previous version of the code and rerun the job, and the output will be correct again.
 - As a consequence of this ease of rolling back, feature development can proceed more quickly than in an environment where mistakes could mean irreversible damage.
 - If a map or reduce task fails, the MapReduce framework automatically re- schedules it and runs it again on the same input.
-- Like Unix tools, MapReduce jobs separate logic from wiring (configuring the input and output directories), which provides a separation of concerns and ena‐ bles potential reuse of code
+- Like Unix tools, MapReduce jobs separate logic from wiring (configuring the input and output directories), which provides a separation of concerns and enables potential reuse of code
 
 ### Comparing Hadoop to Distributed Databases
 Hadoop is like a distributed version of Unix tools. Massively parallel processing databases have been explored this idea previously. (such as Teradata, NonStop SQL) 
 
-The main difference is MPP databases focus on parallel execution f analytic SQL queries where combination of MapReduce and distributed filesystem provide something more like a general purpose OS that can run arbitrary programs 
+The main difference is MPP databases focus on parallel execution analytic SQL queries where combination of MapReduce and distributed filesystem provide something more like a general purpose OS that can run arbitrary programs 
 
 Database requires you to define schema but filesystem does not. they can equally well be text, images, videos, sensor readings, sparse matrices, feature vectors, genome sequences, or any other kind of data.
 
