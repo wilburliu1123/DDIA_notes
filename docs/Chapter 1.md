@@ -1,16 +1,16 @@
 ## Reliable, Scalable, and maintainable app
-这一章主要介绍了这本书里面用到的概念的*定义*
-
+This chapter introduced *definitions* of concepts that is used throughout this book
 What does reliability, scalability, and maintainability mean in this book? 
 
 目前的应用分为 *data intensive* vs *compute-intensive*. compute intensive usually comes in scientific computing application (modeling, prediction etc)
 
-但是生活中大多数的application 实际上问题更在于数据的处理、存储方面
+
+Most application has problem with data processing and storage
 > bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing
 
-也就是这本书侧重的角度: Data, 这本书从数据的角度出发来介绍一个大数据应用
+This is where this book is focused on: **Data**. This book will view an application from data's perspective
 
-任何app 都离不开跟数据打交道，以下是作者概括的几点
+Any application cannot function without data. This is some summary from the author
 
 - Store data (databases)
 - remember expensive operation to speed up reads (caches)
@@ -18,33 +18,32 @@ What does reliability, scalability, and maintainability mean in this book?
 - Send message between processes (stream processing)
 - Periodically process large amount of data (batch processing)
 
-
-书中提到了有人用 redis 来做 message queue, 这是我第一次听说，kafka 用来做 db 我之前倒是听说过
+First time hearing someone use Redis as message queue, but I have heard people use. Kafka as database.
 
 > There are many factors that may influence the design of a data system, including the skills and experience of the people involved, legacy system dependencies, the time-scale for delivery, your organization's tolerance of different kinds of risk, regulatory constrains 
 
-是的，一个数据系统就是会受很多不同的factor影响，这本书主要集中在3个点
+Yep, data system has many factors. This book will focus on three of them:
 
 - Reliability
 - Scalability
 - Maintainability
 
-这三样实际上任何大型的系统都需要考虑。尤其是 maintainability, 在"年纪大的公司"上过班的人应该深有体会，里面很多软件动不动就是10几年前的，所以能够让新来的人快速上手或者理解里面的概念就很重要了
+
+This 3 area appears almost in every large data system. Especially for maintainability, whoever worked in "old" company might reflect on this. Because software or tools in those company can be 10+ years old. Thus it is crucial for new comers to get hands on those old tech or understand how it works. 
 
 ## Reliability
-这里面介绍了 3 种 faults
+This section introduced 3 kinds of faults:
 
 - Hardware
 - Software
 - Human
 
-*faults* is when things can go wrong. 这里作者强调了 fault tolerance 一定要定义certain types of faults，不然假如你所有服务器被黑洞吸走了，你想要tolerating this type of fault, 你需要在space 上建服务器，~~那你可能需要跟马斯克或者贝佐斯来讨论一下你的budget了…… ~~
-SpaceX 或者blue origin 欢迎你!
+*faults* is when things can go wrong. Author emphasis fault tolerance need to define what types of faults, otherwise if your server was swallowed  by blackhole, and you want to tolerate this type of fault, you need to build your server in space~~good luck to talk to Elon or Bezos about your budget ~~
+SpaceX or Blue origin welcomes you!
 
 fault is not same as failure. A fault is defined as one component of the system deviating from its spec, whereas a *failure* is when the system as a whole stops providing the required service to the user.
 
-failure 在 service 里面的换一个词应该可以叫 outage, 就比如说一个网站上不去了这类的
-
+failure in service can also be called outage, e.g. you cannot load a website
 ### Hardware faults
 虽然在平时生活中不多见，但是硬件一旦数量变多了之后损坏的概率也会越来越大 
 > Hard disks are reported as having a mean time to failure about 10 to 50 years
