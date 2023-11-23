@@ -1,0 +1,1927 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter%204/">
+      
+      
+        <link rel="next" href="../Chapter%206/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 5 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#leaders-and-followers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 5
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2011/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#leaders-and-followers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaders and Followers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaders and Followers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-we-ensure-that-all-the-data-ends-up-on-all-the-replicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: How do we ensure that all the data ends up on all the replicas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-vs-async" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sync vs Async
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-new-followers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up New Followers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-node-outages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling node outages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling node outages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#follower-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Follower failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leader-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leader failure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-of-replication-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation of Replication Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation of Replication Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statement-based-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statement based replication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-ahead-log-shipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write-ahead log shipping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-row-based-log-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical (row-based) log replication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger-based-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger based replication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems-with-replication-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems with Replication Log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problems with Replication Log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-your-own-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading your own writes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monotonic Reads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistent-prefix-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consistent Prefix Reads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consistent Prefix Reads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions-for-replication-lag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions for Replication lag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-leader-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Leader Replication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Leader Replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-cases-for-multi-leader-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases for Multi-Leader Replication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases for Multi-Leader Replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#below-are-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      below are use cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-with-offline-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clients with offline operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collaborative-editing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collaborative editing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-write-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Write Conflicts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Write Conflicts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sync-vs-async-conflict-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sync vs Async conflict detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflict-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conflict avoidance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converging-toward-a-consistent-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Converging toward a consistent state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-conflict-resolution-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom conflict resolution logic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-leader-replication-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Leader Replication Topologies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leaderless-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaderless Replication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaderless Replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-to-the-database-when-a-node-is-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing to the Database When a Node Is Down
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing to the Database When a Node Is Down">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-replica-catch-up-the-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does replica catch up the writes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quorums" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quorums
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-quorum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations of Quorum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations of Quorum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sloppy-quorums-and-hinted-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sloppy Quorums and Hinted Handoff
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sloppy Quorums and Hinted Handoff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-leaderless-for-multi-data-center-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example of leaderless for multi data center operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-concurrent-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting concurrent writes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detecting concurrent writes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last-write-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Last write wins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#happens-before-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Happens before relationship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capture-happens-before-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture happens before relationship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version vectors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%208/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#leaders-and-followers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaders and Followers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaders and Followers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-we-ensure-that-all-the-data-ends-up-on-all-the-replicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: How do we ensure that all the data ends up on all the replicas?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-vs-async" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sync vs Async
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-new-followers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up New Followers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-node-outages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling node outages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling node outages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#follower-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Follower failure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leader-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leader failure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-of-replication-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation of Replication Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation of Replication Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statement-based-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statement based replication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-ahead-log-shipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write-ahead log shipping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-row-based-log-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical (row-based) log replication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger-based-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger based replication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems-with-replication-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems with Replication Log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problems with Replication Log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-your-own-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading your own writes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monotonic Reads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistent-prefix-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consistent Prefix Reads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consistent Prefix Reads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions-for-replication-lag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions for Replication lag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-leader-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Leader Replication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Leader Replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-cases-for-multi-leader-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases for Multi-Leader Replication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases for Multi-Leader Replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#below-are-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      below are use cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-with-offline-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clients with offline operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collaborative-editing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collaborative editing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-write-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Write Conflicts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Write Conflicts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sync-vs-async-conflict-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sync vs Async conflict detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflict-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conflict avoidance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converging-toward-a-consistent-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Converging toward a consistent state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-conflict-resolution-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom conflict resolution logic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-leader-replication-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Leader Replication Topologies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leaderless-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leaderless Replication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaderless Replication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-to-the-database-when-a-node-is-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing to the Database When a Node Is Down
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing to the Database When a Node Is Down">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-replica-catch-up-the-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does replica catch up the writes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quorums" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quorums
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-quorum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations of Quorum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations of Quorum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sloppy-quorums-and-hinted-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sloppy Quorums and Hinted Handoff
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sloppy Quorums and Hinted Handoff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-leaderless-for-multi-data-center-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example of leaderless for multi data center operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-concurrent-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting concurrent writes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detecting concurrent writes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last-write-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Last write wins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#happens-before-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Happens before relationship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capture-happens-before-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture happens before relationship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version vectors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 5</h1>
+
+<h2 id="leaders-and-followers">Leaders and Followers<a class="headerlink" href="#leaders-and-followers" title="Permanent link">&para;</a></h2>
+<p><em>Replication</em> mean keep same copies on multiple machines that are connected with network</p>
+<p>As Mentioned in <a href="../Part%202/">Part 2</a>, the goals of replication are:
+- Reduced latency through geographically connected network
+- Another machine can still serve traffic while a machine is down
+- Balance the load to different machine when traffic spikes</p>
+<p>This chapter assume <em>entire dataset can fit in a single machine</em>. <a href="../Chapter%206/">Chapter 6</a> will discuss about <em>partitioning</em> when a dataset is too big for a single machine</p>
+<p>All difficulty of replication comes from handling changes. <em>single-leader</em>, <em>multi-leader</em> and <em>leaderless</em> replication are different method/algorithms we could use </p>
+<p>Replication is an old topic and method hasn't changed much since 1970s. Distributed databases is more recent There are different trade offs and issues such as <em>eventual consistency</em> that will be discussed</p>
+<h4 id="q-how-do-we-ensure-that-all-the-data-ends-up-on-all-the-replicas">Q: How do we ensure that all the data ends up on all the replicas?<a class="headerlink" href="#q-how-do-we-ensure-that-all-the-data-ends-up-on-all-the-replicas" title="Permanent link">&para;</a></h4>
+<p>Each write needs to be processed by every replica otherwise it would not contain the same dataset anymore. So a common solution is <em>leader-based replication</em> (aka <em>active</em>/<em>passive</em>, <em>master</em>/<em>slave</em> replication)</p>
+<p><img alt="leader_based_replication.png" src="../img/leader_based_replication.png" /></p>
+<p>How it works:
+1.  leader process all writes and forward those write to <em>followers</em>. The media of forwarding writes is called <em>replication log</em> or <em>change stream</em>
+2. Each replica takes the log from leader and applies the changes in same order to its local storage 
+3. Both leader and follower can serve read</p>
+<blockquote>
+<p>This mode of replication is a built-in feature of many relational databases, such as PostgreSQL (since version 9.0), MySQL, Oracle Data Guard [2], and SQL Server’s AlwaysOn Availability Groups [3].</p>
+</blockquote>
+<p>Distributed Message queue/brokers use same method</p>
+<blockquote>
+<p>leader-based replication is not restricted to only databases: distributed message brokers such as Kafka [5] and RabbitMQ highly available queues [6] also use it. Some network filesystems and replicated block devices such as DRBD are similar.</p>
+</blockquote>
+<h3 id="sync-vs-async">Sync vs Async<a class="headerlink" href="#sync-vs-async" title="Permanent link">&para;</a></h3>
+<p>This is a tradeoff when implementing leader based replication (configurable option in relational DB)
+Figure 5-2 shows communication with time flow from left to right 
+<img alt="figure5_2.png" src="../img/figure5_2.png" />
+in this figure, follower 1 is <em>synchronous</em>, follower 2 is <em>asynchronous</em></p>
+<p>advantage of synchronous updates is when leader fails, follower can stood up as leader. Disadvantage is when synchronous follower is not responding it will not complete the updates for leader (leader must block until the follower is responsive again)</p>
+<p>In practice is not possible to make all follower synchronous thus it is common to have 1 synchronous replica. This is also called <em>semi-synchronous</em> </p>
+<p><em>Asynchronous</em> means even if all follower is fallen behind, leader can still process request which means if leader is down and not recoverable, previous processed writes are lost </p>
+<p>Weak durability on Asynchronous might sounds a bad trade off but it is widely used on geographically distributed data based.</p>
+<p><mark>Research on Replication</mark></p>
+<blockquote>
+<p>researchers have continued investigating replication methods that do not lose data but still provide good performance and availability. For example, chain replication [8, 9] is a variant of synchronous replication that has been successfully implemented in a few systems such as Microsoft Azure Storage [10, 11].</p>
+</blockquote>
+<h3 id="setting-up-new-followers">Setting Up New Followers<a class="headerlink" href="#setting-up-new-followers" title="Permanent link">&para;</a></h3>
+<p>How do you ensure that new follower has an accurate copy of the leader's data? 
+1. Take a consistent snapshot of leader's database at some point in time. Most DB support this natively as they need a feature for backup
+2. Copy snapshot to new follower
+3. New follower connects to leader and request all data since the snapshot was taken. This requires the snapshot has a <em>exact position</em> in leader's replication log. This position has various names. PostgreSQL calls it <em>log sequence number</em>, MySQL calls it <em>binlog coordinates</em>
+4. When follower has processed all changes since the snapshot, it is <em>caught up</em> </p>
+<h3 id="handling-node-outages">Handling node outages<a class="headerlink" href="#handling-node-outages" title="Permanent link">&para;</a></h3>
+<p>Any node can go down, for example a node need to reboot for kernel security updates. Being able to reboot nodes without downtime is a big advantage (high availability)</p>
+<h4 id="follower-failure">Follower failure<a class="headerlink" href="#follower-failure" title="Permanent link">&para;</a></h4>
+<p>Each follower will keep a log of data change received from leader. If a follower failed, it can just reconnect to leader and resume previous point of transaction that was processed </p>
+<h4 id="leader-failure">Leader failure<a class="headerlink" href="#leader-failure" title="Permanent link">&para;</a></h4>
+<p>When leader fail, it needs <em>failover</em> which involves client reconfigure to send writes to new leader and follower connect to new leader 
+Failover can be manual to automatic. Automatic failover involve following steps:
+1. Determine leader has failed (most system use timeout)
+2. Choosing new leader (election from followers, appointed by <em>controller</em> node etc) this is consensus problem and will be discussed in detail in <a href="../Chapter%209/">Chapter 9</a>
+3. Reconfigure the system to use the new leader (tell client to send request to new leader, and ensure if old leader comes back it stay as follower)</p>
+<p>Things can go wrong during failover:
+- With asynchronous replication, write might be lost if old leader never comes back. And if old leader does join, there will be conflict writes. Simple solution is to discard old leader's writes
+- Discard writes can be dangerous. Github incident when an out of date MySQL follower promoted to leader and primary key was using auto increment so there were primary keys used twice which result some private data to be disclosed to the wrong user
+- Two nodes both believe they are leader (called <em>split brain</em>). This is dangerous because write conflict can happen when 2 nodes are both accepting writes. For example, shopping cart is updated by mobile and desktop with split brain leaders then shopping cart will have different items. Solution is to shutdown 1 leader when 2 leaders are detected
+- What is the right timeout? </p>
+<blockquote>
+<p>These issues—node failures; unreliable networks; and trade-offs around replica consistency, durability, availability, and latency—are in fact fundamental problems in distributed systems. In Chapter 8 and Chapter 9 we will discuss them in greater depth.</p>
+</blockquote>
+<h3 id="implementation-of-replication-logs">Implementation of Replication Logs<a class="headerlink" href="#implementation-of-replication-logs" title="Permanent link">&para;</a></h3>
+<h4 id="statement-based-replication">Statement based replication<a class="headerlink" href="#statement-based-replication" title="Permanent link">&para;</a></h4>
+<p>leader logs every write request and send that statement to its followers. For relational DB, it means every <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code> statement is forwarded to followers </p>
+<p>but this can fail in various ways:
+- A statement calls nondeterministic function such as <code>NOW()</code> where clock is different on each machine or <code>RAND()</code> to generate a random number
+- They must execute in exact same order and can be limiting when multiple concurrently transaction is happening
+- Statements that have side effects (user-defined functions) may have different result unless these side effect are absolutely deterministic.</p>
+<h4 id="write-ahead-log-shipping">Write-ahead log shipping<a class="headerlink" href="#write-ahead-log-shipping" title="Permanent link">&para;</a></h4>
+<p>In <a href="../Chapter%203/">Chapter 3</a> we talked about WAL (doesn't matter whether its BTree or LSM tree) 
+<img alt="WAL-example.png" src="../img/WAL-example.png" />
+We can use WAL to build a replica on another node (beside writing this log to disk, leader also sends it to its followers via network)</p>
+<blockquote>
+<p>This method of replication is used in PostgreSQL and Oracle</p>
+</blockquote>
+<p>Disadvantage of this approach is this is very <em>low level</em>: a WAL contains details of which bytes were changed in which disk blocks. So it is closely coupled to storage engine (BTree or LSMTree). It also means follower and leader needs to use same version of software. (This is big deal if you want to upgrade your database software without downtime)</p>
+<h4 id="logical-row-based-log-replication">Logical (row-based) log replication<a class="headerlink" href="#logical-row-based-log-replication" title="Permanent link">&para;</a></h4>
+<p>Use a different log format which allows replication log decoupled from storage engine. This type of replication log is called <em>logical log</em> </p>
+<p>A logical log for relational DB is sequence of records describing writes at granularity of a row:
+- When insert, log contains all values of this row
+- When delete, log contains which row get deleted. (Typically primary key, if no primary key then all old value of the row is recorded)
+- When update, log contains information to uniquely identify which row/column value has updated</p>
+<blockquote>
+<p>MySQL’s binlog (when configured to use row-based replication) uses this approach</p>
+</blockquote>
+<p>Since logical log is decoupled from storage engine internals, leader and follower can run on different versions of database software </p>
+<p>it is also easier for external application to parse. This is useful if you want send database content to external system such as data warehouse or building custom indexes and caches. This technique is called <em>change data capture</em> (Kafka can be used for this)</p>
+<h4 id="trigger-based-replication">Trigger based replication<a class="headerlink" href="#trigger-based-replication" title="Permanent link">&para;</a></h4>
+<p>Above implementation is all in database system (without involving application code) This is usually what we want
+There are circumstances where flexibility is needed. For example, you only want to replicate subset of data, or replicate from one kind of database to another or need conflict resolution logic. Then move replication up to application layer is a choice</p>
+<p><em>triggers and stored procedures</em> is a feature that is available in many relational DB 
+Trigger lets you put custom application code that is automatically executed when data change occurs in database system (trigger can log this change into another table and external process can read this change to replicate to another system)</p>
+<blockquote>
+<p>Databus for Oracle [20] and Bucardo for Postgres [21] work like this</p>
+</blockquote>
+<h2 id="problems-with-replication-log">Problems with Replication Log<a class="headerlink" href="#problems-with-replication-log" title="Permanent link">&para;</a></h2>
+<p>leader based replication is <em>read-scaling</em> architecture. we can add however many read replicas we want. But all writes go through leader and it realistically works with asynchronous replication (if all follower need synchronous updates, then single node failure will cause entire system stop working)</p>
+<p>Asynchronous means your read can be <em>stale</em> if the follower is fallen behind. This is temporary (when follower eventually caught up, reads from leader and follower will be same). Aka <em>eventual consistency</em></p>
+<p>Eventually is vague (no limits how far a replica can fallen behind). Normally is within a second but if system is operating near capacity it might become several seconds or minutes </p>
+<p>we will talk about 3 examples of problems and discuss approaches to solve them</p>
+<h3 id="reading-your-own-writes">Reading your own writes<a class="headerlink" href="#reading-your-own-writes" title="Permanent link">&para;</a></h3>
+<p>Many app needs user to view what they have submitted (reply in a thread, comment on a discussion etc)
+When data is submitted, write sent to leader and read can be done from follower.
+But Asynchronous replication will have a problem
+<img alt="stale_read_example.png" src="../img/stale_read_example.png" />
+we need <em>read-after-write</em> (aka <em>read-your-writes</em>) consistency in this case. 
+This consistency guarantee user will see their own updates (not necessary for other users) 
+how to implement?
+- Read from leader if user have modified their profile, otherwise from follower
+- track replication lag on followers and prevents reads on any follower has longer than 1 mins replication lag
+- Client can remember a timestamp for most recent write. Then system can ensure read only after that timestamp. This timestamp could be a <em>logical timestamp</em> (order of writes such as log sequence number) 
+- If your replicas distributed across multiple datacenters, then any request that needs to be served by the leader must be routed to the datacenter that contains the leader</p>
+<p><em>cross device</em> read-after-write consistency. Desktop and mobile both want to see the same result after write happens. 
+- To achieve this, you need to route all user's device to the same datacenter. </p>
+<h3 id="monotonic-reads">Monotonic Reads<a class="headerlink" href="#monotonic-reads" title="Permanent link">&para;</a></h3>
+<p>This is needed when asynchronous follower can cause <em>moving backward</em> in time
+This can happen when user makes several reads from different replicas. 
+<img alt="move_back_in_time_example.png" src="../img/move_back_in_time_example.png" />
+<em>Monotonic reads</em> guarantee this does not happen. 
+How to achieve this?
+Make sure always read from same replica (different user can read from different replica)</p>
+<h3 id="consistent-prefix-reads">Consistent Prefix Reads<a class="headerlink" href="#consistent-prefix-reads" title="Permanent link">&para;</a></h3>
+<p>This is needed when violation of causality might happen. 
+<img alt="causality_example.png" src="../img/causality_example.png" />
+<em>consistent prefix reads</em> prevent this anomaly. It says if a sequence of writes happens in certain order, read must also in the same order
+This is an anomaly in partitioned/shard databases. Different partitions operate independently, so there is no global ordering of writes </p>
+<p>user might see older part of a partition and new part of another partition</p>
+<p>One solution is to make sure any writes that are causally related goes to same partition
+Or explicitly track causal dependencies</p>
+<h4 id="solutions-for-replication-lag">Solutions for Replication lag<a class="headerlink" href="#solutions-for-replication-lag" title="Permanent link">&para;</a></h4>
+<p>there are ways which an application can provide a stronger guarantee than underlying database (performing certain kinds of read on leader) However, dealing with this issue is complex and error prone.</p>
+<p>It would be better application developer didn't have to worry about replication issue and trust database "do the right thing". <em>transactions</em> exist for this reason. </p>
+<p>Single node transactions existed for a long time but many distributed databases systems have abandoned them. Chapter 7 and 9 will return to transactions</p>
+<h2 id="multi-leader-replication">Multi-Leader Replication<a class="headerlink" href="#multi-leader-replication" title="Permanent link">&para;</a></h2>
+<p>Multi leader replication allow more than 1 node to process writes. </p>
+<h3 id="use-cases-for-multi-leader-replication">Use Cases for Multi-Leader Replication<a class="headerlink" href="#use-cases-for-multi-leader-replication" title="Permanent link">&para;</a></h3>
+<p>Multi leader is often in multiple data centers (so you can tolerate failure of entire datacenter, or in order to be closer to your users) </p>
+<p>Each datacenter have a leader. Within each datacenter, leader-follower replication is used; between datacenters, leader replicates its changes to the leader in other datacenters
+<img alt="multi_leader_example.png" src="../img/multi_leader_example.png" />
+Comparing single leader with multi leader</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Single leader</th>
+<th>Multi leader</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance</td>
+<td>significant latency as write must go to single datacenter where leader resides</td>
+<td>lower latency as every write can be processed in local datacenter and replicated asynchronously to other datacenter</td>
+</tr>
+<tr>
+<td>Tolerance of datacenter outage</td>
+<td>Needs another follower from different datacenter to caught up</td>
+<td>can continue operating independently</td>
+</tr>
+<tr>
+<td>Tolerance of network problem</td>
+<td>sensitive to inter-datacenter link because write needs to be done synchronously to another datacenter</td>
+<td>usually tolerate network problem better because asynchronous updates</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Some databases support multi-leader configurations by default, but it is also often implemented with external tools, such as Tungsten Replicator for MySQL [26], BDR for PostgreSQL [27], and GoldenGate for Oracle [19].</p>
+</blockquote>
+<p>There are many small pitfalls in multi leader config. So it is often considered dangerous territory that should be avoided if possible [28].</p>
+<h5 id="below-are-use-cases">below are use cases<a class="headerlink" href="#below-are-use-cases" title="Permanent link">&para;</a></h5>
+<h4 id="clients-with-offline-operation">Clients with offline operation<a class="headerlink" href="#clients-with-offline-operation" title="Permanent link">&para;</a></h4>
+<p>cross device application with offline operation (Calendar, notes, reminder etc) 
+In this case, client's local database acts as leader and there is asynchronous multi leader replication process (sync) between the replicas of your calendar on all of your device</p>
+<p>The replication lag maybe hours or even days. From architectural point of view, each device is a "data center". </p>
+<blockquote>
+<p>There are tools that aim to make this kind of multi-leader configuration easier. For example, CouchDB is designed for this mode of operation [29].</p>
+</blockquote>
+<h4 id="collaborative-editing">Collaborative editing<a class="headerlink" href="#collaborative-editing" title="Permanent link">&para;</a></h4>
+<p>Google Docs is a good example. When one user made a change, it is applied immediately in their web browser or client app. And asynchronously replicated to the server and other users </p>
+<p>one way to prevent conflict is get lock at user's cursor. But usually conflict resolution is needed for this type of application </p>
+<h3 id="handling-write-conflicts">Handling Write Conflicts<a class="headerlink" href="#handling-write-conflicts" title="Permanent link">&para;</a></h3>
+<p>When write conflicts occur, conflict resolution is needed.
+<img alt="write_conflict_wiki_example.png" src="../img/write_conflict_wiki_example.png" /></p>
+<h4 id="sync-vs-async-conflict-detection">Sync vs Async conflict detection<a class="headerlink" href="#sync-vs-async-conflict-detection" title="Permanent link">&para;</a></h4>
+<p>If use Sync conflict detection you may go ahead using single leader because you need to wait for all leader to confirm there is no conflict detected</p>
+<h4 id="conflict-avoidance">Conflict avoidance<a class="headerlink" href="#conflict-avoidance" title="Permanent link">&para;</a></h4>
+<p>Application can make sure all writes for a particular record go through the same leader. For example, in an app where user can edit their own data, you can always route to same datacenter and use leader of that datacenter for read and writes (perhaps pick closest geo location for datacenter)</p>
+<p>but if user moved or the home datacenter has failed, you still have to face with conflict resolution</p>
+<h4 id="converging-toward-a-consistent-state">Converging toward a consistent state<a class="headerlink" href="#converging-toward-a-consistent-state" title="Permanent link">&para;</a></h4>
+<p>Database must resolve conflict in a <em>convergent</em> way, which means all replicas must arrive at the same final value when all writes are processed.
+There are couple of ways to achieve this:
+- Give each write a unique ID(timestamp, UUID, hash of key and value) and pick write with highest ID as winner (this is known as <em>last write wins</em>) but this approach is prone to data loss
+- Give each replica a unique ID, let higher numbered replica take precedence over lower replica (this approach also implies data loss)
+- Somehow merge the values together -- concatenate or sort them in some order
+- Record the conflict in an explicit data structure that stores everything and let application code or user to resolve the conflict (git)</p>
+<h4 id="custom-conflict-resolution-logic">Custom conflict resolution logic<a class="headerlink" href="#custom-conflict-resolution-logic" title="Permanent link">&para;</a></h4>
+<p>Most multi leader replication tool let you write conflict resolution logic using application code 
+<em>On write</em> 
+When DB system detects conflict in the log of replicated changes, it calls conflict handler 
+<em>On read</em>
+When conflict is detected, all the conflict writes are stored. When data is read next time, all versions of the data are returned to the application. The application may prompt user or auto resolve the conflict , and write back to database. CouchDB works this way</p>
+<blockquote>
+<p>There has been some interesting research into automatically resolving conflicts caused by concurrent data modifications. A few lines of research are worth mention‐ ing:
+• Conflict-free replicated datatypes (CRDTs) [32, 38] are a family of data structures for sets, maps, ordered lists, counters, etc. that can be concurrently edited by multiple users, and which automatically resolve conflicts in sensible ways. Some CRDTs have been implemented in Riak 2.0 [39, 40].
+• Mergeable persistent data structures [41] track history explicitly, similarly to the Git version control system, and use a three-way merge function (whereas CRDTs use two-way merges).
+• Operational transformation [42] is the conflict resolution algorithm behind col‐ laborative editing applications such as Etherpad [30] and Google Docs [31]. It was designed particularly for concurrent editing of an ordered list of items, such as the list of characters that constitute a text document.</p>
+</blockquote>
+<h3 id="multi-leader-replication-topologies">Multi-Leader Replication Topologies<a class="headerlink" href="#multi-leader-replication-topologies" title="Permanent link">&para;</a></h3>
+<p><em>Replication topology</em> describe the <em>write path</em> from one node to another. With more than 2 leaders, there are many topologies possible 
+<img alt="replication_topology.png" src="../img/replication_topology.png" /></p>
+<p>Most general is all to all. MySQL use circular topology by default. Circular topology is one node received writes and forward those writes with its own writes together. Another topology is star where one node forwards writes to all other nodes (can be generalized to a tree)</p>
+<p>=&gt; this root node in star topology is like single leader. What happen if it fails?</p>
+<blockquote>
+<p>A problem with circular and star topologies is that if just one node fails, it can interrupt the flow of replication messages between other nodes, causing them to be unable to communicate until the node is fixed.</p>
+</blockquote>
+<p>all to all has issues if network link is not at the same speed, which result the write order arrives differently 
+<img alt="write_arrives_at_different_order.png" src="../img/write_arrives_at_different_order.png" />
+This results to a problem of causality(writes appear in the wrong order)
+To fix this issue, a technique called <em>version vectors</em> is used (discussed later)</p>
+<blockquote>
+<p>However, conflict detection techniques are poorly implemented in many multi-leader replication systems. For example, at the time of writing, PostgreSQL BDR does not provide causal ordering of writes [27], and Tungsten Replicator for MySQL doesn’t even try to detect conflicts [34].</p>
+</blockquote>
+<p>so company have in house version of conflict resolution </p>
+<h2 id="leaderless-replication">Leaderless Replication<a class="headerlink" href="#leaderless-replication" title="Permanent link">&para;</a></h2>
+<p>Replication without a leader (i.e. any replica can take writes from client) is called <em>leaderless</em>. Some implementation let client directly send writes to multiple replicas and some implementation let client send write to a coordinator node. Coordinator does not enforce write order. This difference in design has profound consequences for the way database is used.</p>
+<h3 id="writing-to-the-database-when-a-node-is-down">Writing to the Database When a Node Is Down<a class="headerlink" href="#writing-to-the-database-when-a-node-is-down" title="Permanent link">&para;</a></h3>
+<p>Imagine you have a database system with 3 replicas, and one of them is down (system updates or whatever). In leader based approach you need to perform a fail over 
+On the other hand, leaderless configuration does not have a failover concept 
+<img alt="quorum_write_leader_less_example.png" src="../img/quorum_write_leader_less_example.png" />
+Client can directly send write to all 3 replicas and if 2 respond with ok then we consider it succeeded. </p>
+<p>You may get stale read if the failed node comes back. To solve this, when performing read, client don't send read to 1 replica but send to <em>several replicas in parallel</em>. Version number is used to determine which value is newer </p>
+<h4 id="how-does-replica-catch-up-the-writes">How does replica catch up the writes?<a class="headerlink" href="#how-does-replica-catch-up-the-writes" title="Permanent link">&para;</a></h4>
+<p>2 mechanism used in Dynamo style datastores
+<em>Read repair</em>
+In above graph, user2345 can tell replica 3 has old value so it send newer data to it for update. this works well for values that are frequently read
+<em>Anti-entropy process</em>
+Let a background process to constantly look for difference between replicas and update if needed. This is different than replication log in leader based approach where write order is not guaranteed and may have significant delay for updates</p>
+<h4 id="quorums">Quorums<a class="headerlink" href="#quorums" title="Permanent link">&para;</a></h4>
+<p>Generalize above example, if there are <em>n</em> replicas, every write must be processed by <em>w</em> number of replica in order to be consider successful, and we must query at least <em>r</em> nodes for each read. (In above example, <span class="arithmatex">\(n = 3, w = 2, r = 2\)</span>) As long as <span class="arithmatex">\(w + r &gt; n\)</span> , we expect to get up to date value upon read. </p>
+<p>Read and writes obey above rule are called <em>quorum</em> read and writes. In Dynamo style databases, n, w, r are configurable. A typical choice is to select a odd number for <em>n</em> and set <span class="arithmatex">\(w = r = (n + 1) / 2\)</span> (round up) </p>
+<p>But you can change the configuration based on need. For example, few writes and many read may benefit from setting <span class="arithmatex">\(w = n, r = 1\)</span>. This makes read faster with trade off where 1 nodes fail will cause the system not accepting writes </p>
+<p>With <span class="arithmatex">\(w + r &gt; n\)</span>, we can tolerate unavailable nodes as follows:
+- if <span class="arithmatex">\(w &lt; n\)</span>, we can still process writes if some nodes are down
+- If <span class="arithmatex">\(r &lt; n\)</span>, we can still process read if some nodes are down
+<img alt="quorum_with_5_replica_example.png" src="../img/quorum_with_5_replica_example.png" />
+If fewer than required <em>w</em> and <em>r</em> are available, operation will return error</p>
+<h3 id="limitations-of-quorum">Limitations of Quorum<a class="headerlink" href="#limitations-of-quorum" title="Permanent link">&para;</a></h3>
+<p>Quorum works because write set of nodes overlap with read set of nodes. 
+<em>w</em> and <em>r</em> are set to majority so at least 1 node overlap. But this is not necessary, other assignment are possible to allow flexibility</p>
+<p>you may set <span class="arithmatex">\(w + r \le n\)</span>, this configuration allows you continue processing reads and writes even if large number of replica is down with tradeoff for getting stale read</p>
+<p>Even with <span class="arithmatex">\(w + r &gt; n\)</span> you might still get stale value depend on implementation 
+- If a sloppy quorum is used, the w writes may end up on different nodes than the r reads
+- If write happens concurrently, it is not clear which happened first
+- If write happened concurrently with read, it is underdetermined if read returns old or new value
+- Even if everything is working correctly, there are edge cases in which you can get unlucky with the timing</p>
+<p>quorum with <em>w</em> and <em>r</em> parameter can adjust the probability of stale read but it's wise not to take them as absolute guarantees. 
+In particular you do not get reading your writes, monotonic reads, or consistent prefix reads</p>
+<p>Stronger guarantees generally require transactions or consensus.</p>
+<h4 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h4>
+<p>leader based replication can use replication lag to monitor (current write - previous write received)
+With leaderless, there is not write order. <a href="http://www.bailis.org/papers/pbs-cacm2014.pdf">There are research in this area</a> but has not become common practice. </p>
+<h3 id="sloppy-quorums-and-hinted-handoff">Sloppy Quorums and Hinted Handoff<a class="headerlink" href="#sloppy-quorums-and-hinted-handoff" title="Permanent link">&para;</a></h3>
+<p>Appropriate configuration for quorum can tolerate failure without failover, it can also tolerate individual node going slow. Because only <em>w</em> or <em>r</em> response is needed </p>
+<p>This makes leaderless replication appealing for application that needs high availability and low latency </p>
+<p>However, quorum mentioned above does not tolerate fault well. A network interruption can easily cut client from majority of the nodes</p>
+<p>Even those nodes are alive, but to the client that are cut off from them they appears to be dead. </p>
+<p>In a large cluster if client can connect to some database nodes (not in <em>n</em> set of nodes), database designer face a trade-off: 
+- is it better to just return errors?
+- Or should we accept writes anyway, and write them to some nodes that are reachable but aren’t among the n nodes on which the value usually lives?</p>
+<p>Later known as <em>sloppy quorum</em>, <em>w</em> write and <em>r</em> reads are still required but they might not be in original <em>n</em> nodes. </p>
+<blockquote>
+<p>By analogy, if you lock yourself out of your house, you may knock on the neighbor’s door and ask whether you may stay on their couch temporarily.</p>
+</blockquote>
+<p>Once network issue is fixed, any write handled by sloppy quorum nodes will be forward to original <em>n</em> nodes. This is called <em>hinted handoff</em> </p>
+<p>Sloppy quorum is particularly useful for increasing write availability. As long as <em>w</em> nodes are available for write. </p>
+<p>This quorum is not traditional quorum but a durability guarantee. (data store in <em>w</em> nodes somewhere else) There is no guarantee that a read of r nodes will see it until the hinted handoff has completed.</p>
+<blockquote>
+<p>Sloppy quorums are optional in all common Dynamo implementations. In Riak they are enabled by default, and in Cassandra and Voldemort they are disabled by default [46, 49, 50].</p>
+</blockquote>
+<h4 id="example-of-leaderless-for-multi-data-center-operation">Example of leaderless for multi data center operation<a class="headerlink" href="#example-of-leaderless-for-multi-data-center-operation" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Cassandra and Voldemort implement their multi-datacenter support within the normal leaderless model: the number of replicas n includes nodes in all datacenters, and in the configuration you can specify how many of the n replicas you want to have in each datacenter. Each write from a client is sent to all replicas, regardless of datacenter, but the client usually only waits for acknowledgment from a quorum of nodes within its local datacenter so that it is unaffected by delays and interruptions on the cross-datacenter link. The higher-latency writes to other datacenters are often configured to happen asynchronously, although there is some flexibility in the configuration [50, 51].</p>
+<p>Riak keeps all communication between clients and database nodes local to one data‐ center, so n describes the number of replicas within one datacenter. Cross-datacenter replication between database clusters happens asynchronously in the background, in a style that is similar to multi-leader replication [52].</p>
+</blockquote>
+<h3 id="detecting-concurrent-writes">Detecting concurrent writes<a class="headerlink" href="#detecting-concurrent-writes" title="Permanent link">&para;</a></h3>
+<p>The root problem is the same as multi leader, <em>write can arrive out of order</em>. 
+<img alt="concurrent_write_out_of_order.png" src="../img/concurrent_write_out_of_order.png" />
+client B <code>set x = B</code> but <code>get x = A</code> 
+How to resolve this issue?</p>
+<h4 id="last-write-wins">Last write wins<a class="headerlink" href="#last-write-wins" title="Permanent link">&para;</a></h4>
+<p>Each replica only store most "recent" value. Recent is quoted because it may actually not be the most recent one</p>
+<p>We can attach timestamp on each write and discard earlier timestamp ones. This technique is called <em>last write wins</em>, is the only supported conflict resolution method in Cassandra [53], optional for Riak</p>
+<p>LWW tradeoff with durability </p>
+<blockquote>
+<p>if there are several concurrent writes to the same key, even if they were all reported as successful to the client (because they were written to w replicas), only one of the writes will survive and the others will be silently discarded.</p>
+</blockquote>
+<p>not good for banking </p>
+<h4 id="happens-before-relationship">Happens before relationship<a class="headerlink" href="#happens-before-relationship" title="Permanent link">&para;</a></h4>
+<p><img alt="write_arrives_at_different_order.png" src="../img/write_arrives_at_different_order.png" />
+this example shows <em>happens before</em> relationship where B's operation build on top of A. We also say that B is <em>causally dependent</em> on A. (thus anomaly is called <em>causality violation</em>)
+figure 5-12 doesn't have causal dependency</p>
+<p>So whenever you have 2 operations, there are 3 possibility
+1. A happens before B
+2. B happens before A
+3. A and B happen concurrently
+When there is causal dependency, later operation override earlier one. For concurrent operation, conflict need to be resolved.</p>
+<blockquote>
+<p>For defining concurrency, exact time doesn’t matter: we simply call two operations concurrent if they are both unaware of each other, regardless of the physical time at which they occurred.</p>
+</blockquote>
+<p>same with single core CPU, each process doesn't know each other. Doesn't matter they sending sys call at the exact same time or not</p>
+<h4 id="capture-happens-before-relationship">Capture happens before relationship<a class="headerlink" href="#capture-happens-before-relationship" title="Permanent link">&para;</a></h4>
+<p>Start with single replica, then generalize to multiple replicas
+<img alt="shopping_cart_example.png" src="../img/shopping_cart_example.png" /></p>
+<h4 id="merging">Merging<a class="headerlink" href="#merging" title="Permanent link">&para;</a></h4>
+<p>In this shopping cart example, we can just take union of all values. However, if you want to allow people to remove from the cart, then union will cause things reappear in their shopping cart 
+To prevent this, add a deletion marker such as <em>tombstone</em></p>
+<blockquote>
+<p>As merging siblings in application code is complex and error-prone, there are some efforts to design data structures that can perform this merging automatically, as dis‐ cussed in “Automatic Conflict Resolution” on page 174. For example, Riak’s datatype support uses a family of data structures called CRDTs [38, 39, 55] that can automatically merge siblings in sensible ways, including preserving deletions.</p>
+</blockquote>
+<h4 id="version-vectors">Version vectors<a class="headerlink" href="#version-vectors" title="Permanent link">&para;</a></h4>
+<p>Above algo works for single replica, how do we do this with multiple replicas?
+Instead of single version number, we have version number <em>per replica</em> as well as per key.
+Each replica increase version number when processing and also track version from other replicas</p>
+<p>This collection of version numbers from all replicas are called <em>version vector</em>
+like version number, version vector is sent to client when values are read. </p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This chapter look at replication and issue with it.
+There are 3 main approach to replication:
+1. Single leader (all write goes to one node)
+2. Multi leader (each write to one of several leaders)
+3. Leaderless (write send to several node in parallel)</p>
+<p>Replication has following goal:
+- High availability
+- Disconnected operation (still working when there is network interruption)
+- Latency (replica that is closer to user)
+- Scalability (balance the load with replica)</p>
+<p>We discussed few consistency models 
+<em>Read-after-write</em> user should always see data that they submitted themselves
+<em>Monotonic reads</em> Time shouldn't go back (After user see a newer value, older one should come back)
+<em>Consistent prefix read</em> User should see data as the order of write (in causal sense, seeing question before answer) </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

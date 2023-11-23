@@ -1,0 +1,1158 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../Chapter%2010/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 1 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reliable-scalable-and-maintainable-app" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reliable-scalable-and-maintainable-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliable, Scalable, and maintainable app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reliability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware faults
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scalability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describing-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describing load
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describing-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describing performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches-for-coping-with-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approaches for coping with load
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintainability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintainability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operability-making-life-easy-for-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operability: Making life easy for operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplicity-managing-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simplicity: Managing Complexity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evolvability-making-change-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evolvability: Making change easy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2011/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%208/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reliable-scalable-and-maintainable-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliable, Scalable, and maintainable app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reliability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware faults
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scalability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describing-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describing load
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describing-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describing performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches-for-coping-with-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approaches for coping with load
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintainability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintainability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operability-making-life-easy-for-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operability: Making life easy for operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplicity-managing-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simplicity: Managing Complexity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evolvability-making-change-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evolvability: Making change easy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 1</h1>
+
+<h2 id="reliable-scalable-and-maintainable-app">Reliable, Scalable, and maintainable app<a class="headerlink" href="#reliable-scalable-and-maintainable-app" title="Permanent link">&para;</a></h2>
+<p>This chapter introduced <em>definitions</em> of concepts that is used throughout this book
+What does reliability, scalability, and maintainability mean in this book? </p>
+<p>目前的应用分为 <em>data intensive</em> vs <em>compute-intensive</em>. compute intensive usually comes in scientific computing application (modeling, prediction etc)</p>
+<p>Most application has problem with data processing and storage</p>
+<blockquote>
+<p>bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing</p>
+</blockquote>
+<p>This is where this book is focused on: <strong>Data</strong>. This book will view an application from data's perspective</p>
+<p>Any application cannot function without data. This is some summary from the author</p>
+<ul>
+<li>Store data (databases)</li>
+<li>remember expensive operation to speed up reads (caches)</li>
+<li>Search data by keyword or filter it in various ways (search indexes)</li>
+<li>Send message between processes (stream processing)</li>
+<li>Periodically process large amount of data (batch processing)</li>
+</ul>
+<p>First time hearing someone use Redis as message queue, but I have heard people use. Kafka as database.</p>
+<blockquote>
+<p>There are many factors that may influence the design of a data system, including the skills and experience of the people involved, legacy system dependencies, the time-scale for delivery, your organization's tolerance of different kinds of risk, regulatory constrains </p>
+</blockquote>
+<p>Yep, data system has many factors. This book will focus on three of them:</p>
+<ul>
+<li>Reliability</li>
+<li>Scalability</li>
+<li>Maintainability</li>
+</ul>
+<p>This 3 area appears almost in every large data system. Especially for maintainability, whoever worked in "old" company might reflect on this. Because software or tools in those company can be 10+ years old. Thus it is crucial for new comers to get hands on those old tech or understand how it works. </p>
+<h2 id="reliability">Reliability<a class="headerlink" href="#reliability" title="Permanent link">&para;</a></h2>
+<p>This section introduced 3 kinds of faults:</p>
+<ul>
+<li>Hardware</li>
+<li>Software</li>
+<li>Human</li>
+</ul>
+<p><em>faults</em> is when things can go wrong. Author emphasis fault tolerance need to define what types of faults, otherwise if your server was swallowed  by blackhole, and you want to tolerate this type of fault, you need to build your server in space~~good luck to talk to Elon or Bezos about your budget ~~
+SpaceX or Blue origin welcomes you!</p>
+<p>fault is not same as failure. A fault is defined as one component of the system deviating from its spec, whereas a <em>failure</em> is when the system as a whole stops providing the required service to the user.</p>
+<p>failure in service can also be called outage, e.g. you cannot load a website</p>
+<h3 id="hardware-faults">Hardware faults<a class="headerlink" href="#hardware-faults" title="Permanent link">&para;</a></h3>
+<p>虽然在平时生活中不多见，但是硬件一旦数量变多了之后损坏的概率也会越来越大 </p>
+<blockquote>
+<p>Hard disks are reported as having a mean time to failure about 10 to 50 years</p>
+</blockquote>
+<p>Mean Time to Failure (MTTF) refers to the <strong>average time it takes for a system to fail</strong>.</p>
+<div class="arithmatex">\[
+MTTF = \frac{Total\ Operating\ time}{Num\ of\ failures}
+\]</div>
+<p>所以如果你有一个 10,000 个 disk 组成的 storage cluster, 那么就会有 <span class="arithmatex">\(\frac{1\ day}{10 \times 365\ days} \times 10000= 2.73972603\)</span> disk per day to fail</p>
+<p>如何解决这类问题？一般通过duplication/redundancy 来解决这类问题</p>
+<h3 id="software-errors">Software Errors<a class="headerlink" href="#software-errors" title="Permanent link">&para;</a></h3>
+<p>这类 bug 通常潜伏一段时间在特定情况下才会出现，比如 memory leak 一般只有在大量请求 (client 端 retry) 导致原本不会显示的bug 浮出水面，因为 pointer 没有被释放，所以大量 request 导致了 resource deplition 
+如何解决这类问题呢？ 没有一个固定公式</p>
+<blockquote>
+<p>carefully thinking about assumptions and interactions in the system; thorough testing; process isolation; allowing processes to crash and restart; measuring, monitoring, and analyzing system behavior in production</p>
+</blockquote>
+<p>这些都是好的方案</p>
+<h3 id="human-errors">Human errors<a class="headerlink" href="#human-errors" title="Permanent link">&para;</a></h3>
+<p>System are operated by human. A wrong config can cause company wide outage
+<a href="https://www.facebook.com/business/news/update-about-the-october-4th-outage">2021年 Facebook</a> 所有产品都连不上就是因为一个 command error</p>
+<blockquote>
+<p>This was the source of yesterday’s outage. During one of these routine maintenance jobs, a command was issued with the intention to assess the availability of global backbone capacity, which unintentionally took down all the connections in our backbone network, effectively disconnecting Facebook data centers globally.</p>
+</blockquote>
+<p>how to avoid human errors? 
+- Test thoroughly at all levels, unit test, integration test
+- Easy to rollback. Rollout new code gradually
+- Setup detailed and clear monitoring (这实际上已经够一个单独的书了)</p>
+<h2 id="scalability">Scalability<a class="headerlink" href="#scalability" title="Permanent link">&para;</a></h2>
+<p>Scalablility 就是一个系统能够适应不断增长的load 的能力</p>
+<h3 id="describing-load">Describing load<a class="headerlink" href="#describing-load" title="Permanent link">&para;</a></h3>
+<p>解决一个问题首先要把问题描述清楚
+What is current load on the system? What happens if our load doubles? 
+这里为了描述 load, 就需要定义 <em><mark>load parameters</mark></em>. 
+The choice of <em>load parameters</em> depends on the architecture of your system. 如果是一个 web server，request per second 可能是一个好的 load parameter. 如果是一个 database, <em>ratio of read to write</em> 没准是一个好的 load parameter. 如果是聊天应用， <em>number of active users</em> 可能是一个好的 load parameter </p>
+<p>书里面用了 twitter 的例子 post tweet (12k request / sec at peak)
+read (300k request / sec)
+12k writes is not hard but fan-out is, 因为一个人可能会有很多个follower，然后这些follower 又会有其他 follower，所以write 需要cope with fanout </p>
+<blockquote>
+<p>fanout means output need enough current (power) to drive all the attached input
+In transaction processing systems, we use it to describe the number of requests to <em>other</em> services that we need to make in order to service one incoming request</p>
+</blockquote>
+<p>换句话说，fanout 是一个 service 接收到请求之后需要发多少个 request 给其他请求才能完成任务</p>
+<p>there are 2 ways of implementing these two operations (read, write)
+1. 每次新的 tweet 直接 insert 进一个 global collection of tweets. 用户检查 homeline 的时候，找到他 follow 的所有人，然后找到这些人的 tweet，最后按照 时间线 merge
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">tweets</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tweets</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">tweets</span><span class="p">.</span><span class="n">sender_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">id</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">follows</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">follows</span><span class="p">.</span><span class="n">followee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">id</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">follows</span><span class="p">.</span><span class="n">follower_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">current_user</span>
+</code></pre></div>
+2. 对每一个用户的 home timeline 做一个 cache, 就像 email 地址一样。每当一个用户 post 一个 tweet 的时候，找到所有follow他的人，然后在他们的 home timeline 上面 insert 新的tweet。这样读取 home timeline的时间就会大大提高因为结果已经存好了</p>
+<p><img alt="two_approach_for_tweet" src="../img/two_approach_for_tweet.png" /></p>
+<p>twitter (现在应该叫X了) 之前是用第一种方法，之后换到第二种方法了 (2012)</p>
+<blockquote>
+<p>This works better because the average rate of published tweets is almost two order of magnitude lower than the rate of home timeline reads, so in this case it's preferable to do more work at write time and less at read time</p>
+</blockquote>
+<p>这种pattern 实际上是大多数 app的需求，无论是 youtube, 抖音，还是 Facebook，读的需求要比写的大得多</p>
+<p>但是第二种approach 也不是没有downside，就比如如果一个人有很多的 follower，30 million，那么他发一条 tweet 就需要产生 30million writes </p>
+<blockquote>
+<p>Doing this in a timely manner—Twitter tries to deliver tweets to followers within five seconds—is a significant challenge.</p>
+</blockquote>
+<p>在 Twitter 这个例子中，distribution of followers per user (maybe weighted by how often those user tweet) is a key load parameter for discussing scalability, since it determines fanout load
+Trump 其实就是一个很好的例子，他发 tweet 的频率应该比其他明星要高很多</p>
+<blockquote>
+<p>Your application may have very different characteristics, but you can apply similar principles to reasoning about its load</p>
+</blockquote>
+<p>这里就是我们设计一个 app 的时候需要考虑的因素了
+最后twitter是用的 hybrid approach。 具体细节在chapter 12 里面还会提到</p>
+<h3 id="describing-performance">Describing performance<a class="headerlink" href="#describing-performance" title="Permanent link">&para;</a></h3>
+<p>当我们设计好 load parameters 之后，我们可以开始观察系统在 load increase 之后的表现了 
+- If CPU, memory, network bandwidth is unchanged, how is the performance of our system affected after load increased?
+- How much do we need to increase our resources to keep performance unchanged? </p>
+<p>不同系统需要观察的 performance parameter 也不一样, batch processing system like Hadoop cares about <em>throughput</em> -- the number of records we can process per seconds, or the total time it takes to run a job on a dataset of certain size.
+其实生活中的例子不也到处都是么，你希望网页 load 的latency (response time) 越低越好，你希望你下载东西的总时间越短越好(throughput)</p>
+<blockquote>
+<p>Latency and response time are often used synonymously, but they are not the same. The response time is what the client sees: besides the actual time to process the request (the service time), it includes network delays and queueing delays. Latency is the duration that a request is waiting to be handled—during which it is latent, awaiting service</p>
+</blockquote>
+<p>Latency 是 server side parameter，不考虑 network 之间的delay 
+在measure response time 的时候，我们通常take sample of distribution. There are occasional <em>outliers</em> that can take much longer. 这里就需要用到 percentile 的概念了
+这张图描述得挺清晰
+<img alt="img/percentile_exaple_ddia.png" src="../img/percentile_exaple_ddia.png" />
+percentile 就是在这个 sample里面有多少 percent的值小于当前的数值
+比如你有10个数，里面8个1，1个9和1个10，那么90th percentile 是9，但是50 percentile 只有1 </p>
+<p>percentile 在衡量performance 更有效因为大多数的data 一般都很低，而我们需要看的往往只是 outlier 在哪里，换句话说，我们保证即使在最坏的情况下，我们的performance (latency) 也不会高于这个值</p>
+<p>我们组的 SLA 就是 p99 要低于 8ms</p>
+<blockquote>
+<p>High percentiles become especially important in backend services that are called multiple times as part of serving a single end-user request.</p>
+</blockquote>
+<p>对的，client 对不同的 backend service make request 的时候，就要等最后一个完成, 所以这时候 high percentiles become important
+<img alt="slowest_res_ddia.png" src="../img/slowest_res_ddia.png" /></p>
+<h3 id="approaches-for-coping-with-load">Approaches for coping with load<a class="headerlink" href="#approaches-for-coping-with-load" title="Permanent link">&para;</a></h3>
+<p>定义了 load parameter and metrics for measuring performance 之后，我们就可以讨论 scalability 了</p>
+<blockquote>
+<p>How do we maintain good performance even when our load parameters increase by some amount? </p>
+</blockquote>
+<p>人们经常提到 <em>scale up</em>(增加硬件) vs <em>scale out</em> (把 load 分布到不同的机器上)
+scale out 需要你的系统是 shared nothing architecture。 scale up 比较容易但是通常会很贵，而且通常一个系统的 load 大到一定程度的时候已经不可能用一台机器 handle了
+现实中可能是 mixture of approaches </p>
+<blockquote>
+<p>An elastic system can be useful if load is highly unpredictable, but manually scaled systems are simpler and may have fewer operational surprises (see “Rebalancing Partitions” on page 209).</p>
+</blockquote>
+<p>后面会讲到 partition 相关的内容，因为自动增加计算/存储资源的系统需要 handle 很多 edge case</p>
+<blockquote>
+<p>The architecture of systems that operate at large scale is usually highly specific to the application—there is no such thing as a generic, one-size-fits-all scalable architecture (informally known as magic scaling sauce).</p>
+</blockquote>
+<p>确实是这样</p>
+<blockquote>
+<p>For example, a system that is designed to handle 100,000 requests per second, each 1 kB in size, looks very different from a system that is designed for 3 requests per minute, each 2 GB in size—even though the two systems have the same data throughput.</p>
+</blockquote>
+<p>这个例子还是挺好的，最后还是要具体例子具体分析，因为 access parttern 不一样</p>
+<blockquote>
+<p>An architecture that scales well for a particular application is built around assumptions of which operations will be common and which will be rare—the load parameters. If those assumptions turn out to be wrong, the engineering effort for scaling is at best wasted, and at worst counterproductive. In an early-stage startup or an unproven product it’s usually more important to be able to iterate quickly on product features than it is to scale to some hypothetical future load.</p>
+</blockquote>
+<p>所以要先定义好产品的需求，或者说如果是 startup，后端 scale 的问题应该根据用户增长的预判来设计，保证产品的 feature 满足用户的需求才是更重要的事情
+不然你花很大力气设计一个能够handle 1000万 request / sec 的系统结果只有 100/sec 那可能白费力气了</p>
+<blockquote>
+<p>Even though they are specific to a particular application, scalable architectures are nevertheless usually built from general-purpose building blocks, arranged in familiar patterns. In this book we discuss those building blocks and patterns.</p>
+</blockquote>
+<p>即使每一个 app 需求不一样, scalable architectures 也是可以模块化的，这本书就讨论 building blocks and patterns</p>
+<h2 id="maintainability">Maintainability<a class="headerlink" href="#maintainability" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>It is well known that the majority of the cost of software is not in its initial development, but in its ongoing maintenance—fixing bugs, keeping its systems operational, investigating failures, adapting it to new platforms, modifying it for new use cases, repaying technical debt, and adding new features.</p>
+</blockquote>
+<p>在亚麻一个运行很久的service 对这句话深有体会……</p>
+<blockquote>
+<p>Yet, unfortunately, many people working on software systems dislike maintenance of so-called legacy systems—perhaps it involves fixing other people’s mistakes, or working with platforms that are now outdated, or systems that were forced to do things they were never intended for.</p>
+</blockquote>
+<p>是的！！我确实经常感觉到 working on legacy system 里面的痛点！
+所以在设计的时候就要把 maintainability 的因素考虑进来
+书里面强调了对 maintainability 的3个要素
+- Operability
+- Simplicity
+- Evolvability</p>
+<p>operability 强调的是保证 operation 层面越简单越好
+simplicity 保证的是能让新来的 engineer 让易上手
+evolvability 是让你的系统更容易根据新的需求进行改动</p>
+<h3 id="operability-making-life-easy-for-operations">Operability: Making life easy for operations<a class="headerlink" href="#operability-making-life-easy-for-operations" title="Permanent link">&para;</a></h3>
+<p>书里面居然又 reference 到了 Jay Kreps 的文章，他的 <a href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">the log</a> 那篇文章写的是真的好， 看来linkedin 系的engineer 对于 distributed system 理解还是很深刻的</p>
+<p>operation 主要负责下面的几点
+- Monitoring system health and restore service if it goes bad 
+- Tracking down the cause of the problems (root cause)
+- Keeping software and platforms up to date. Including security patches
+- Anticipating future problems and solving them before they occur (capacity planning)
+- Establishing good practices and tools for deployment, configuration management (deployment pipeline, version control, rollback mechanisms etc)
+- Performing complex maintenance tasks, such as moving an application from one platform to another (这一步实际上现在大多数 app 都已经是 multi platform了)
+- Defining processes that make operations predictable and help keep the production environment stable (amazon has change management (CM) and two person verification (TPV))
+- Preserving the organization's knowledge about the system, even as individual people come and go (这一点亚麻有的组做的很差……)</p>
+<p>建议把doc 也用 version control 管理起来，这样新来的人可以查看历史记录
+做到上面的几点我们需要
+- Providing good monitoring
+- Providing good support for automation and integration with standard tools
+- Avoid dependency on individual machines
+- Providing good documentation and an easy to understand operational model (If I do X, Y will happen)
+- Providing good default behavior 
+- self-healing where appropriate (auto swap)</p>
+<h3 id="simplicity-managing-complexity">Simplicity: Managing Complexity<a class="headerlink" href="#simplicity-managing-complexity" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>but as projects get larger, they often become very complex and difficult to understand.
+There are various possible symptoms of complexity: explosion of the state space, tight coupling of modules, tangled dependencies, inconsistent naming and terminology, hacks aimed at solving performance problems, special-casing to work around issues elsewhere, and many more. Much has been said on this topic already</p>
+</blockquote>
+<p>第一遍读的时候还没接触到complex system，在亚麻工作一段时间后发现这些问题基本都"中枪"了</p>
+<h3 id="evolvability-making-change-easy">Evolvability: Making change easy<a class="headerlink" href="#evolvability-making-change-easy" title="Permanent link">&para;</a></h3>
+<p>新的需求总会不断出现，所以一个系统能够根据新的需求进行进化就很有必要了
+比如用户想要新的功能，或者我们采用新的工具等等</p>
+<blockquote>
+<p>The ease with which you can modify a data system, and adapt it to changing requirements, is closely linked to its simplicity and its abstractions: simple and easy-to- understand systems are usually easier to modify than complex ones. But since this is such an important idea, we will use a different word to refer to agility on a data system level: evolvability</p>
+</blockquote>
+<p>作者用了twitter 里面如何 "refactor" approach 1 to approach 2 的例子来表示他为什么用  <em>evolvability</em> instead of refactoring
+因为当一个系统足够复杂的时候，可能用进化会更恰当一点吧…… refactor 通常也只是几个 source file 的code</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This chapter talked about <em>Reliability</em>, <em>Scalability</em> and <em>Maintainability</em></p>
+<p>Reliability means system can recover from faults (hardware, software, human)</p>
+<p>Scalability means system can cope with increasing load (before that, you need to define <em>load parameter</em>)</p>
+<p>Maintainability means making life easier for new comers, people who operate this system. And easier to add/upgrade features</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

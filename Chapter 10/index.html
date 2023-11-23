@@ -1,0 +1,1543 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter%201/">
+      
+      
+        <link rel="next" href="../Chapter%2011/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 10 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#batch-processing-with-unix-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#batch-processing-with-unix-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Processing with Unix Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Processing with Unix Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple log analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-versus-in-memory-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting versus in-memory aggregation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapreduce-and-distributed-filesystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce and Distributed Filesystems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MapReduce and Distributed Filesystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-side-joins-and-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduce Side Joins and Grouping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reduce Side Joins and Grouping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort-merge-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort merge joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      GROUP BY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-side-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map Side Joins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Map Side Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-hash-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Broadcast hash joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioned-hash-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioned hash joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-side-merge-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map side merge joins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-output-of-batch-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Output of Batch Workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Output of Batch Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-search-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building search indexes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kv-stores-as-batch-process-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      KV stores as batch process output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#philosophy-of-batch-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Philosophy of batch process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-hadoop-to-distributed-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Hadoop to Distributed Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing Hadoop to Distributed Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diversity-of-processing-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diversity of processing models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault tolerance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond MapReduce
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond MapReduce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#materialization-of-intermediate-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materialization of Intermediate State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Materialization of Intermediate State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow engines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materialization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphs-and-iterative-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphs and Iterative Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graphs and Iterative Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pregel-processing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pregel processing model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel execution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-level-apis-and-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      High level APIs and Languages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High level APIs and Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#move-toward-declarative-query-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Move toward declarative query languages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialization-for-different-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialization for different domains
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2011/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%208/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#batch-processing-with-unix-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Processing with Unix Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Processing with Unix Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple log analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-versus-in-memory-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting versus in-memory aggregation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapreduce-and-distributed-filesystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce and Distributed Filesystems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MapReduce and Distributed Filesystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-side-joins-and-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduce Side Joins and Grouping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reduce Side Joins and Grouping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort-merge-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort merge joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      GROUP BY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-side-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map Side Joins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Map Side Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-hash-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Broadcast hash joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioned-hash-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioned hash joins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-side-merge-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map side merge joins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-output-of-batch-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Output of Batch Workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Output of Batch Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-search-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building search indexes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kv-stores-as-batch-process-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      KV stores as batch process output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#philosophy-of-batch-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Philosophy of batch process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-hadoop-to-distributed-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing Hadoop to Distributed Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing Hadoop to Distributed Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diversity-of-processing-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diversity of processing models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault tolerance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond MapReduce
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond MapReduce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#materialization-of-intermediate-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materialization of Intermediate State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Materialization of Intermediate State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow engines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materialization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphs-and-iterative-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphs and Iterative Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graphs and Iterative Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pregel-processing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pregel processing model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel execution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-level-apis-and-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      High level APIs and Languages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High level APIs and Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#move-toward-declarative-query-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Move toward declarative query languages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialization-for-different-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialization for different domains
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 10</h1>
+
+<p>A system cannot be successful if it is too strongly influenced by a single person. Once the initial design is complete and fairly robust, the real test begins as people with many different viewpoints undertake their own experiments.
+    —Donald Knuth</p>
+<p>Web made request/response style of interaction so common where people forget there are other ways to interact with the system. There are 3 types of systems:
+<em>Services</em> (online systems)
+    A service waits for a request from a client to arrive. When it receive a request, it tries to handle it as soon as possible and sends a response back. 
+<em>Batch processing systems</em> (offline systems)
+    A batch processing system takes a large amount of input data, runs a <em>job</em> to process it, and produces some output data. (few minutes to several days)
+<em>Stream processing systems</em> (near-real-time systems)
+    Somewhere between online and offline/batch processing. Like batch processing, stream takes input and produces output, but stream job operates on events. </p>
+<p>MapReduce provides a clear picture of why and how batch processing is useful. Batch processing is very old form of computing. Punch card tabulating machines implemented a semi-mechanized form of batch processing to compute aggregate statistics from large inputs. </p>
+<h2 id="batch-processing-with-unix-tools">Batch Processing with Unix Tools<a class="headerlink" href="#batch-processing-with-unix-tools" title="Permanent link">&para;</a></h2>
+<p>Main idea of unix tools is that it is able to pipe current program's output into next program's input. This way we can start simple log analysis</p>
+<h4 id="simple-log-analysis">Simple log analysis<a class="headerlink" href="#simple-log-analysis" title="Permanent link">&para;</a></h4>
+<p>download sample log from NASA by
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;ftp://ita.ee.lbl.gov/traces/NASA_access_log_Jul95.gz&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>NASA.gz
+gunzip<span class="w"> </span>NASA.gz
+</code></pre></div>
+below is the command made from unix tools to perform count on ip address on NASA's webserver log
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>NASA<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-r<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+sample output
+<div class="highlight"><pre><span></span><code>17572 piweba3y.prodigy.com
+11591 piweba4y.prodigy.com
+9868 piweba1y.prodigy.com
+7852 alyssa.prodigy.com
+7573 siltb10.orl.mmc.com
+</code></pre></div></p>
+<p>This case you just finished a data pipeline from unix tool</p>
+<p>Similar logic can be applied by using a programing language
+<div class="highlight"><pre><span></span><code><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./NASA&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">file</span><span class="o">|</span><span class="w"> </span>
+<span class="w">    </span><span class="n">file</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">line</span><span class="o">|</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="o">[</span><span class="mi">6</span><span class="o">]</span>
+<span class="w">        </span><span class="n">counts</span><span class="o">[</span><span class="n">url</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="n">top5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counts</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="o">|</span><span class="w"> </span><span class="o">[</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="o">]</span><span class="w"> </span><span class="p">}</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">reverse</span><span class="o">[</span><span class="mi">0</span><span class="o">...</span><span class="mi">5</span><span class="o">]</span>
+<span class="n">top5</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="o">|</span><span class="w"> </span><span class="nb">puts</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<h4 id="sorting-versus-in-memory-aggregation">Sorting versus in-memory aggregation<a class="headerlink" href="#sorting-versus-in-memory-aggregation" title="Permanent link">&para;</a></h4>
+<p>Although the logic is similar in both way of processing log. Main difference is execution flow. If your working set (size of your data), is small to fit in memory, then programming language way might be sufficient because all data can be stored in memory. However, if your working set is larger than memory available (let's say 1TB log file need to be processed). Then unix tool approach is better. Because sort utility in GNU Coreutils (Linux) automatically handles larger-than- memory datasets by spilling to disk, and automatically parallelizes sorting across multiple CPU cores.</p>
+<p>Martin spent lot of effort explaining unix philosophy which simply comes down to every program should do one thing well. And Unix use uniform interface, i.e. <strong>everything is a file</strong> to decouple program and it's input/output. This way program can be composed together in a way their designer could never think of. </p>
+<p>This philosophy is very similar to Agile/Devops practice today</p>
+<h2 id="mapreduce-and-distributed-filesystems">MapReduce and Distributed Filesystems<a class="headerlink" href="#mapreduce-and-distributed-filesystems" title="Permanent link">&para;</a></h2>
+<p>MapReduce is just like unix tools that build for processing data. 
+Main two function you need to implement is <em>mapper</em> and <em>reducer</em>. Where mapper is like <code>awk '{print $2}'</code> where it extract from input and map it to a key-value pair. <code>sort</code> or <code>uniq -c</code> will be your <em>reducer</em> where it process the input and output to somewhere. </p>
+<p>Main difference between MapReduce and unix tool is MapReduce job can be deployed to multiple machines where unix tool usually work on a single machine. </p>
+<p>Main idea is still <em>partition</em>, where each input is typically a directory in HDFS and each file or file block within the input directory is considered to be a separate partition that can be processed by a separate map task </p>
+<p>MapReduce scheduler tries run each mapper on one of the machines that stores a replica of the input file thus saving network load. Reducer side is also <em>partitioned</em>, the number of reduce tasks is configured by job author. same as <a href="../Chapter%206/#partitioning-by-hash-of-key">Chapter 6#Partitioning by Hash of Key</a></p>
+<p><img alt="map_reduce_job_ex.png" src="../img/map_reduce_job_ex.png" /></p>
+<p>Because MapReduce job's outputs are write into a directory in HDFS, chained MapReduce jobs are therefore less like pipelines of Unix commands (which pass the output of one process as input to another process directly, using only a small in-memory buffer)</p>
+<p>Chained MapReduce jobs can sometimes hard to read so higher level tools have been developed to help with that 
+Such as Hadoop, such as Pig [30], Hive [31], Cascading [32], Crunch [33], and FlumeJava [34], also set up workflows of multiple MapReduce stages that are automatically wired together appropriately.</p>
+<h3 id="reduce-side-joins-and-grouping">Reduce Side Joins and Grouping<a class="headerlink" href="#reduce-side-joins-and-grouping" title="Permanent link">&para;</a></h3>
+<p>This section goes deeper into how <code>JOIN</code> operator was implemented. In most dataset, data have relation to each other. A <em>foreign key</em> in relational model, a <em>document reference</em> in document model, or <em>edge</em> in a graph model </p>
+<p>Those can be used as index to look stuff up then performing joins. When MapReduce job given set of files as input, it will scan the entire file and this is called <em>full table scan</em> in database terms because MapReduce has no concept of index</p>
+<p>When we talk about joins in the context of batch processing, we mean resolving all occurrences of some association within a dataset. For example</p>
+<p><img alt="user_activity_events.png" src="../img/user_activity_events.png" /></p>
+<p>left is things that logged in user did on a website, right is database of users. This is like <a href="../Chapter%203/#stars-and-snowflake-schema">Chapter 3#Stars and Snowflake schema</a> where left is the fact table, and right is one of the dimensions </p>
+<p>Since fact table can be very large, in order to achieve good throughput in batch process, it is better to bring user table into same distributed filesystem as log of user activities. </p>
+<h4 id="sort-merge-joins">Sort merge joins<a class="headerlink" href="#sort-merge-joins" title="Permanent link">&para;</a></h4>
+<p>Mapper is basically to extract a key and value from each input record. In this example, mapper will extract key (user ID) and particular event (url or dob). Reducer can be partitioned into odd or even number (2 partition in total)
+<img alt="map_reduce_ex.png" src="../img/map_reduce_ex.png" />
+when MapReduce partitions the mapper output by key and then sorts the kv pairs, the effect is that all the activity events and the user record with same user ID become adjacent to each other in reducer input </p>
+<p>after sorting, join logic become easy: the reducer function is called once for every user ID, and first value will be dob from user db. Reducer iterates over activity events with the same user ID, outputting <code>viewed-url</code> and <code>viewer-age-in-years</code> pair </p>
+<p>Subsequent MapReduce job can calculate the distribution of viewer ages for each URL</p>
+<p>This algorithm is called <em>sort merge join</em> because mapper output is sorted by key and reducer can process all of the records for a particular user ID in one go. (output that result and merge it together)</p>
+<h4 id="group-by">GROUP BY<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h4>
+<p>Besides joins, another common use of bring related data to same place is grouping records by some key (<code>GROUP BY</code> clause in SQL) and perform some kind of aggregation 
+- counting
+- adding up particular field
+- pick top k record</p>
+<p>Another common use for grouping is <em>sessionization</em> where such analysis could be used to work out whether users who were shown a new version of your website are more likely to make a purchase than those who used old version (A/B testing)</p>
+<p><em>hot keys</em> are those celebrities on social network website. Collecting all activity related to a celebrity can lead to skew (aka <em>hot spots</em>) that is, one reducer are processing significantly more records than the others </p>
+<p>There are method like sampling to determine which keys are hot. Other approach like sharded join (predetermined hot spot). </p>
+<h3 id="map-side-joins">Map Side Joins<a class="headerlink" href="#map-side-joins" title="Permanent link">&para;</a></h3>
+<p>Previous section talked about join logic on reducers. You don't need to make any assumption about the input data on reducer side join. However, the downside is that all that sorting, copying to reducers, and merging of reducer inputs can be expensive. </p>
+<p>On the other hand, if you can determine your input data format, it is possible to make joins faster by using map side join. Each mapper read from distributed file system and output to file system</p>
+<h4 id="broadcast-hash-joins">Broadcast hash joins<a class="headerlink" href="#broadcast-hash-joins" title="Permanent link">&para;</a></h4>
+<p>the word broadcast reflects the fact that each mapper for a partition of the large input reads the entirety of the small input (so small input is "broadcast" to all partitions of the large input) and this small dataset is loaded into memory </p>
+<h4 id="partitioned-hash-joins">Partitioned hash joins<a class="headerlink" href="#partitioned-hash-joins" title="Permanent link">&para;</a></h4>
+<p>partition and map to same way. For example, arrange activity events and user database to each be partitioned based on last decimal digit of user ID. (10 partition in total). Mapper. 3 first loads all users with ID ending in 3 into hash table, then scans over all activity events for each user whose ID ends in 3</p>
+<h4 id="map-side-merge-joins">Map side merge joins<a class="headerlink" href="#map-side-merge-joins" title="Permanent link">&para;</a></h4>
+<p>On top of partitioned in the same way, we can also sort the key. In this case, it does not matter whether the inputs are small enough to fit in memory, because mapper can perform same merging operation that would be done by reducer. </p>
+<p>This usually mean there is previous map reduce job that partition and sort the key already. </p>
+<h3 id="the-output-of-batch-workflows">The Output of Batch Workflows<a class="headerlink" href="#the-output-of-batch-workflows" title="Permanent link">&para;</a></h3>
+<p>Compare to OLTP where generally look up small number of records by key, analysis workload scan over a large number of records. Performing groupings and aggregations and output is often some form of report: a graph showing the change in a metric over time, top 10 items according to some ranking. The consumer of such a report is often an analyst or manager who make business decisions. Below are different use cases </p>
+<h4 id="building-search-indexes">Building search indexes<a class="headerlink" href="#building-search-indexes" title="Permanent link">&para;</a></h4>
+<p>MapReduce was used for building index for search engine in Google. If we need to perform full text search over a fixed set of documents, then batch process is a very effective way of building indexes: mappers partition the set of document as needed. Each reducer builds index for its partition, and index file are written to distributed file system</p>
+<h4 id="kv-stores-as-batch-process-output">KV stores as batch process output<a class="headerlink" href="#kv-stores-as-batch-process-output" title="Permanent link">&para;</a></h4>
+<p>Another common output from batch processing is to build machine learning systems such as classifiers (e.g. spam filters, anomaly detection, image recognition) and recommendation systems (e.g. people you may know, products you may be interested in, or related searches)</p>
+<p>The output of those jobs are some kind of database: for example, a database that can be queried by user ID to obtain suggested friends for that user. </p>
+<p>These database can be files from batch jobs and read only. Since mapper usually sort key and map them together</p>
+<h4 id="philosophy-of-batch-process">Philosophy of batch process<a class="headerlink" href="#philosophy-of-batch-process" title="Permanent link">&para;</a></h4>
+<p>Since input is left unchanged, we can experiment with it very easily. (no side effects)
+- If you introduce a bug into the code and the output is wrong or corrupted, you can simply roll back to a previous version of the code and rerun the job, and the output will be correct again.
+- As a consequence of this ease of rolling back, feature development can proceed more quickly than in an environment where mistakes could mean irreversible damage.
+- If a map or reduce task fails, the MapReduce framework automatically re- schedules it and runs it again on the same input.
+- Like Unix tools, MapReduce jobs separate logic from wiring (configuring the input and output directories), which provides a separation of concerns and enables potential reuse of code</p>
+<h3 id="comparing-hadoop-to-distributed-databases">Comparing Hadoop to Distributed Databases<a class="headerlink" href="#comparing-hadoop-to-distributed-databases" title="Permanent link">&para;</a></h3>
+<p>Hadoop is like a distributed version of Unix tools. Massively parallel processing databases have been explored this idea previously. (such as Teradata, NonStop SQL) </p>
+<p>The main difference is MPP databases focus on parallel execution analytic SQL queries where combination of MapReduce and distributed filesystem provide something more like a general purpose OS that can run arbitrary programs </p>
+<p>Database requires you to define schema but filesystem does not. they can equally well be text, images, videos, sensor readings, sparse matrices, feature vectors, genome sequences, or any other kind of data.</p>
+<p>Hadoop enable dumping data into HDFS and figuring out later how to process it. While MPP databases need careful up-front modeling</p>
+<p>The idea is similar to data warehouse. And this data dumping shifts the burden of interpreting the data from producer to consumer (the interpretation of the data)</p>
+<p>This can be advantage if producer and consumer of the data are in different teams. </p>
+<p>Hadoop has been used for ETL process. Data is dumped into distributed filesystem in raw form. MapReduce jobs transform it into a relational form and import it into an MPP data warehouse for analytic purposes. </p>
+<h4 id="diversity-of-processing-models">Diversity of processing models<a class="headerlink" href="#diversity-of-processing-models" title="Permanent link">&para;</a></h4>
+<p>MPP databases are monolithic and tightly integrated software that take care of storage layout on disk, query planning, scheduling, and execution. The system can achieve very good performance on the types of queries that it is designed for. On top of that, SQL allows graphical tools used by business analysts (such as Tableau)</p>
+<p>But not all kinds of processing can be sensibly expressed as SQL queries. If you are building recommendation systems, or full text search indexes with relevance ranking models, or performing image analysis. You most likely need a more general model of data processing. These kinds of processing are often very specific to particular application (e.g. feature engineering for machine learning, natural language models for machine translation, risk estimation functions for fraud prediction). Those inevitably require writing code, not just queries </p>
+<p>MapReduce gave engineers the ability to easily run their own code over large data sets. You can build SQL query execution engine on top of HDFS and MapReduce. (<a href="https://hive.apache.org/">Hive</a>)</p>
+<p>Various processing models can be run on a single cluster machine, all access the same files on the distributed file system. Hadoop ecosystem include OLTP databases such as HBase and MPP style databases such as Impala. Neither of them use MapReduce, but both use HDFS for storage. This way they can be integrated in the same system</p>
+<h4 id="fault-tolerance">Fault tolerance<a class="headerlink" href="#fault-tolerance" title="Permanent link">&para;</a></h4>
+<p>Batch process system tolerate fault better than online system does. If node crash when executing a query, MPP usually abort the entire process. MapReduce can tolerate failure of a map or reduce task without affecting the whole job by retrying work at the granularity of an individual task. </p>
+<p>The MapReduce approach is more appropriate for larger jobs where so much data and the job would run a long time that they are likely experience at least one task failure along the way. </p>
+<h2 id="beyond-mapreduce">Beyond MapReduce<a class="headerlink" href="#beyond-mapreduce" title="Permanent link">&para;</a></h2>
+<p>MapReduce is just one of programming models in distributed systems. Depending on the volume of data, the structure of the data and the type of processing being done with it, other tools may be more appropriate for expressing a computation </p>
+<p>MapReduce is a useful learning tool. Concept are simple to understand (but hard to implement) That is why higher-level programming models (Pig, Hive, Cascading, Crunch) were created as abstractions on top of MapReduce. </p>
+<p>Rest of this chapter will explore alternatives for batch processing</p>
+<h3 id="materialization-of-intermediate-state">Materialization of Intermediate State<a class="headerlink" href="#materialization-of-intermediate-state" title="Permanent link">&para;</a></h3>
+<p>In many case you know the output of one job is used as input to another job, which is maintained by the same team. In this case, the files on the distributed system is called <em>intermediate state</em>. In the complex workflows used to build recommendation systems there is a lot of such intermediate state (50 or 100 MapReduce jobs)</p>
+<p>The process of writing out this intermediate state to files is called <em>materialization</em>. (basically write to some storage)</p>
+<p>The log analysis example in the beginning used Unix pipes do not fully materialize the intermediate state, but instead <em>stream</em> the output to the input incrementally using a small in memory buffer.</p>
+<p>MapReduce's approach of fully materializing intermediate state has downsides compare to Unix pipes: 
+- job can only start when all tasks in the preceding jobs have completed. 
+- Storing intermediate state in distributed filesystem means those files are replicated across several nodes, which is overkill for such temporary data.</p>
+<h4 id="dataflow-engines">Dataflow engines<a class="headerlink" href="#dataflow-engines" title="Permanent link">&para;</a></h4>
+<p>In order to fix these problems with MapReduce, several new execution engines were developed. Most well known are Spark, Tez, and Flink. They have one thing in common: they handle an entire workflow as one job, rather breaking it up into independent subjobs.</p>
+<p>They explicitly model the flow of data through several processing stages. So they are called <em>dataflow engines</em>. Like MapReduce, they work by repeatedly calling a user-defined function (UDF) to process one record at a time on a single thread. They parallelize work by partitioning inputs, and copy output of one function over the network to become the input to another function </p>
+<p>Unlike in MapReduce, these functions need not take the strict roles of alternating map and reduce, but instead can be assembled in more flexible ways. They are called <em>operators</em>. And the dataflow engine provides several different options for connecting one operator's output to another's input 
+- One option is to repartition and sort records by key, This feature enables sort-merge joins and grouping in the same way as in MapReduce
+- Another way is to take inputs and partition them in the same way but skip sorting. 
+- For broadcast hash joins, the same output from one operator can be sent to all partitions of the join operator.</p>
+<p>These style of processing engine has several advantages compared to MapReduce model: 
+- Expensive work such as sorting only performed in places where it is actually required. (Rather than default in every map and reduce stage)
+- No unnecessary map tasks since the work done by a mapper can often be incorporated into the previous reduce operator 
+- Because data dependencies in workflow are explicitly declared, the scheduler can make locality optimizations. For example, try to place the task that consumes some data on the same machine as the task that produces it. saves network round trip
+- Existing JVM processes can be reused to run new operators, reducing startup overheads compared to MapReduce (which launches new JVM for each task)</p>
+<h4 id="fault-tolerance_1">Fault tolerance<a class="headerlink" href="#fault-tolerance_1" title="Permanent link">&para;</a></h4>
+<p>Fully materializing intermediate state to distributed filesystem is that it makes <em>fault tolerance</em> fairly easy in MapReduce: just restart </p>
+<p>Spark, Flink, and Tez avoid writing intermediate state to HDFS (replication has costs) so they take different approach: if machine fails and intermediate state is lost, it is recomputed from other data that is still available </p>
+<p>To enable this recomputation, the framework must keep track of how a given piece of data was computed -- which input partitions it used, and which operators were applied to it. Spark uses resilient distributed dataset (RDD) abstraction for tracking the ancestry of data <a href="https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final138.pdf">61</a> , while Flink checkpoints operator state. </p>
+<p>Recovering from faults by recomputing data is not always the right answer if the intermediate data is CPU-intensive. It is probably cheaper to materialize the intermediate data to files than recompute it</p>
+<p><a href="https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final138.pdf">61</a> is a good reference </p>
+<h4 id="materialization">Materialization<a class="headerlink" href="#materialization" title="Permanent link">&para;</a></h4>
+<p>MapReduce is like writing the output of each command to a temporary file, whereas dataflow engines look much more like Unix pipes. Flink built around the idea of pipelined execution: i.e. incrementally passing the output of an operator to other operators and not waiting for input to be complete </p>
+<p>this <em>non-blocking</em> idea was the same for SSI where readers don't wait writers or vise versa</p>
+<p>A sorting operation inevitably needs to consume its entire input because it is possible last input is the lowest key. But many other parts of a workflow can be executed in a pipelined manner.</p>
+<p>Basically dataflow engine combines MapReduce job together into on job and output is usually saved to HDFS </p>
+<h3 id="graphs-and-iterative-processing">Graphs and Iterative Processing<a class="headerlink" href="#graphs-and-iterative-processing" title="Permanent link">&para;</a></h3>
+<p><a href="../Chapter%202/#graph-like-data-models">Chapter 2#Graph like Data models</a> discussed graph model in OLTP context. It is interesting to look at graphs in batch processing as well. (offline processing or analysis on entire graph) </p>
+<p>Graph processing is often used in recommendation engines or machine learning applications or in ranking systems. Famous graph analysis algorithms is PageRank.</p>
+<p>Many graph algorithms are expressed by traversing the graph one edge at a time, joining one vertex with adjacent vertex in order to pass some information, and repeating until some condition is met. </p>
+<p>It is possible to store a graph in a distributed filesystem (files containing lists of vertices and edges), but this idea of "repeating until done" cannot be expressed in plain MapReduce, since it performs single pass over the data. This kind of algorithm is often implemented in an iterative style:
+1. An scheduler runs a batch process to calculate one step of the algorithm
+2. When process complete, scheduler checks completion condition has been met (finished or not) 
+3. If it has not finished yet, scheduler goes back to step 1 and runs another round of batch process
+This works but it is very inefficient if implemented in MapReduce</p>
+<h4 id="pregel-processing-model">Pregel processing model<a class="headerlink" href="#pregel-processing-model" title="Permanent link">&para;</a></h4>
+<p>As an optimization for batch processing graphs, <em>bulk synchronous parallel</em> model of computation has become popular. It is implemented by Apache Giraph [37], Spark’s GraphX API, and Flink’s Gelly API [71]. This is known as <em>Pregel</em> model popularized by <a href="https://dl.acm.org/doi/10.1145/1807167.1807184">Google's Pregel paper</a> </p>
+<p><del>Similar to mapper conceptually "send a message" to a particular call of the reducer, vertex can "send a message" to another vertex, and those messages are sent along the edges in a graph</del></p>
+<h4 id="fault-tolerance_2">Fault tolerance<a class="headerlink" href="#fault-tolerance_2" title="Permanent link">&para;</a></h4>
+<p>Messages can be batched and thus less waiting for communication. This helps the performance of Pregel jobs The only waiting time is between iterations. Even though underlying network may drop, duplicate, or arbitrarily delay messages, Pregel implements guarantee that messages are processed exactly once in the following iteration. The framework's ability to recover from faults simplifies the programming model for algorithms on top of Pregel.</p>
+<p>This fault tolerance is achieved by periodically checkpointing the state of all vertices at the end of an iteration. Writing full state to durable storage. If a node fails and in-memory state is lost, we can start from previous checkpoint. </p>
+<h4 id="parallel-execution">Parallel execution<a class="headerlink" href="#parallel-execution" title="Permanent link">&para;</a></h4>
+<p>A vertex does not need to know on which physical machine it is executing. It is up to the framework to partition the graph -- i.e. to decide which vertex runs on which machine and how to route messages over the network so that they end up in the right place.</p>
+<p>Ideally graph would be partitioned such that vertices are colocated on the same machine if they need to communicate a lot. But finding such optimized partitioning is hard. In practice, cross-machine communication overhead is high. For this reason, if your graph can fit in memory on a single machine, it is likely that a single-machine algorithm will outperform a distributed batch process <a href="https://www.frankmcsherry.org/assets/COST.pdf">73</a>, 74. Efficiently parallelize graph algorithms is ongoing research </p>
+<h3 id="high-level-apis-and-languages">High level APIs and Languages<a class="headerlink" href="#high-level-apis-and-languages" title="Permanent link">&para;</a></h3>
+<p>The execution engines for distributed batch processing have matured since MapReduce. By now, the infrastructure has become robust enough to store and process many petabytes of data on clusters of over 10,000 machines. The problem of operating batch processes at such scale is considered solved. Attention has focused on other areas: improving the programming model, improving the efficiency of processing, and broadening the set of problems that these technologies can solve. </p>
+<p>As previously stated, higher level languages and APIs such as Hive, Pig, Cascading, and Crunch became popular because programming MapReduce jobs by hand is laborious</p>
+<p>These high level languages had the additional benefit of able to move to the new dataflow execution engine without the need to rewrite job code. Spark and Flink include their own high-level dataflow APIs, taking inspiration from FlumeJava</p>
+<p>These dataflow APIs generally use relational style building blocks to express a computation: joining datasets on value of some field; grouping by key; filtering by some condition; aggregating by counting, summing, or other functions. </p>
+<h4 id="move-toward-declarative-query-languages">Move toward declarative query languages<a class="headerlink" href="#move-toward-declarative-query-languages" title="Permanent link">&para;</a></h4>
+<p>Advantage of specifying joins as relational operators rather than code that performs the join is that the framework can analyze the properties of the join inputs and automatically decide which of the aforementioned join algorithms would be suitable for task at hand. </p>
+<blockquote>
+<p>Hive, Spark, and Flink have cost-based query optimizers that can do this, and even change the order of joins so that the amount of intermediate state is minimized [66, 77, 78, 79].</p>
+</blockquote>
+<p>Same thing in single machine relational operator... 
+But those dataflow operators in many ways are different than fully declarative model like SQL. MapReduce was built around the idea of function callbacks: for each record or group of records, a user-defined function(mapper or reducer) is called, and this function is free to call arbitrary code to decide what to output. </p>
+<p>The freedom of run arbitrary code is the main different between batch processing systems and MPP databases. </p>
+<p>Dataflow engines have found that there are advantages to include more declarative features in areas besides joins. For example, if a callback function contains only a simple filtering condition, or it just selects some fields from a record, then there is significant CPU overhead in calling the function on every record. </p>
+<p>If such filtering and mapping operations are expressed in declarative way, query optimizer can take advantage of column storage layout and iterating over data in a tight inner loop that is friendly to CPU caches and avoiding function calls. </p>
+<h4 id="specialization-for-different-domains">Specialization for different domains<a class="headerlink" href="#specialization-for-different-domains" title="Permanent link">&para;</a></h4>
+<p>Reusable implementations are emerging: For example, <a href="https://mahout.apache.org/">Mahout</a> implements various algorithms for machine learning on top of MapReduce, Spark, and Flink. </p>
+<blockquote>
+<p>As batch processing systems gain built-in functionality and high-level declarative operators, and as MPP databases become more programmable and flexible, the two are beginning to look more alike: in the end, they are all just systems for storing and processing data.</p>
+</blockquote>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This chapter explored the topic of batch processing. Started by looking at Unix tools such as <code>awk</code>, <code>grep</code>, <code>sort</code>. And how similar logic carried forward to MapReduce and more recent dataflow engines. Some of those design principles are that inputs are immutable (same as functional programming) and outputs are intended to become the input to another program, complex problems are solved by composing small tools that "do one thing well"</p>
+<p>In Unix world, the uniform interface is files and pipes. In MapReduce, this interface is distributed filesystem. Dataflow engine add their own pipe-like data transport mechanism to avoid materializing intermediate state, but final output is still usually HDFS</p>
+<p>The two main problems that distributed batch processing frameworks need to solve are 
+<em>Partitioning</em>
+    In MapReduce, mappers are partitioned according to input file blocks. The output of mappers is repartitioned, sorted, and merged into a configurable number of reducer partitions. 
+    Post MapReduce dataflow engine try to avoid sorting unless it is required. 
+<em>Fault tolerance</em>
+    MapReduce frequently write to disk which makes it easy to recover from individual task failure. Dataflow engines perform less materialization of intermediate state and keep more in memory. With trade of for recomputation when node fails</p>
+<p>Several join algorithms used in MapReduce are discussed. These algorithm are implemented in MPP and dataflow engines as well. They provide a good illustration of how partitioned algorithms work:</p>
+<p><em>Sort merge joins</em>
+    Each of the inputs being joined goes through a mapper that extracts the join key. By partitioning, sorting, and merging. All the records with the same key end up going to the same call of the reducer. This function can then output the joined records.
+<em>Broadcast hash joins</em>
+    One of the two joins input is small, so it is not partitioned and it can be entirely loaded into a in-memory hash table. Thus load small input into each mapper, and scan over large input one record at a time. 
+<em>Partitioned hash joins</em>
+    If the two join inputs are partitioned in the same way, then hash table can be independently used for each partition</p>
+<p>Distributed batch processing engines hide some of the hard distributed systems problem behind its abstraction (in the face of crashes and network issues, tasks can be retried) </p>
+<p>Thanks to the framework, our code doesn't need to worry about implementing fault-tolerance mechanisms (framework did it for you) </p>
+<p>The distinguishing feature of batch processing job is that its input are <em>bounded</em>: known and fixed size. </p>
+<p>In next chapter, we will turn to stream processing, which input is unbounded. That is, you still have a job to process but the input is never ending stream of data. </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

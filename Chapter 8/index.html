@@ -1,0 +1,1712 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter%207/">
+      
+      
+        <link rel="next" href="../Chapter%209/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 8 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unreliable-networks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 8
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2011/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreliable-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unreliable Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreliable Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-faults-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Faults in Practice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting Faults
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeouts-and-unbounded-delays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeouts and Unbounded Delays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timeouts and Unbounded Delays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-congestion-and-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network congestion and queueing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP vs UDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP vs UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choice-timeout-experimentally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choice timeout experimentally
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronous-vs-asynchronous-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronous vs Asynchronous Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synchronous vs Asynchronous Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-we-not-simply-make-network-delays-predictable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can we not simply make network delays predictable?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unreliable-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unreliable Clocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreliable Clocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-vs-time-of-day-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monotonic vs Time-of-Day Clocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monotonic vs Time-of-Day Clocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-of-day-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-of-day clocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monotonic clocks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-synchronization-and-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Synchronization. and Accuracy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replying-on-synchronized-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replying on Synchronized Clocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replying on Synchronized Clocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timestamps-for-ordering-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timestamps for ordering events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-readings-have-a-confidence-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock readings have a confidence interval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-clocks-for-global-snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized clocks for global snapshots
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-pauses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Pauses
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Pauses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-time-guarantees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response time guarantees
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-truth-and-lies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge, Truth, and Lies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge, Truth, and Lies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-truth-is-defined-by-the-majority" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Truth Is Defined by the Majority
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Truth Is Defined by the Majority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-leader-and-the-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      The leader and the lock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fencing-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fencing tokens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#byzantine-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Byzantine Faults
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Byzantine Faults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protection-against-weak-forms-of-lying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protection against weak forms of lying
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-model-and-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Model and Reality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Model and Reality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correctness-of-an-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correctness of an algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-and-liveness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety and liveness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-system-models-to-the-real-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping system models to the real world
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreliable-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unreliable Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreliable Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-faults-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Faults in Practice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting Faults
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeouts-and-unbounded-delays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeouts and Unbounded Delays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timeouts and Unbounded Delays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-congestion-and-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network congestion and queueing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP vs UDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP vs UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choice-timeout-experimentally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choice timeout experimentally
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronous-vs-asynchronous-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronous vs Asynchronous Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Synchronous vs Asynchronous Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-we-not-simply-make-network-delays-predictable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can we not simply make network delays predictable?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unreliable-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unreliable Clocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreliable Clocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-vs-time-of-day-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monotonic vs Time-of-Day Clocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monotonic vs Time-of-Day Clocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-of-day-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-of-day clocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monotonic-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monotonic clocks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-synchronization-and-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Synchronization. and Accuracy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replying-on-synchronized-clocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replying on Synchronized Clocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replying on Synchronized Clocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timestamps-for-ordering-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timestamps for ordering events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-readings-have-a-confidence-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock readings have a confidence interval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-clocks-for-global-snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized clocks for global snapshots
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-pauses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Pauses
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Pauses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-time-guarantees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response time guarantees
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-truth-and-lies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge, Truth, and Lies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge, Truth, and Lies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-truth-is-defined-by-the-majority" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Truth Is Defined by the Majority
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Truth Is Defined by the Majority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-leader-and-the-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      The leader and the lock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fencing-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fencing tokens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#byzantine-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Byzantine Faults
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Byzantine Faults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protection-against-weak-forms-of-lying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protection against weak forms of lying
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-model-and-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Model and Reality
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Model and Reality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correctness-of-an-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correctness of an algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-and-liveness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety and liveness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-system-models-to-the-real-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping system models to the real world
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 8</h1>
+
+<p>This chapter deals with different kinds of issues in distributed system </p>
+<p>Single node is <em>deterministic</em> where same operation always produces the same result</p>
+<p>In distributed systems, there may be some part of the system that are broken which is known as <em>partial failure</em>. Partial failure are <em>nondeterministic</em></p>
+<p>Because distributed system are connected by network, you may not even know whether something succeeded or not, as the time it takes for a message to travel across a network is also nondeterministic</p>
+<p>Large scale computing system has two kinds
+- High performance computing
+- Cloud computing which associated with multi-tenant datacenters
+This book focus on systems for implementing internet services which has following entities:
+- Application are online which means stopping the cluster is not acceptable
+- Nodes in cloud services are built from commodity hardware which means higher failure rates.
+- It is reasonable to assume that something is always broken.</p>
+<h2 id="unreliable-networks">Unreliable Networks<a class="headerlink" href="#unreliable-networks" title="Permanent link">&para;</a></h2>
+<p>Distributed system is build on top of network (shared nothing architecture) 
+And network is inherently unstable. </p>
+<p>The internet and most internal networks in datacenters are <em>asynchronous packet networks</em> which means when one node sends a message, network gives no guarantees to when it arrive or it arrive at all. </p>
+<p>If you send a request and expect a response, many things could go wrong:
+1. Your request may have been lost 
+2. Your request may be waiting in a queue
+3. Remote node may have failed
+4. Remote node may temporarily stopped responding (long garbage collection) 
+5. Remote node may processed the request but response get lost 
+6. Response may get delayed (network on receiver's machine is overloaded)</p>
+<p><img alt="different_error_in_network.png" src="../img/different_error_in_network.png" /></p>
+<h4 id="network-faults-in-practice">Network Faults in Practice<a class="headerlink" href="#network-faults-in-practice" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>during a software upgrade for a switch could trigger a network topology reconfiguration, during which network packets could be delayed for more than a minute [17]. Sharks might bite undersea cables and damage them [18]. Other surprising faults include a network interface that sometimes drops all inbound packets but sends outbound packets successfully [19]: just because a network link works in one direction doesn’t guarantee it’s also working in the opposite direction.</p>
+</blockquote>
+<p>[17] Mark Imbriaco: “<a href="https://github.blog/2012-12-26-downtime-last-saturday/">Downtime Last Saturday</a>,” github.com, December 26, 2012.
+[18] Will Oremus: “<a href="https://slate.com/technology/2014/08/shark-attacks-threaten-google-s-undersea-internet-cables-video.html">The Global Internet Is Being Attacked by Sharks, Google Confirms</a>,” slate.com, August 15, 2014.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4WlOnlRncK0?si=BtEdwepsqw2J1uK_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<blockquote>
+<p>If the error handling of network faults is not defined and tested, arbitrarily bad things could happen: for example, the cluster could become deadlocked and permanently unable to serve requests, even when the network recovers [20], or it could even delete all of your data [21]. If software is put in an unanticipated situation, it may do arbi‐ trary unexpected things.</p>
+</blockquote>
+<h4 id="detecting-faults">Detecting Faults<a class="headerlink" href="#detecting-faults" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Load balancer needs to stop sending requests to a dead node</li>
+<li>In distributed database with single leader replication, if leader fails, one of follower needs to be promoted to the new leader</li>
+</ul>
+<p>In some circumstances, we might get feedback to tell us something is not working
+- OS will refuse TCP connections by sending a <code>RST</code> or <code>FIN</code> packet in reply
+- If a node process crashed (or killed by admin), node's OS can run a script to notify other nodes about the crash so another node can take over quickly without having to wait for timeout to expire 
+- If we have access to interface of the network switches in our datacenter, we can query them to detect link failures at hardware level (this option is ruled out if we are connecting via the internet) 
+- If router is sure the IP address is unreachable, it may reply with ICMP Destination Unreachable packet</p>
+<blockquote>
+<p>Conversely, if something has gone wrong, you may get an error response at some level of the stack, but in general you have to assume that you will get no response at all. You can retry a few times (TCP retries transparently, but you may also retry at the application level), wait for a timeout to elapse, and eventually declare the node dead if you don’t hear back within the timeout.</p>
+</blockquote>
+<h4 id="timeouts-and-unbounded-delays">Timeouts and Unbounded Delays<a class="headerlink" href="#timeouts-and-unbounded-delays" title="Permanent link">&para;</a></h4>
+<p>If timeout is only sure way of detecting a fault, then how long should the timeout be? </p>
+<p>Long timeout means long wait, short timeout may risk of incorrectly declaring a node is dead </p>
+<blockquote>
+<p>Prematurely declaring a node dead is problematic: if the node is actually alive and in the middle of performing some action (for example, sending an email), and another node takes over, the action may end up being performed twice.</p>
+</blockquote>
+<p>Imagine a fictitious system with a network that guaranteed a maximum delay for packets—every packet is either delivered within some time d, or it is lost, but delivery never takes longer than d. Furthermore, assume that you can guarantee that a nonfailed node always handles a request within some time r. In this case, you could guarantee that every successful request receives a response within time 2d + r—and if you don’t receive a response within that time, you know that either the network or the remote node is not working. If this was true, 2d + r would be a reasonable timeout to use.</p>
+<p>Unfortunately, most systems we work with have neither of those guarantees: asynchronous networks have unbounded delays</p>
+<h5 id="network-congestion-and-queueing">Network congestion and queueing<a class="headerlink" href="#network-congestion-and-queueing" title="Permanent link">&para;</a></h5>
+<p>Same as traffic congestion, packet delays varies with network due to queueing:
+- If several different nodes send packets simultaneously to same destination, the network switch must queue them up. If there is so much incoming data that switch queue fills up, the packet is dropped </p>
+<p><img alt="packet_drop.png" src="../img/packet_drop.png" /></p>
+<ul>
+<li>When a packet reaches the destination machine, if all CPU cores are currently busy, the incoming request from the network is queued by the operating system until the application is ready to handle it.</li>
+<li>In virtualized environments, a running operating system is often paused for tens of milliseconds while another virtual machine uses a CPU core. During this time, the VM cannot consume any data from the network, so the incoming data is queued (buffered) by the virtual machine monitor [26], further increasing the variability of network delays.</li>
+<li>TCP performs <em>flow control</em> (also known as <em>congestion avoidance</em> or <em>backpressure</em>), in which a node limits its own rate of sending in order to avoid overloading a network link or the receiving node [27].</li>
+</ul>
+<h4 id="tcp-vs-udp">TCP vs UDP<a class="headerlink" href="#tcp-vs-udp" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Some latency-sensitive applications, such as videoconferencing and Voice over IP (VoIP), use UDP rather than TCP. It’s a trade-off between reliability and variability of delays: as UDP does not perform flow control and does not retransmit lost packets, it avoids some of the reasons for variable network delays (although it is still susceptible to switch queues and scheduling delays).
+  UDP is a good choice in situations where delayed data is worthless. For example, in a VoIP phone call, there probably isn’t enough time to retransmit a lost packet before its data is due to be played over the loudspeakers. In this case, there’s no point in retransmitting the packet—the application must instead fill the missing packet’s time slot with silence (causing a brief interruption in the sound) and move on in the stream. The retry happens at the human layer instead. (“Could you repeat that please? The sound just cut out for a moment.”)</p>
+</blockquote>
+<h5 id="choice-timeout-experimentally">Choice timeout experimentally<a class="headerlink" href="#choice-timeout-experimentally" title="Permanent link">&para;</a></h5>
+<p>In public clouds and multi-tenant datacenters, resources are shared among many customers: the network links and switches, and even each machine’s network interface and CPUs (when running on virtual machines), are shared. Batch workloads such as MapReduce (see Chapter 10) can easily saturate network links. As you have no control over or insight into other customers’ usage of the shared resources, network delays can be highly variable if someone near you (a <em>noisy neighbor</em>) is using a lot of resources [28, 29].</p>
+<p>In such environment, we need to choose timeouts experimentally: 
+measure the distribution of network round-trip times over an extended period and over many machines. Then determine the expected variability of delays </p>
+<h3 id="synchronous-vs-asynchronous-networks">Synchronous vs Asynchronous Networks<a class="headerlink" href="#synchronous-vs-asynchronous-networks" title="Permanent link">&para;</a></h3>
+<p>Why can’t we solve this at the hardware level and make the network reliable so that the software doesn’t need to worry about it?</p>
+<blockquote>
+<p>To answer this question, it’s interesting to compare datacenter networks to the traditional fixed-line telephone network (non-cellular, non-VoIP), which is extremely reliable: delayed audio frames and dropped calls are very rare. A phone call requires a constantly low end-to-end latency and enough bandwidth to transfer the audio sam‐ ples of your voice. Wouldn’t it be nice to have similar reliability and predictability in computer networks?</p>
+</blockquote>
+<p>When you make a call over telephone network, it establishes a <em>circuit</em>: fixed, guaranteed amount of bandwidth is allocated for the call, along with the entire route between the two callers. This circuit remains in place until the call ends. </p>
+<p>This kind of network is <em>synchronous</em> </p>
+<h4 id="can-we-not-simply-make-network-delays-predictable">Can we not simply make network delays predictable?<a class="headerlink" href="#can-we-not-simply-make-network-delays-predictable" title="Permanent link">&para;</a></h4>
+<p>Circuit in a telephone network is very different from TCP connection. It reserved fixed amount of bandwidth when circuit is established. Whereas TCP connection will try to transfer data in the shortest time possible and doesn't use any bandwidth when idle </p>
+<p>Ethernet and IP are packet-switched protocols. These protocols do not have the concept of circuit </p>
+<p>Why internet use packet switching? The answer is that they are optimized for <em>bursty traffic</em>. </p>
+<blockquote>
+<p>A circuit is good for an audio or video call, which needs to transfer a fairly constant number of bits per second for the duration of the call. On the other hand, requesting a web page, sending an email, or transferring a file doesn’t have any particular bandwidth requirement—we just want it to complete as quickly as possible.</p>
+</blockquote>
+<p>If we transfer a file over a circuit, we would have to guess the bandwidth allocation. If we guessed too low, the transfer time will be very long (network capacity is not fully utilized). If we guess too high, the circuit cannot be set up.</p>
+<p>using circuits for bursty data transfer wastes network capacity or unnecessarily slow. By contrast, TCP dynamically adapts the rate of data transfer to the available network capacity</p>
+<blockquote>
+<p>There have been some attempts to build hybrid networks that support both circuit switching and packet switching, such as ATM.iii InfiniBand has some similarities [35]: it implements end-to-end flow control at the link layer, which reduces the need for queueing in the network, although it can still suffer from delays due to link congestion [36]. With careful use of quality of service (QoS, prioritization and scheduling of packets) and admission control (rate-limiting senders), it is possible to emulate circuit switching on packet networks, or provide statistically bounded delay [25, 32].</p>
+</blockquote>
+<p>This sounds promising, but it is not deployed to public internet yet.</p>
+<blockquote>
+<p>However, such quality of service is currently not enabled in multi-tenant datacenters and public clouds, or when communicating via the internet.iv Currently deployed technology does not allow us to make any guarantees about delays or reliability of the network: we have to assume that network congestion, queueing, and unbounded delays will happen. Consequently, there’s no “correct” value for timeouts—they need to be determined experimentally.</p>
+</blockquote>
+<h2 id="unreliable-clocks">Unreliable Clocks<a class="headerlink" href="#unreliable-clocks" title="Permanent link">&para;</a></h2>
+<p>Clocks and time are important. Application depends on clocks in various ways
+1. Timeout
+2. 99th percentile response time
+3. Query per sec of this service can handle in last 5 mins
+4. How long did user spend on our site?
+5. When was the article published?
+6. At what date and time should the reminder email be sent?
+7. When does the cache expire?
+8. What is the timestamp on this error message in this log file?
+1-4 measures <em>duration</em> whereas 5-8 measures <em>points in time</em></p>
+<p>In distributed system, time become tricky because message can be delayed and we don't know how much later will the message arrive.</p>
+<p>This fact makes it difficult to determine the order in which things happened when multiple machines are involved.</p>
+<p>Each machine on the network has its own clock, which is a quartz crystal oscillator. This device is not perfect so each machine has its own notion of time.</p>
+<p>Just like human being, each person experience time differently than others. My 1 hour might be different than yours </p>
+<p>It is possible to synchronize clocks to some degree, the most commonly used mechanism is the Network Time Protocol (NTP), which allow computer to adjust its time by send request to a group of servers where it gets its time from a more accurate time source (GPS receiver)</p>
+<h3 id="monotonic-vs-time-of-day-clocks">Monotonic vs Time-of-Day Clocks<a class="headerlink" href="#monotonic-vs-time-of-day-clocks" title="Permanent link">&para;</a></h3>
+<h4 id="time-of-day-clocks">Time-of-day clocks<a class="headerlink" href="#time-of-day-clocks" title="Permanent link">&para;</a></h4>
+<p>A time of day clock returns the current date and time according to some calendar (aka <em>wall-clock time</em>) 
+<code>clock_gettime(CLOCK_REALTIME)</code> on Linux and <code>System.currentTimeMillis()</code> in java return the number of seconds (or milliseconds) since the <em>epoch</em> midnight UTC on Jan 1 1970 </p>
+<p>Time-of-day clocks ideally should be same on another machine, however, if the local clock is far ahead of NTP server, it may force to reset and appear to jump back in time </p>
+<p>These jumps and ignore of leap seconds (due to slow down of earth rotation) make time-of-day clock unsuitable for measuring elapsed time </p>
+<h4 id="monotonic-clocks">Monotonic clocks<a class="headerlink" href="#monotonic-clocks" title="Permanent link">&para;</a></h4>
+<p>Compare to time-of-day clock, monotonic clock won't jump back in time. </p>
+<p>The names come from the fact that they are guaranteed to always move forward </p>
+<p>A monotonic clock is suitable for measuring duration (such as timeout or service's response time) <code>clock_gettime(CLOCK_MONOTONIC)</code> on linux and <code>System.nanoTime()</code> in Java are monotonic clocks. </p>
+<p>You can check the value of monotonic clock at 1 point in time and check again at later time. The <em>difference</em> between 2 values tells you how much time elapsed between 2 checks.</p>
+<p>Server with multiple CPU may have separate timer per CPU and not necessarily sync with other CPU. OS try to present a monotonic view of the clock but it is wise to take this guarantee of monotonicity with a pinch of salt </p>
+<p>In distributed system, using a monotonic clock for measuring elapsed time is usually fine.</p>
+<h3 id="clock-synchronization-and-accuracy">Clock Synchronization. and Accuracy<a class="headerlink" href="#clock-synchronization-and-accuracy" title="Permanent link">&para;</a></h3>
+<p>time-of-day clocks need to be set according to an NTP server or other external time source in order to be useful.</p>
+<p>But hardware clocks and NTP can be unreliable: 
+- The quartz clock in a computer can <em>drift</em> depending on the temperature of the machine.</p>
+<blockquote>
+<p>Google assumes a clock drift of 200 ppm (parts per million) for its servers [41], which is equivalent to 6 ms drift for a clock that is resynchronized with a server every 30 seconds, or 17 seconds drift for a clock that is resynchronized once a day. This drift limits the best possible accuracy you can achieve, even if everything is working correctly.</p>
+</blockquote>
+<ul>
+<li>When computer's clock sync with NTP server, application observing the time before and after this sync may see time go backward or suddenly jump forward</li>
+<li>If a node is accidentally firewalled off from NTP servers, the misconfiguration may go unnoticed for some time (sister team had a sev2 for this...)</li>
+<li>NTP synchronization is bounded by network delay. One experiment showed that a minimum error of 35 ms is achievable when synchronizing over the internet [42]</li>
+<li>Some NTP servers are wrong or misconfigured, reporting time that is off by hours. client usually query multiple servers and ignore the outliers. </li>
+<li>Leap seconds result in a minute that is 59 seconds or 61 seconds long which have crashed large system that are not designed with leap seconds in mind 
+[38] John Graham-Cumming: “<a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/">How and why the leap second affected Cloudflare DNS</a>,” blog.cloudflare.com, January 1, 2017.
+[46] Nelson Minar: “<a href="https://www.somebits.com/weblog/tech/bad/leap-second-2012.html">Leap Second Crashes Half the Internet</a>,” somebits.com, July 3, 2012.</li>
+<li>In VM, CPU is shared between VM, each VM is paused for tens of milliseconds while another VM is running. </li>
+<li>If you run software on devices you don't control, you cannot trust the clock at all. Some user deliberately set their hardware clock to an incorrect date and time, for example to circumvent timing limitations in games. </li>
+</ul>
+<p>It is possible to achieve very good clock accuracy if you have money. For example, the MiFID II draft European regulation for financial institutions requires all high-frequency trading funds to synchronize their clocks to within 100 microseconds of UTC [51]
+[51] “<a href="https://www.esma.europa.eu/sites/default/files/library/2015/11/2015-esma-1464_annex_i_-_draft_rts_and_its_on_mifid_ii_and_mifir.pdf">MiFID II / MiFIR: Regulatory Technical and Implementing Standards – Annex I (Draft)</a>,” European Securities and Markets Authority, Report ESMA/2015/1464, September 2015.</p>
+<p>Such accuracy can be achieved using GPS receivers, the Precision Time Protocol (PTP) <a href="https://web.archive.org/web/20170704030310/https://www.lmax.com/blog/staff-blogs/2015/11/27/solving-mifid-ii-clock-synchronisation-minimum-spend-part-1/">52</a></p>
+<h3 id="replying-on-synchronized-clocks">Replying on Synchronized Clocks<a class="headerlink" href="#replying-on-synchronized-clocks" title="Permanent link">&para;</a></h3>
+<p>The problem with clocks is that they have a surprising number of pitfalls: A day may not have exactly 86,400 seconds, time-of-day clocks may move backward in time. Different node may have different time compare to another node</p>
+<p>Network might drop packets and software must design with assumption that the network will occasionally be faulty. Software must handle such faults gracefully. </p>
+<p>Same is true with clocks, robust software needs to be prepared to deal with incorrect clocks </p>
+<p>If you use software that requires synchronized clocks, it is essential that you also carefully monitor the clock offsets between all the machines. Any node drifts too far from the others should be declare dead and remove from the cluster. </p>
+<h4 id="timestamps-for-ordering-events">Timestamps for ordering events<a class="headerlink" href="#timestamps-for-ordering-events" title="Permanent link">&para;</a></h4>
+<p>Consider ordering events across multiple nodes. For example, if two clients write to a distributed database, who got there first? Which write is the more recent one?</p>
+<p><img alt="problem_with_clock.png" src="../img/problem_with_clock.png" /></p>
+<p>The clock synchronization is very good in this example (3ms) which is probably better than you can expect in practice </p>
+<p>Nevertheless, when node 2 receives these 2 events, it will incorrectly conclude that x=1 is the more recent value </p>
+<p>This conflict resolution strategy is called <em>last write wins</em> discussed in <a href="../Chapter%205/#last-write-wins">Chapter 5#Last write wins</a> and it is widely used in multi-leader replication and leaderless databases such as Cassandra and Riak </p>
+<p>Some implementation generate timestamps on client rather than server, but does change the fundamental problems with LWW:
+- a node cannot overwrite values written by a node with faster clock until the clock skew has elapsed
+- LWW doesn't distinguish sequential or concurrent write. We need version vectors to prevent violations of causality 
+- It is possible for 2 nodes to generate same timestamp during write operation. We need additional value (large random number) to resolve this conflict. But this approach can also lead to violations of causality <a href="https://aphyr.com/posts/294-call-me-maybe-cassandra">53 “Call Me Maybe: Cassandra,”</a></p>
+<p><em>logical clocks</em>, which are based on incrementing counters rather than an oscillating quartz crystal, are a safer alternative for ordering events </p>
+<p>[56] Leslie Lamport: “Time, Clocks, and the Ordering of Events in a Distributed Sys‐ tem,” Communications of the ACM, volume 21, number 7, pages 558–565, July 1978. doi:10.1145/359545.359563</p>
+<p>[57] Sandeep Kulkarni, Murat Demirbas, Deepak Madeppa, et al.: “<a href="https://cse.buffalo.edu/tech-reports/2014-04.pdf">Logical Physical Clocks and Consistent Snapshots in Globally Distributed Databases</a>,” State University of New York at Buffalo, Computer Science and Engineering Technical Report 2014-04, May 2014.</p>
+<h4 id="clock-readings-have-a-confidence-interval">Clock readings have a confidence interval<a class="headerlink" href="#clock-readings-have-a-confidence-interval" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>With an NTP server on the public internet, the best possible accuracy is probably to the tens of milliseconds, and the error may easily spike to over 100 ms when there is network congestion [57].</p>
+</blockquote>
+<p>It makes sense to think of clock reading as range of times, within a confidence interval </p>
+<p>For example, a system may be 95% confident that time now is between 10.3 and 10.5 seconds pass the minute</p>
+<p>The uncertainty bound can be calculated based on your time source. If we have a GPS receiver, the uncertainty bound is reported by the manufacturer. If we getting time from NTP server, then it is <span class="arithmatex">\(quartz\ drift\ + NTP\ uncertainty\ + network\ round\ trip\)</span></p>
+<p>Most system don't expose this uncertainty but Google's TrueTime API in Spanner. When you ask current time, you get back 2 values <code>[earliest, latest]</code></p>
+<p>Based on this value, the clock knows that actual current time is somewhere within this interval</p>
+<h4 id="synchronized-clocks-for-global-snapshots">Synchronized clocks for global snapshots<a class="headerlink" href="#synchronized-clocks-for-global-snapshots" title="Permanent link">&para;</a></h4>
+<p>The most common implementation of snapshot isolation requires a monotonically increasing transaction ID. If a write with a greater transaction ID, this write is invisible to the snapshot transaction </p>
+<p>On a single node database, simple counter is sufficient for generating transaction ids. However, for distributed databases, a global monotonically increasing transaction id is needed.</p>
+<p>This is hard to generate because it needs coordination. 
+With lots of small, rapid transactions, creating transaction IDs in a distributed system becomes an untenable bottleneck.</p>
+<p>Can we use the timestamps from synchronized time-of-day clocks as transaction IDs?</p>
+<blockquote>
+<p>Spanner implements snapshot isolation across datacenters in this way [59, 60].</p>
+</blockquote>
+<p>It uses TrueTime API and if 2 confidence interval do not overlap, for example 
+if 
+$$
+A = [A_{earliest,} A_{latest}], B = [B_{earliest}, B_{latest}]
+$$</p>
+<p>and </p>
+<p>$$</p>
+<p>A_{earliest} &lt; A_{latest} &lt; B_{earliest} &lt; B_{latest}</p>
+<p>$$</p>
+<p>then B definitely happened after A. Only when they overlap, we are unsure which order A and B happened.</p>
+<p>In order to ensure causality for transaction, Spanner deliberately wait for the length of the confidence interval before committing a read-write transaction. </p>
+<p>In order to keep this wait time as short as possible, Google deploys GPS receiver or atomic clock in each datacenter, allowing clocks to be synchronized to within about 7ms [41]</p>
+<h3 id="process-pauses">Process Pauses<a class="headerlink" href="#process-pauses" title="Permanent link">&para;</a></h3>
+<p>Another example of clock can be dangerous is multi-leader database
+Think if there is single leader per partition. How does a node know that it is still leader(others hasn't declare it as dead) and it may safely accept writes? </p>
+<p>One option is for the leader to obtain <em>lease</em> from other nodes, which is similar to lock with timeouts </p>
+<p>Only one node can hold the lease at any one time (thus it knows it is the leader until the lease expires)</p>
+<p>In order to remain leader, the node must periodically renew the lease before it expires. If the node fails to renew the lease, another nodes can take over </p>
+<p>something like this can be implemented 
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIncomingRequest</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Ensure that the lease always has at least 10 seconds remaining</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lease</span><span class="p">.</span><span class="na">expiryTimeMillis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="n">lease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lease</span><span class="p">.</span><span class="na">renew</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lease</span><span class="p">.</span><span class="na">isValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>But this is wrong. First, it relies on synchronized clocks set by another machine and compare to local clock </p>
+<p>If the clock are out of sync for more than few seconds, this code will start doing strange things</p>
+<p>Secondly, the code assumes the time between <code>System.currentTimeMillis()</code> and <code>process(request)</code> is very small. But this could fail if unexpected pause happened during execution of the program. </p>
+<p>Imagine program paused for 15 second in <code>lease.isValid()</code>. In this case, another node already taken over as leader but this node didn't know it get paused thus processing unsafe request </p>
+<p>There are many examples where thread can be paused for this long
+- "Stop-the-world" GC in Java sometimes been known to last for minutes. Although pauses can be reduced by changing allocation patterns and GC setting, we must assume the worst if we want to offer robust guarantees 
+- VM can be <em>suspended</em> and <em>resumed</em>. The length of the pause depends on the rate at which processes writing to memory
+- On end-user devices such as laptop, execution may also be suspended and resumed arbitrarily. e.g. when user close the lid of their laptop
+- OS or VM doing context-switches
+- If application performs synchronous disk access, a thread may be paused waiting for disk I/O to complete
+- If OS is configured to allow <em>swapping to disk</em> (paging) then when page fault occur thread is paused while this takes place 
+- A Unix process can be paused by sending <code>SIGSTOP</code> signal, for example by pressing Ctrl-Z in a shell. Even if your environment does not normally use <code>SIGSTOP</code>, it might be sent accidentally by an operation engineer.</p>
+<p>Similar to make multi-threaded code thread-safe on a single machine, we can't assume anything about timing. </p>
+<h4 id="response-time-guarantees">Response time guarantees<a class="headerlink" href="#response-time-guarantees" title="Permanent link">&para;</a></h4>
+<p>Those reasons for pausing can be eliminated if we try hard enough </p>
+<p>Computers that control aircraft, rockets, robots, cars, and other physical objects must respond quickly and predictably to their sensor inputs </p>
+<p>In these systems, there is a specified <em>deadline</em> by which the software must respond; if it doesn't meet the deadline, it may cause failure of entire system </p>
+<p>These are called <em>real-time</em> systems</p>
+<p>For example, you don't want your airbag to be delayed during a car crash due to an GC pause</p>
+<p>Providing real-time guarantees requires support from all levels of software system 
+<em>real-time operating system</em> guaranteed allocation of CPU time; library functions must document their worst-case execution times; dynamic memory allocation may be restricted or disallowed entirely </p>
+<p>All this require a large amount of additional work and "real time" is not same as "high-performance" because it has to prioritize timely responses above all else</p>
+<p>For most server-side data processing systems, real-time are simply not economical or appropriate. Consequently, these systems must suffer the pauses and clock instability</p>
+<h2 id="knowledge-truth-and-lies">Knowledge, Truth, and Lies<a class="headerlink" href="#knowledge-truth-and-lies" title="Permanent link">&para;</a></h2>
+<p>A node in network cannot <em>know</em> for sure it can only make guesses based on the messages it receives via the network </p>
+<p>A node can only find out what state another node is in by exchanging messages with it. If remote node doesn't respond, there is no way of knowing what state it is in</p>
+<p>Discussion of these system become philosophical: What do we know to be true or false in our system? </p>
+<p>How sure can we be of that knowledge, if the mechanisms for perception and measurement are unreliable? </p>
+<p>Should software systems obey the laws that we expect of the physical world, such as cause and effect? </p>
+<p>We don't need to go as far as meaning of life. In distributed system, we can state the assumptions we are making about the behavior (the <em>system model</em>) and design the actual system in such a way that it meets those assumptions </p>
+<p>In the rest of this chapter we will further explore the notions of knowledge and truth in distributed systems, which will help us think about the kinds of assumptions we can make and the guarantees we may want to provide. </p>
+<h3 id="the-truth-is-defined-by-the-majority">The Truth Is Defined by the Majority<a class="headerlink" href="#the-truth-is-defined-by-the-majority" title="Permanent link">&para;</a></h3>
+<p>Getting political... 
+A network with asymmetric fault where node can receive messages but not send any messages. (it can receive request from other nodes, but other nodes cannot hear its responses) </p>
+<p>This situation sounds like a horror movie scene. Node being dragged to graveyard and screaming "I'm not dead!" but nobody can hear it so funeral procession continues 
+If the node noticed other node are not acknowledging its message. It still cannot do anything about it 
+<img alt="dragged_to_graveyard.png" src="../img/dragged_to_graveyard.png" /></p>
+<p>3rd scenario, A node experiences stop-the-world garbage collection pause. Every thread stopped for a minute and other node declare this node is dead and load it onto the hearse. Then GC finishes and node came out of the coffin in full health 
+<img alt="out_of_coffin.png" src="../img/out_of_coffin.png" /></p>
+<p>GCed node doesn't even realize that 1 min has passed by and it was declared dead. </p>
+<p>anyway, the moral of these stories is that a node cannot trust its own judgment of a situation. </p>
+<p>A distributed system cannot exclusively rely on a single node because it might fail and leaving the system stuck and unable to recover. </p>
+<p>Many distributed algorithms rely on <em>quorum</em> which is voting among the nodes: decisions require some minimum number of votes from several nodes in order to reduce the dependence on 1 particular node. </p>
+<p>It's very similar to political voting. If a quorum of nodes declares another node dead, it must be considered dead. </p>
+<p>In most case, quorum is more than half of the nodes. A majority quorum allows system to continue to work even if individual nodes have failed.</p>
+<h4 id="the-leader-and-the-lock">The leader and the lock<a class="headerlink" href="#the-leader-and-the-lock" title="Permanent link">&para;</a></h4>
+<p>Normally, a system requires only one of something. For example
+- One node is allowed to be the leader for a database partition. 
+- Only one transaction is allowed to hold the lock for an object, to prevent concurrently writing to it and corrupting it
+- Only one user is allowed to register a particular username, so it can be unique identifier for this user</p>
+<p>Implementing this in distributed system requires care, even if the node believes it is the "only one", it might not be true because quorum of nodes might declare it is dead</p>
+<p>If the node continues to act as the chosen one, it could cause problems in a system that is not carefully designed. </p>
+<p><img alt="lock_bug.png" src="../img/lock_bug.png" /></p>
+<h4 id="fencing-tokens">Fencing tokens<a class="headerlink" href="#fencing-tokens" title="Permanent link">&para;</a></h4>
+<p>When using a lock or lease to protect access to some resource, such as file storage, we need to ensure the "chosen" node cannot disrupt the rest of the system. A technique called <em>fencing</em> is commonly used. </p>
+<p>Every time the lock server grants a lock or lease, it also returns a <em>fencing token</em> which is a number that increases every time a lock is granted (e.g. incremented by the lock service) </p>
+<p>Then every time a client sends a write request to a storage service, it must include its current fencing token. If older token is attached, the storage system will know that it is not the latest one 
+<img alt="fencing_technique.png" src="../img/fencing_technique.png" /></p>
+<p>ZooKeeper is used as lock service, it has transaction ID <code>zxid</code> that can be used as fencing token. </p>
+<p>This mechanism requires the resource itself to take an active role in checking if any writes has expired token </p>
+<p>Checking a token on the server side may seem like a downside but it is actually good thing: it is unwise for a service to assume clients will always be well behaved. (user change their clock setting to deliberately bypass game restrictions)</p>
+<h3 id="byzantine-faults">Byzantine Faults<a class="headerlink" href="#byzantine-faults" title="Permanent link">&para;</a></h3>
+<p>If a node deliberately wanted to subvert the system's guarantees, it could easily do so by sending messages with a fake fencing token. </p>
+<p>This book assumes node are unreliable but honest (playing by the rules of the protocol)</p>
+<p>Distributed systems problems become much harder if nodes may "lie" (deliberately send bad responses). Such behavior is called <em>Byzantine fault</em> and the problem of reaching consensus in untrusted environment is known as <em>Byzantine Generals Problem</em> </p>
+<p>Leslie Lamport, Robert Shostak, and Marshall Pease: “<a href="https://dl.acm.org/doi/10.1145/357172.357176">The Byzantine Generals Problem</a>,” ACM Transactions on Programming Languages and Systems (TOPLAS), volume 4, number 3, pages 382–401, July 1982.</p>
+<p><em>Byzantine Generals Problem</em> is a generalization of <em>Two Generals Problem</em> which means 2 army generals need to agree on a battle plan by passing messages. And messages might get lost (like packet in a network). This problem will be discussed in <a href="../Chapter%209/">Chapter 9</a></p>
+<p>The name <em>Byzantine</em> is derived in the sense of <em>excessively complicated, bureaucratic, devious</em>. Lamport wanted to choose a nationality that would not offend any readers</p>
+<p>A system is <em>Byzantine fault-tolerant</em> if it continues to operate correctly even if some of the nodes are malfunctioning and not obeying the protocol. This concern is relevant in certain circumstances. For example:</p>
+<ul>
+<li>In aerospace environments, the data in computer's memory or CPU register could become corrupted by radiation, leading it to respond to other nodes in arbitrarily unpredictable ways. System failure would be very expensive (aircraft crashing and killing everyone on board, or rocket colliding with the international space station), flight control systems must tolerate Byzantine faults [81] John Rushby: “<a href="https://www.csl.sri.com/papers/emsoft01/emsoft01.pdf">Bus Architectures for Safety-Critical Embedded Systems</a>,” at 1st International Workshop on Embedded Software (EMSOFT), October 2001. [82] Jake Edge: “<a href="https://lwn.net/Articles/540368/">ELC: SpaceX Lessons Learned,</a>” lwn.net, March 6, 2013.</li>
+<li>In a system with multiple participating organizations, some participants may attempt to cheat or defraud others. For example, peer-to-peer network like Bitcoin and other blockchains can be considered to be a way of getting mutually untrusting parties to agree whether a transaction happened or not, without relying on a central authority </li>
+</ul>
+<p>This book assume there are no byzantine faults. In your datacenter, all nodes are controlled by your organization (so they can be trusted) and radiation levels are low enough. In most server-side data systems, the cost of deploying Byzantine fault-tolerant solutions makes them impractical</p>
+<p>web application do need to expect arbitrary and malicious behavior of clients that are under end-user control such as web browsers. This is why input validation, sanitization, and output escaping are so important: preventing SQL injection and cross site scripting 
+But Byzantine fault-tolerant doesn't apply here because server is the authority on deciding what client behavior is and isn't allowed. </p>
+<p>In peer-to-peer networks, where there is no such central authority, Byzantine fault tolerance is more relevant.</p>
+<p>A bug in the software could be regarded as a Byzantine fault, but if you deploy the same software to all nodes, then Byzantine fault-tolerant algorithm cannot save you. 
+Most Byzantine fault-tolerant algorithms require a supermajority of more than 2/3rd of the nodes to be functioning correctly. To use this approach against bugs, you would have to have 4 independent implementations of the same software and hope that a bug only appears in one of the four implementations. </p>
+<h4 id="protection-against-weak-forms-of-lying">Protection against weak forms of lying<a class="headerlink" href="#protection-against-weak-forms-of-lying" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Checksums to detect corrupted packets (TCP, UDP or at application level)</li>
+<li>Sanitize input from user. For example by checking input value is within a reasonable range to prevent denial of service through large memory allocations</li>
+<li>Configure multiple NTP server to make sure outlier is detected </li>
+</ul>
+<h3 id="system-model-and-reality">System Model and Reality<a class="headerlink" href="#system-model-and-reality" title="Permanent link">&para;</a></h3>
+<p><a href="../Chapter%209/">Chapter 9</a> will discuss solutions for consensus problem. Algorithms need to be written in a way that does not depend too heavily on the details of the hardware and software configuration. This results the need to formalize the kinds of faults we expect to happen in a system. In order to do this, we need to define a <em>system model</em> which is an abstraction that describes what things an algorithm may assume.</p>
+<p>Regard to time, 3 system models are in common use
+<em>Synchronous model</em>
+    Synchronous model assumes <em>bounded</em> network delay, <em>bounded</em> process pauses, and <em>bounded</em> clock error. The synchronous model is not a realistic model of most practical systems, because unbounded delays and pauses do occur </p>
+<p><em>Partially synchronous model</em>
+    Partial synchrony means that the system behaves like synchronous system most of the time but sometimes exceeds the bounds for network delay, process pauses, and clock drift. This is a realistic model of many systems. 
+<em>Asynchronous model</em>
+    In this model, an algorithm is not allowed to make any timing assumptions. Some algorithms can be designed for the asynchronous model, but it is very restrictive</p>
+<p>For node failures, we have 3 common system models: 
+<em>Crash stop faults</em>
+    Node can fail only one way: crashing. Which means node stop responding and is gone forever</p>
+<p><em>Crash-recovery faults</em>
+    This model assumes node may crash and perhaps start responding again after some unknown time. In this model, node are assumed to have stable storage and memory state is assumed to be lost 
+<em>Byzantine (arbitrary) faults</em>
+    Nodes may do absolutely anything, including trying to trick and deceive other nodes. </p>
+<p>First is the definition, then go for proof of correctness</p>
+<h4 id="correctness-of-an-algorithm">Correctness of an algorithm<a class="headerlink" href="#correctness-of-an-algorithm" title="Permanent link">&para;</a></h4>
+<p>We have to know its properties in order to define what it means for an algorithms to be <em>correct</em>. For example, the output of sorting algo has the <em>property</em> that any two distinct elements of the output list, the left is smaller than the element on the right </p>
+<p>Similarly, we want to define the properties of distributed algorithm in order to know what it means to be <em>correct</em>. We require the algorithm to have the following properties 
+<em>Uniqueness</em>
+    No two request for a fencing token return the same value
+<em>Monotonic sequence</em>
+    If request x returned token <span class="arithmatex">\(t_{x}\)</span>, and request <span class="arithmatex">\(y\)</span> returned token <span class="arithmatex">\(t_{y}\)</span>, and <span class="arithmatex">\(x\)</span> completed before <span class="arithmatex">\(y\)</span> began, then <span class="arithmatex">\(t_{x} &lt; t_{y}\)</span>.
+<em>Availability</em>
+    A node that requests a fencing token and does not crash eventually receives a response</p>
+<p>An algorithm is correct in some system model if it always satisfies its properties in all situations. But is it realistic where all nodes crashed or network delay become infinitely long? </p>
+<h4 id="safety-and-liveness">Safety and liveness<a class="headerlink" href="#safety-and-liveness" title="Permanent link">&para;</a></h4>
+<p>To clarify the situation, it is worth distinguishing between 2 different kinds of properties: <em>safety</em> and <em>liveness</em> properties. </p>
+<p>In this example, <em>uniqueness</em> and <em>monotonic sequence</em> are safety properties, but <em>availability</em> is a liveness property</p>
+<p>Definitions of safety and liveness:
+- If a safety property is violated, we can point at a particular point in time at which it was broken. After a safety property has been violated, the violation cannot be undone--the damage is already done. (we can identify duplicate fencing token was returned) 
+- A liveness property works the other way round: it may not hold at some point in time, but there is always hope that it may be satisfied in the future (receiving a response)</p>
+<p>Advantage of distinguishing safety and liveness properties is that it helps us deal with difficult system models. For distributed algorithms, it is common to require that safety properties <em>always</em> hold. Namely, even if all nodes crashed, entire network fails, the algorithm must nevertheless ensure that it does not return a wrong result </p>
+<p>Liveness properties are allowed to make caveats: System can malfunction (partial node failure or network interruption) but with finite duration it eventually recovers </p>
+<h4 id="mapping-system-models-to-the-real-world">Mapping system models to the real world<a class="headerlink" href="#mapping-system-models-to-the-real-world" title="Permanent link">&para;</a></h4>
+<p>Safety and liveness are useful for reasoning about the correctness on distributed algorithm
+But in practice those system model is simplified abstraction of reality</p>
+<blockquote>
+<p>For example, algorithms in the crash-recovery model generally assume that data in stable storage survives crashes. However, what happens if the data on disk is corrup‐ ted, or the data is wiped out due to hardware error or misconfiguration [91]? What happens if a server has a firmware bug and fails to recognize its hard drives on reboot, even though the drives are correctly attached to the server [92]?</p>
+</blockquote>
+<p>Proving algorithm correct does not mean its <em>implementation</em> on a real system will necessarily always behave correctly. But it is a good first step.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This chapter discussed wide range of problems that can occur in distributed system:
+- Packet over the network may be lost or arbitrarily delayed. Similarly, reply may get lost or delayed. If you don't get reply, you don't know whether the request has been processed or not
+- A node's clock may significantly out of sync with other nodes. It may jump back or forward in time. Relying on those can be dangerous
+- A process may get paused for a very long time. Other nodes may declare this node dead and it comes back without knowing it is being declared dead
+Such <em>partial failures</em> can occur is the defining characteristic of distributed system. 
+Whenever software tries to do with multiple nodes. Some node may occasionally fail.</p>
+<p>In distributed system, we try to build tolerance to partial failure into the software, so that the system can still function as a whole</p>
+<p>To tolerate faults, first we need to <em>detect</em> them. Most systems don't even have an accurate mechanism of detecting whether a node has failed. Most distributed algorithms rely on timeouts to determine whether a remote node is dead or not. However, timeout doesn't distinguish network or node failure. </p>
+<p>Once fault is detected, making a system tolerate this is not easy. No global variable, no shared memory, no common knowledge or any other kind of shared state between machines. The only way information can flow from one node to another is through unreliable network. Major decisions cannot be safely made by a single node, so we need a <em>quorum</em> to agree.</p>
+<p>Moving from idealized mathematical perfection of a single computer to messy distributed system can be a bit of shock. So it is worth to do if you can achieve something in a single computer.</p>
+<p>Discussed in the introduction in part 2, scalability is not the only reason for wanting to use a distributed system. Fault tolerance and low latency are equally important goals. Those goal cannot be achieved in single machine</p>
+<p>Unreliability of networks, clocks, and processes in inevitable in nature. This chapter is all about problems. In next chapter, we will move to solutions, and discuss some algorithms that can cope with problems in distributed systems.</p>
+<p>side note, <a href="https://www.scientificamerican.com/article/new-results-reveal-how-to-build-a-nuclear-clock/?mc_cid=a5a50ca368">nuclear clock</a> seems possible now but not really relevant to our case</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

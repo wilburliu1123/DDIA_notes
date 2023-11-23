@@ -1,0 +1,2166 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter%2011/">
+      
+      
+        <link rel="next" href="../Chapter%202/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 12 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 12
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2011/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-specialized-tools-by-deriving-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combining Specialized Tools by Deriving Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining Specialized Tools by Deriving Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#derived-data-vs-distributed-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Derived data vs distributed transactions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-limits-of-total-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      The limits of total ordering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordering-events-to-capture-causality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordering events to capture causality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-and-stream-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch and Stream Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch and Stream Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maintaining-derived-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintaining derived state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reprocessing-data-for-application-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reprocessing data for application evolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unifying-batch-and-stream-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unifying batch and stream process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unbundling-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unbundling Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unbundling Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composing-a-data-storage-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composing a Data Storage Technologies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composing a Data Storage Technologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating an index
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-meta-database-of-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      The meta database of everything
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-unbundling-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making unbundling work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbundled-vs-integrated-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unbundled vs integrated system
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-applications-around-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Applications Around Dataflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing Applications Around Dataflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-application-code-and-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separation of application code and state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-interplay-between-state-changes-and-application-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow: Interplay between state changes and application code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-processors-and-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream processors and services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observing-derived-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observing Derived State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Observing Derived State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#materialized-views-and-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materialized views and caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateful-offline-capable-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stateful offline capable clients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing-state-changes-to-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pushing state changes to clients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aiming-for-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aiming for Correctness
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aiming for Correctness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-end-to-end-argument-for-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      The End to End Argument for Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The End to End Argument for Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exactly-once-execution-of-an-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exactly once execution of an operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duplicate suppression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-end-to-end-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      The end to end argument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-end-to-end-thinking-in-data-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying end to end thinking in data systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enforcing-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enforcing Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enforcing Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uniqueness-constraints-require-consensus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniqueness constraints require consensus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniqueness-in-log-based-messaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniqueness in log-based messaging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-partition-request-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi partition request processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeliness-and-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeliness and Integrity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timeliness and Integrity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correctness-of-dataflow-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correctness of dataflow systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loosely-interpreted-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loosely interpreted constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coordination-avoiding-data-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coordination-avoiding data systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trust-but-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trust, but Verify
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trust, but Verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-the-face-of-software-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      In the face of software bugs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-just-blindly-trust-what-they-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don't just blindly trust what they promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-culture-of-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      A culture of verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-for-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing for auditability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-for-auditable-data-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools for auditable data systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#doing-the-right-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doing the Right Thing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Doing the Right Thing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictive-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Predictive Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predictive Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-and-discrimination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias and discrimination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsibility-and-accountability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsibility and accountability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback loops
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privacy-and-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy and Tracking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privacy and Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#surveillance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Surveillance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consent-and-freedom-of-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consent and freedom of choice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%208/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-specialized-tools-by-deriving-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combining Specialized Tools by Deriving Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining Specialized Tools by Deriving Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#derived-data-vs-distributed-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Derived data vs distributed transactions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-limits-of-total-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      The limits of total ordering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordering-events-to-capture-causality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordering events to capture causality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-and-stream-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch and Stream Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch and Stream Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maintaining-derived-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintaining derived state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reprocessing-data-for-application-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reprocessing data for application evolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unifying-batch-and-stream-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unifying batch and stream process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unbundling-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unbundling Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unbundling Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composing-a-data-storage-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composing a Data Storage Technologies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composing a Data Storage Technologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating an index
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-meta-database-of-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      The meta database of everything
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-unbundling-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making unbundling work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbundled-vs-integrated-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unbundled vs integrated system
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-applications-around-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Applications Around Dataflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing Applications Around Dataflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-application-code-and-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separation of application code and state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-interplay-between-state-changes-and-application-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow: Interplay between state changes and application code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-processors-and-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream processors and services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observing-derived-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observing Derived State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Observing Derived State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#materialized-views-and-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materialized views and caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateful-offline-capable-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stateful offline capable clients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing-state-changes-to-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pushing state changes to clients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aiming-for-correctness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aiming for Correctness
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aiming for Correctness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-end-to-end-argument-for-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      The End to End Argument for Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The End to End Argument for Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exactly-once-execution-of-an-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exactly once execution of an operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duplicate suppression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operation-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operation identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-end-to-end-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      The end to end argument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-end-to-end-thinking-in-data-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying end to end thinking in data systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enforcing-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enforcing Constraints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enforcing Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uniqueness-constraints-require-consensus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniqueness constraints require consensus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniqueness-in-log-based-messaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniqueness in log-based messaging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-partition-request-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi partition request processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeliness-and-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeliness and Integrity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timeliness and Integrity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#correctness-of-dataflow-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correctness of dataflow systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loosely-interpreted-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loosely interpreted constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coordination-avoiding-data-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coordination-avoiding data systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trust-but-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trust, but Verify
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trust, but Verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-the-face-of-software-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      In the face of software bugs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-just-blindly-trust-what-they-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Don't just blindly trust what they promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-culture-of-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      A culture of verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-for-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing for auditability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-for-auditable-data-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools for auditable data systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#doing-the-right-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doing the Right Thing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Doing the Right Thing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictive-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Predictive Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predictive Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-and-discrimination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias and discrimination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsibility-and-accountability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responsibility and accountability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback loops
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privacy-and-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy and Tracking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privacy and Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#surveillance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Surveillance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consent-and-freedom-of-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consent and freedom of choice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 12</h1>
+
+<p>This chapter will look into the future of data systems</p>
+<h2 id="data-integration">Data Integration<a class="headerlink" href="#data-integration" title="Permanent link">&para;</a></h2>
+<p>For complex applications, data often used in several different ways. We often have to use multiple kind of database together to accomplish one goal</p>
+<h3 id="combining-specialized-tools-by-deriving-data">Combining Specialized Tools by Deriving Data<a class="headerlink" href="#combining-specialized-tools-by-deriving-data" title="Permanent link">&para;</a></h3>
+<p>It is common to combine OLTP database with full-text search index. This can be done by introducing log based message broker that has CDC feature implemented. We might arrange data to write to a system of record database and use CDC to forward those change to search index in the same order. </p>
+<p>Allowing application directly write to both database and search index will introduce race condition. </p>
+<h4 id="derived-data-vs-distributed-transactions">Derived data vs distributed transactions<a class="headerlink" href="#derived-data-vs-distributed-transactions" title="Permanent link">&para;</a></h4>
+<p>Classic approach for keep different data system is to use distributed transactions such as 2PC. At an abstract level, 2PC using lock for mutual exclusion while CDC and event sourcing use a log for ordering. Distributed transactions use atomic commit to ensure that changes only effect exactly once, while log-based systems are based on deterministic retry and idempotence. </p>
+<p>Biggest difference is transaction system provide linearizability where derived data system often updated asynchronously, so they do not offer same timing guarantees by default</p>
+<p>Because of lack support of good distributed transaction protocol, Martin believe that log based derived data is the most promising approach for integrating different data systems. </p>
+<h4 id="the-limits-of-total-ordering">The limits of total ordering<a class="headerlink" href="#the-limits-of-total-ordering" title="Permanent link">&para;</a></h4>
+<p>When system scaled bigger enough, limitations of total ordering begins to emerge:
+- In most cases, constructing a totally ordered log requires all events to pass through a <em>single leader</em> that decides on the ordering. If the throughput of events is greater than single machine can handle, we need to partition it across multiple machines. The order across different partitions is ambiguous
+- If servers are spread across multiple geographically distributed datacenters, where you would like to tolerate entire data center go offline. This typically requires a separate leader in each datacenter. This implies undefined ordering of events that originate in two different datacenters.
+- For <em>microservices</em>, a common design is to deploy storage unit as an independent unit. So no two services share same storage system. When two events originate in different services, there is no defined order for those events. 
+- Some application maintain client side state where user input get immediately updated and continue to work offline. With such application, clients and servers are very likely to see events in different orders.</p>
+<blockquote>
+<p>In formal terms, deciding on a total order of events is known as <em>total order broadcast</em>, which is equivalent to consensus. </p>
+</blockquote>
+<p>Most consensus algorithms are designed with single node throughput. It is still an open research problem to design consensus algorithms that can scale beyond the throughput of a single node</p>
+<h4 id="ordering-events-to-capture-causality">Ordering events to capture causality<a class="headerlink" href="#ordering-events-to-capture-causality" title="Permanent link">&para;</a></h4>
+<p>In social network app, after a couple break up, they should not see each other's rude message. This has a <em>unfriend</em> event followed by <em>message</em> event. If this causal dependency is not captured, message will send notification to the user. Starting point to solve this problem could be </p>
+<ul>
+<li>Logical timestamp can provide total ordering so they can help and require recipient to handle events that is out of order.</li>
+<li>Conflict resolution algorithm </li>
+</ul>
+<h3 id="batch-and-stream-processing">Batch and Stream Processing<a class="headerlink" href="#batch-and-stream-processing" title="Permanent link">&para;</a></h3>
+<p>There are also many detailed differences in the ways the processing engines are implemented, but these distinctions are beginning to blur.</p>
+<p>Spark performs stream processing on top of a batch processing engine by breaking the stream into microbatches, whereas Apache Flink performs batch processing on top of a stream processing engine [5].</p>
+<h4 id="maintaining-derived-state">Maintaining derived state<a class="headerlink" href="#maintaining-derived-state" title="Permanent link">&para;</a></h4>
+<p>Batch process has a strong functional flavor where outputs are deterministic and can be retried many times. No matter what derived data is (cache, search index, or statistical model), it can be think of as a data pipeline. In principle derived data should be maintain synchronously but asynchronous processing make the system more robust (log based message system)</p>
+<h4 id="reprocessing-data-for-application-evolution">Reprocessing data for application evolution<a class="headerlink" href="#reprocessing-data-for-application-evolution" title="Permanent link">&para;</a></h4>
+<p>Schema migration on railway is a very interesting example
+Similarily, batch and stream processing can be used for schema evolution. </p>
+<blockquote>
+<p>You can then start shifting a small number of users to the new view in order to test its performance and find any bugs, while most users continue to be routed to the old view. Gradually, you can increase the proportion of users accessing the new view, and eventually you can drop the old view [10].</p>
+</blockquote>
+<h4 id="lambda-architecture">Lambda architecture<a class="headerlink" href="#lambda-architecture" title="Permanent link">&para;</a></h4>
+<p><em>lambda architecture</em> is the proposal to combine batch and stream processing. </p>
+<blockquote>
+<p>The lambda architecture proposes running two different systems in parallel: a batch processing system such as Hadoop MapReduce, and a separate stream- processing system such as Storm.</p>
+</blockquote>
+<p>Although lambda architecture was an influential idea, Martin think it has couple of practical problem:</p>
+<ul>
+<li>Maintaining batch and stream process at the same time is an additional effort. </li>
+<li>Stream pipeline and batch pipeline produce separate output and it can be hard to join them together </li>
+<li>for extreme large dataset, batch pipeline need to setup incremental batch which can have timing issues</li>
+</ul>
+<h4 id="unifying-batch-and-stream-process">Unifying batch and stream process<a class="headerlink" href="#unifying-batch-and-stream-process" title="Permanent link">&para;</a></h4>
+<p>Unifying batch and stream processing in one system requires the following features, which are becoming increasingly widely available:
+- Replay historical events from same stream engine
+- Exact once processing semantics 
+- Tools for windowing by event time</p>
+<h2 id="unbundling-databases">Unbundling Databases<a class="headerlink" href="#unbundling-databases" title="Permanent link">&para;</a></h2>
+<p>At most abstract level, databases, Hadoop, operating systems are all store some data and allow you to process and query those data. </p>
+<p>Database store data in row and column where OS store it in file, but at its core both system are information management system</p>
+<p>Unix and relational databases have approached information management problem with different philosophies. Unix would like to provide programmer an abstract view of low level hardware. Whereas relational databases give application programmer a high level abstraction that hides complexities of data structures on disk, concurrency and crash recovery. </p>
+<p>Unix is basically thin wrapper around hardware resources and relational databases can draw a lot of powerful infrastructure (query optimization, indexes, join methods, concurrency control, replication etc) </p>
+<p>Both Unix and relational model emerged in 1970s and those different approach still effect today's world. Martin would interpret NoSQL movement as apply a Unix approach of low level abstraction in distributed OLTP domain </p>
+<p>Martin will try to reconcile the two philosophies in this section and hope to combine both worlds </p>
+<h3 id="composing-a-data-storage-technologies">Composing a Data Storage Technologies<a class="headerlink" href="#composing-a-data-storage-technologies" title="Permanent link">&para;</a></h3>
+<p>Over the course of the book, we have seen different feature provided by databases
+- Secondary indexes 
+- materialized views (precomputed cache)
+- Replication logs 
+- Full text search indexes </p>
+<p>Those features are very similar that batch and stream process are trying to perform</p>
+<h4 id="creating-an-index">Creating an index<a class="headerlink" href="#creating-an-index" title="Permanent link">&para;</a></h4>
+<p>When <code>CREATE INDEX</code> run on relational database, it will scan over a consistent snapshot of the table, sort them, and write it out. This process is very similar setting up a new follower or bootstrapping change data capture in stream system</p>
+<h4 id="the-meta-database-of-everything">The meta database of everything<a class="headerlink" href="#the-meta-database-of-everything" title="Permanent link">&para;</a></h4>
+<p>The dataflow across entire organization starts looking like one huge database. Whenever, batch, stream, or ETL process transport data from one place to another, it is like keeping this huge database subsystem up to date. </p>
+<p>Martin think there are two ways to compose different databases into a cohesive system</p>
+<p><em>Federated Databases</em>: Unifying reads
+It is possible to provide unified query interface to different storage engine and processing methods. This approach is called <em>federated database</em> or <em>polystore</em> </p>
+<blockquote>
+<p>Applications that need a specialized data model or query interface can still access the underlying storage engines directly, while users who want to combine data from disparate places can do so easily through the federated interface.</p>
+</blockquote>
+<p>JDB can use specialized data structure to speed up read?</p>
+<p><em>Unbundled databases</em>: Unifying writes 
+Through change data capture or event logs, we could synchronized write across different technologies. This approach is like Unix tradition of small tools that do one thing well and communicate through uniform API (pipes) and composed using a higher level language (shell)</p>
+<h4 id="making-unbundling-work">Making unbundling work<a class="headerlink" href="#making-unbundling-work" title="Permanent link">&para;</a></h4>
+<p>Martin believe that an asynchronous event log with idempotent writes is a much more robust and practical approach.</p>
+<p>The big advantage of log-based integration is <em>loose coupling</em> between the various components 
+1. Asynchronous event stream make system more robust against individual components failure. 
+2. Unbundling data systems allows each component developed, maintained and independently from different teams. Thus allow each team focus on doing one thing well. </p>
+<h4 id="unbundled-vs-integrated-system">Unbundled vs integrated system<a class="headerlink" href="#unbundled-vs-integrated-system" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>The goal of unbundling is not to compete with individual databases on performance for particular workloads; the goal is to allow you to combine several different data‐ bases in order to achieve good performance for a much wider range of workloads than is possible with a single piece of software. It’s about breadth, not depth</p>
+</blockquote>
+<h3 id="designing-applications-around-dataflow">Designing Applications Around Dataflow<a class="headerlink" href="#designing-applications-around-dataflow" title="Permanent link">&para;</a></h3>
+<p>Composing specialized storage and process systems with application code is called database inside out approach (<a href="http://martin.kleppmann.com/2015/03/04/turning-the-database-inside-out.html">Martin's talk on this</a>) </p>
+<p>The term unbundling in this context was proposed by Jay Kreps [7].</p>
+<p>In this section Martin will expand on these ideas and explore some ways of building applications around the ideas of unbundled databases and dataflow.</p>
+<h4 id="separation-of-application-code-and-state">Separation of application code and state<a class="headerlink" href="#separation-of-application-code-and-state" title="Permanent link">&para;</a></h4>
+<p>~~Deployment and cluster management tools such as Mesos, YARN, Docker, Kubernetes, and others are designed specifically for the purpose of running application code. 
+~~
+In a typical web application, database is like a shared mutable variable that can be accessed synchronously over the network</p>
+<blockquote>
+<p>However, in most programming languages you cannot subscribe to changes in a mutable variable—you can only read it periodically. Unlike in a spreadsheet, readers of the variable don’t get notified if the value of the variable changes. (You can implement such notifications in your own code—this is known as the observer pattern— but most languages do not have this pattern as a built-in feature.)</p>
+</blockquote>
+<h4 id="dataflow-interplay-between-state-changes-and-application-code">Dataflow: Interplay between state changes and application code<a class="headerlink" href="#dataflow-interplay-between-state-changes-and-application-code" title="Permanent link">&para;</a></h4>
+<p>Thinking about applications in terms of dataflow allows us to rethink relationship between application code and state management.</p>
+<h4 id="stream-processors-and-services">Stream processors and services<a class="headerlink" href="#stream-processors-and-services" title="Permanent link">&para;</a></h4>
+<p>SOA (service oriented architecture) allow organizational scalability by decoupling. </p>
+<blockquote>
+<p>Composing stream operators into dataflow systems has a lot of similar characteristics to the microservices approach [40].</p>
+</blockquote>
+<p>However, underlying mechanisms are different. microservices require synchronous request/response interaction where dataflow system is one direction and asynchronous </p>
+<p>Dataflow system sometimes can achieve better performance. For example, when a customer purchase a product at one currency but pay it in another currency, there are two approaches to this problem: 
+1. In microservices approach, purchase could query an exchange rate service in order to obtain the current rate for particular currency
+2. In dataflow approach, code that processes purchases would subscribe to stream of exchange rate and recorded it in local database. So when it processing purchase request, it only need to query local database.</p>
+<p>Second approach will not only be faster but more robust to the failure of another service. </p>
+<h3 id="observing-derived-state">Observing Derived State<a class="headerlink" href="#observing-derived-state" title="Permanent link">&para;</a></h3>
+<p><img alt="write_read_path.png" src="../img/write_read_path.png" />
+write path is where data is stored into the system and read path is when user request for a value. 
+Derived data is where write path meet read path</p>
+<h4 id="materialized-views-and-caching">Materialized views and caching<a class="headerlink" href="#materialized-views-and-caching" title="Permanent link">&para;</a></h4>
+<p>Full text search is a good example: write path updates the index and read path searches the index for keywords. </p>
+<blockquote>
+<p>If you didn’t have an index, a search query would have to scan over all documents (like grep), which would get very expensive if you had a large number of documents. No index means less work on the write path (no index to update), but a lot more work on the read path.</p>
+<p>On the other hand, you could imagine precomputing the search results for all possible queries. In that case, you would have less work to do on the read path: no Boolean logic, just find the results for your query and return them. However, the write path would be a lot more expensive</p>
+<p>Another option would be to precompute the search results for only a fixed set of the most common queries. This would generally be called a <em>cache</em> of common queries, although we could also call it a materialized view, as it would need to be updated when new documents appear that should be included in the results of one of the common queries.</p>
+</blockquote>
+<h4 id="stateful-offline-capable-clients">Stateful offline capable clients<a class="headerlink" href="#stateful-offline-capable-clients" title="Permanent link">&para;</a></h4>
+<p>The client/server model in which clients are largely stateless and servers have the authority of the data is so common where we forget the other possibility</p>
+<p>Recent single page application allow client side user interface and local storage in the web browser. Mobile apps can also store a lot of state on device and don't need network round-trip </p>
+<p>These capabilities led to renewed interest in offline-first applications that process as much as request locally as possible and sync with server in the background.</p>
+<p>When we move away the assumption of stateless client, a world of new opportunities opens up. we can think of on-device is a <em>cache state</em> of the server. The model objects are a local replica of state in a remote datacenter.</p>
+<h4 id="pushing-state-changes-to-clients">Pushing state changes to clients<a class="headerlink" href="#pushing-state-changes-to-clients" title="Permanent link">&para;</a></h4>
+<p>In a typical web page, server don't do anything until you submit a request or reload the page. </p>
+<p>More recent protocol such as server-sent events and WebSocket provide communication channel where server maintain an open TCP connection with browser. This allows server actively push changes to client to prevent stale cache</p>
+<blockquote>
+<p>In terms of our model of write path and read path, actively pushing state changes all the way to client devices means extending the write path all the way to the end user. When a client is first initialized, it would still need to use a read path to get its initial state, but thereafter it could rely on a stream of state changes sent by the server.</p>
+</blockquote>
+<h2 id="aiming-for-correctness">Aiming for Correctness<a class="headerlink" href="#aiming-for-correctness" title="Permanent link">&para;</a></h2>
+<p>It is not a big deal if something goes wrong in stateless services. But for stateful systems it is not the case because they design to remember things forever which an error might last forever. </p>
+<p>Transactions properties of atomicity, isolation, and durability have been the tools of building correct applications. </p>
+<p>In some areas, transactions are being abandoned entirely and replaced with models that offer better performance and scalability, but much messier semantics </p>
+<p>Our engineering methods in this important topic (consistency) are surprisingly flaky. </p>
+<p>For example, it is very difficult to determine whether it is safe to run a particular application at a particular transaction isolation level or replication configuration [51, 52].</p>
+<p>Kyle Kingsbury’s Jepsen experiments [53] have demoed many discrepancies where product claims safety guarantees and their actual behavior </p>
+<p>Life is a lot of simpler if our application can tolerate occasionally corrupting or losing data. On the other side, stronger guarantee like serializability and atomic commit came at a cost. They limit the scale and fault-tolerance properties you can achieve</p>
+<p>This section Martin will suggest some ways of thinking about correctness in the context of dataflow architectures</p>
+<h3 id="the-end-to-end-argument-for-databases">The End to End Argument for Databases<a class="headerlink" href="#the-end-to-end-argument-for-databases" title="Permanent link">&para;</a></h3>
+<p>Application that uses strong safety properties such as serializable transactions doesn't guarantee this application is free from data loss or corruption. If application has a bug that causes it to write incorrect data or delete data from database, serializable transactions can't save you</p>
+<p>Application bugs occur and people make mistakes. So immutable and append-only data is in favor because it is easier to recover from such mistakes </p>
+<p>But append only is not cure-all by itself. let's see some example </p>
+<h4 id="exactly-once-execution-of-an-operation">Exactly once execution of an operation<a class="headerlink" href="#exactly-once-execution-of-an-operation" title="Permanent link">&para;</a></h4>
+<p>When processing message, if previous process failed and you try again, there is a chance this message get processed twice. </p>
+<p>Processing twice is a form of data corruption (you don't want to be charged twice for the same service). </p>
+<p>One most effective approach to solve this problem is to make operation <em>idempotent</em>; that is, to ensure it has same effect no matter this message is processed how many times. In order to achieve this, we need additional metadata and fencing when failing over from one node to another </p>
+<h4 id="duplicate-suppression">Duplicate suppression<a class="headerlink" href="#duplicate-suppression" title="Permanent link">&para;</a></h4>
+<p>idempotent which avoid duplicates occurs in many other areas as well. For example, TCP uses sequence number on packets to put them in correct order and determine whether any packets were lost or duplicated on the network. Any duplicates are removed by TCP before it sends the data to an application</p>
+<p>However, this benefit only exists in single TCP connection. Imagine TCP connection is client connection to a database and client suffers a network interruption and connection timeout after sending the COMMIT before it hears back from the database server. It does not know whether the transaction has been committed or aborted</p>
+<p>Let's say we have a transaction like this
+<div class="highlight"><pre><span></span><code><span class="k">BEGIN</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1234</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4321</span><span class="p">;</span>
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div></p>
+<p>The client can reconnect to database and retry this transaction, but now this is outside of the scope of TCP duplication suppression. </p>
+<p>Even though this is a standard example for transaction atomicity, it is actually not correct and real banks do not work like this</p>
+<p>2PC protocols break the 1:1 mapping from TCP connection and a transaction since coordinator must ensure whether to commit or abort an in-doubt transaction. Is this sufficient to ensure that the transaction will only executed once? Unfortunately not. </p>
+<p>Even if transactions between database client and server is solved, we still need to worry about network between end-user device and the application server. If end user client is a web browser, it probably uses an HTTP POST request to submit an instruction to the server. and perhaps user successfully send POST request but failed to receive server's response due to poor cellular connection</p>
+<p>In this case user probably will be shown an error message, and they may retry manually. From web server's point of view the retry is a separate request, and from the database's point of view it is a separate transaction. The usual deduplication mechanisms don't help</p>
+<h4 id="operation-identifiers">Operation identifiers<a class="headerlink" href="#operation-identifiers" title="Permanent link">&para;</a></h4>
+<p>To make operation idempotent through several network hops, you need to consider end to end data flow. Not just at transaction level or TCP level</p>
+<p>For example, you could generate a unique identifier for an operation and included it as a hidden field in client application, or calculate a hash of all the relevant form fields to derive the operation ID. If the web browser submits the POST request twice, they will have same ID. You can then pass this ID all the way through database and check if we ever execute one operation with given ID </p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">requests</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">request_id</span><span class="p">)</span>
+<span class="k">BEGIN</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">request</span>
+<span class="w">    </span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span><span class="w"> </span><span class="n">from_account</span><span class="p">,</span><span class="w"> </span><span class="n">to_account</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="w">    </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;0286FDB8-D7E1-423F-B40B-792B3608036C&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4321</span><span class="p">,</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1234</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4321</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<p>above relies on <code>request_id</code> column and if transaction attempts to insert an ID that already exists, the INSERT fails and the transaction is aborted. </p>
+<h4 id="the-end-to-end-argument">The end to end argument<a class="headerlink" href="#the-end-to-end-argument" title="Permanent link">&para;</a></h4>
+<p>suppressing duplicate transactions is just one example of a more general principle called <em>end-to-end argument</em> which was articulated by Saltzer, Reed, and Clark in 1984 <a href="https://dl.acm.org/doi/10.1145/357401.357402">55</a></p>
+<blockquote>
+<p>function can only be implemented correctly with the help of knowledge and application standing at the <em>endpoints</em> of the communication system. </p>
+</blockquote>
+<p>In our example, function was duplicate suppression. By themselves, TCP, database transactions, and stream processors cannot entirely rule out these duplicates. Solving the problem requires an end-to-end solution: a transaction identifier that is passed all the way from end user client to the database.</p>
+<p>End to end argument also checks integrity of data: checksums are built into Ethernet, TCP, and TLS to detect corruption of packets in the network, but they cannot detect corruption due to bugs in the software at sending and receiving ends of the network connection. </p>
+<h4 id="applying-end-to-end-thinking-in-data-systems">Applying end to end thinking in data systems<a class="headerlink" href="#applying-end-to-end-thinking-in-data-systems" title="Permanent link">&para;</a></h4>
+<p>This brings back Martin's original thesis: application that provides strong safety properties such as serializable transactions does not mean the application is guaranteed to be free from data loss or corruption </p>
+<p>TCP works well for abstracting low level fault tolerance but we have not yet found the right abstraction for application level</p>
+<p>Transaction have long been seen as a good abstraction and Martin believe that they are useful. But he fear this is not enough</p>
+<p>Transactions are expensive especially in heterogeneous storage technologies. When we refuse to use distributed transactions because they are too expensive, we end up reimplementing fault tolerance mechanisms in application code. And it is hard to implement those mechanisms ourselves</p>
+<p>For those reason, it is worth to explore fault tolerance abstractions that could provide application specific end to end correctness properties. </p>
+<h3 id="enforcing-constraints">Enforcing Constraints<a class="headerlink" href="#enforcing-constraints" title="Permanent link">&para;</a></h3>
+<p>We saw end to end duplicate suppression can be achieved with request ID that is passed all the way from client to the database that records the write.</p>
+<h4 id="uniqueness-constraints-require-consensus">Uniqueness constraints require consensus<a class="headerlink" href="#uniqueness-constraints-require-consensus" title="Permanent link">&para;</a></h4>
+<p>We saw in <a href="../Chapter%209/">Chapter 9</a> where unique username or email address require consensus</p>
+<p>The most common way of achieving this consensus is to make a single node the leader and put it in charge of making all the decisions. This works fine until you need to tolerate leader failing, and we are back to consensus problem</p>
+<p>Uniqueness checking can be scaled out by partitioning based on the value that needs to be unique. For example, you can partition by hash of username and you can ensure all requests with the same request ID are routed to the same partition </p>
+<p>Asynchronous multi-leader master replication is ruled out because it could take conflicting writes and values are no longer unique. If you want to be able to immediately reject any writes that would violate the constraint, synchronous coordination is unavoidable.</p>
+<h4 id="uniqueness-in-log-based-messaging">Uniqueness in log-based messaging<a class="headerlink" href="#uniqueness-in-log-based-messaging" title="Permanent link">&para;</a></h4>
+<p>The log ensure all consumer see messages in the same order. Formally known as <em>total order broadcast</em> and is equivalent to consensus. </p>
+<p>A stream processor consumes all the messages in a log partition sequentially on a single thread. If the log is partitioned based on the value that needs to be unique, a stream processor can unambiguously and deterministically decide which one of several conflicting operations came first. For example:
+1. Every request for a username is encoded as a message, and appended to a partition determined by the hash of the username. 
+2. A stream processor sequentially reads the request in the log, using a local database to keep track of which usernames are taken. For every request that a username that is available, it records the name as taken and emits a success message to an output stream. For user name that is already taken, it emits a rejection message to output stream
+3. The client watches output stream and waits for a success or rejection message corresponding to its request.</p>
+<p>This algorithm scales easily to a large request throughput by increasing the number of partitions, as each partition can be processed independently </p>
+<p>This approach not only works for uniqueness constraints, but also for many other kinds of constraints. The fundamental principle is that any writes that may conflict are routed to the same partition and processed sequentially. </p>
+<h4 id="multi-partition-request-processing">Multi partition request processing<a class="headerlink" href="#multi-partition-request-processing" title="Permanent link">&para;</a></h4>
+<p>Things becomes more interesting when multiple partitions are involved. In this example
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">requests</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">request_id</span><span class="p">)</span>
+<span class="k">BEGIN</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">request</span>
+<span class="w">    </span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span><span class="w"> </span><span class="n">from_account</span><span class="p">,</span><span class="w"> </span><span class="n">to_account</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="w">    </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;0286FDB8-D7E1-423F-B40B-792B3608036C&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4321</span><span class="p">,</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1234</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4321</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+there are potentially 3 partitions: 1 containing request ID, 1 containing payee account, 1 containing payer account. Since they are independent from each other, they could be on different partitions.</p>
+<p>In traditional approach, executing this transaction would require an atomic commit across all partitions. Throughput is likely to suffer because it require all partition come into a total order together</p>
+<p>However, it turns out that equivalent correctness can be achieved with partitioned logs, and without an atomic commit:
+1. The request transfer money from A to B is given a unique request ID and appended to a log partition based on this request ID
+2. A stream processor reads the log of requests. For each request message it emits 2 messages to output streams: a debit instruction payer account A and a credit instruction to payee account B. The original request ID <em>is included</em> in those emitted messages.
+3. Further processors consume the streams of credit and debit instructions, deduplicate by request ID, and apply the changes to the account balances.</p>
+<p>If the stream processor in step 2 crashes, it resumes processing from its last check point. In doing so, it does not skip any request messages, but it may process requests twice or more and produce duplicate credit and debit instructions. Since we have unique request ID, step 3 can easily deduplicate them using this ID </p>
+<p>By breaking down the multi-partition transaction into two different partitioned stages and using end to end request ID, we have achieved same correctness and without using an atomic commit protocol. </p>
+<h3 id="timeliness-and-integrity">Timeliness and Integrity<a class="headerlink" href="#timeliness-and-integrity" title="Permanent link">&para;</a></h3>
+<p>A convenient property of transaction is that writers wait until a transaction is committed and after its writes all readers can immediately see the results. </p>
+<p>This is not the case when using multiple stages in stream processors: consumers of a log are asynchronous by design. Sender doesn't wait for consumer to process its messages. However, it is possible for a client to wait for message to appear on an output stream. Just as when we mentioned previously </p>
+<ol>
+<li>Every request for a username is encoded as a message, and appended to a partition determined by the hash of the username. </li>
+<li>A stream processor sequentially reads the request in the log, using a local database to keep track of which usernames are taken. For every request that a username that is available, it records the name as taken and emits a success message to an output stream. For user name that is already taken, it emits a rejection message to output stream</li>
+<li>The client watches output stream and waits for a success or rejection message corresponding to its request.</li>
+</ol>
+<p>in this example, the uniqueness doesn't depend on whether sender wait or not. waiting only has the purpose of informing the sender whether or not the uniqueness check succeeded. so this notification can be decoupled from effects of processing the message.</p>
+<p>More generally, Martin think term <em>consistency</em> conflates 2 different requirements that are worth considering separately:
+<em>Timeliness</em>
+    Timeliness means ensuring that users observe the system in an up-to-date state. We have seen stale read can cause inconsistent state. CAP theorem uses consistency in the sense of linearizability (which is a strong way of achieving timeliness) Weaker timeliness properties like read-after-write consistency can also be useful 
+<em>Integrity</em>
+    Integrity means absence of corruption (no data loss, no contradictory data or false data)</p>
+<p>If integrity is violated, the inconsistency is permanent. Waiting and retry doesn't fix this issue. Atomicity and durability are important tools for preserving integrity </p>
+<blockquote>
+<p>In slogan form: violations of timeliness are “eventual consistency,” whereas violations of integrity are “perpetual inconsistency.”</p>
+</blockquote>
+<p>Martin assert integrity is much more important than timeliness. For example, It is not surprising if transaction for your credit card does not appear in last 24 hours -- It is normal for these system have a certain lag. Banks reconcile and settle transactions asynchronously, and timeliness is not very important here (3). And integrity violation such as disappearing money would be catastrophic </p>
+<h4 id="correctness-of-dataflow-systems">Correctness of dataflow systems<a class="headerlink" href="#correctness-of-dataflow-systems" title="Permanent link">&para;</a></h4>
+<p>ACID transactions usually provide both timeliness (linearizability) and integrity (atomic commit) guarantees. On the other hand, event based dataflow systems decoupled timeliness and integrity. When processing event streams asynchronously, there is no guarantee of timeliness unless you build consumers that wait for message to arrive before returning. <em>integrity</em> is in fact central to streaming systems.</p>
+<p><em>Exactly-once</em> or <em>effectively-once</em> semantics is a mechanism for preserving integrity. Fault-tolerant message delivery and duplicate suppression are important for maintaining the integrity of a data system in the face of faults. </p>
+<p>As we saw in the last section, reliable stream processing systems can preserve integrity without distributed transaction and atomic commit protocol. which means same correctness but better performance and operational robustness. We achieved this integrity through a combination of mechanisms:
+- Representing the content of write operation as a single message. (which can be easily written atomically)
+- Deriving all other state from this single message using deterministic functions 
+- Passing client generated request ID through all these levels of processing, enabling end to end duplicate suppression and idempotence
+- Making message immutable and allow derived data to reprocess from time to time</p>
+<h4 id="loosely-interpreted-constraints">Loosely interpreted constraints<a class="headerlink" href="#loosely-interpreted-constraints" title="Permanent link">&para;</a></h4>
+<p>Traditional uniqueness require all events are routed to particular partition and stream processing cannot avoid it. 
+However, many real application can get away with much weaker notions of uniqueness:</p>
+<ul>
+<li>If two people concurrently register the same username or book the same seat, you can send one of them a message to apologize, and ask them to choose a different one. This change to correct a mistake is called <em>compensation transaction</em> [59, 60]</li>
+<li>If customers order more items than you have in stock, you can order more and apologize to customer for the delay and offer them a discount. </li>
+<li>
+<p>Similarly, airlines overbook airplanes with expectation that some passengers will miss their flight and many hotels overbook rooms with expectation some guests will cancel. </p>
+<blockquote>
+<ul>
+<li>n these cases, the constraint of “one person per seat” is deliberately violated for business reasons, and compensation processes (refunds, upgrades, providing a complimentary room at a neighboring hotel) are put in place to handle situations in which demand exceeds supply. Even if there was no overbooking, apology and compensation processes would be needed in order to deal with flights being cancelled due to bad weather or staff on strike—recover‐ ing from such issues is just a normal part of business [3].</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>If someone withdraws more money than they have in their account, the bank can charge them an overdraft fee and ask them to pay back what they owe. By limit‐ ing the total withdrawals per day, the risk to the bank is bounded.</p>
+</li>
+</ul>
+<p>In many business contexts, it's actually acceptable to temporarily violate a constraint and fix it up later by apologizing. The cost of the apology varies but it is often quite low: you can't unsend an email but send a follow up email with a correction. </p>
+<p>Wether the cost of the apology is acceptable is a business decision. If it is acceptable, the traditional model of checking all constraint is not needed. </p>
+<h4 id="coordination-avoiding-data-systems">Coordination-avoiding data systems<a class="headerlink" href="#coordination-avoiding-data-systems" title="Permanent link">&para;</a></h4>
+<p>Now we have 2 interesting observations: 
+1. Dataflow systems can maintain integrity guarantees on derived data without atomic commit, linearizability or synchronous cross-partition coordination 
+2. Although strict uniqueness require timeliness and coordination, many applications are actually fine with loose constraints that may be temporarily violated and fixed up later.</p>
+<p>These observations mean that dataflow system can provide the data management services without requiring coordination, while still giving strong integrity guarantees. </p>
+<p>For example, such a system could operate distributed across multiple datacenters in a multi-leader configuration, asynchronously replicating between regions. Such a system would have weak timeliness guarantees -- it would not be linearizable without introducing coordination -- but it can still have strong integrity guarantees.</p>
+<p>In this context, synchronous coordination can still be introduced in places where it is needed, but there is no need for everything to pay the cost of coordination if only a small part of an application needs it. </p>
+<h3 id="trust-but-verify">Trust, but Verify<a class="headerlink" href="#trust-but-verify" title="Permanent link">&para;</a></h3>
+<p>All of our discussion of correctness, integrity, and fault-tolerance has been under the assumption that certain things might go wrong, but other things won't. We call these assumptions our <em>system model</em> </p>
+<p>For example, we assume process might crash, machines can lose power, and network can arbitrarily delay or drop messages. But we also assume disk will not lose data after <code>fsync</code> and data in memory is not corrupted, CPU instruction always returns the correct result. </p>
+<p>Traditionally, system model take a binary approach toward faults: we assume some things can happen and other things can never happen. </p>
+<p>In reality, it is more a question of probabilities: something are more likely, somethings less likely. </p>
+<p>Data can become corrupted while it is sitting untouched on disks and data corruption on network can evade TCP checksums</p>
+<p>One application Martin worked on collected crash reports from clients and some of the reports we received could only be explained by random bit-flips in the memory of those devices. </p>
+<blockquote>
+<p>Besides random memory corrup‐ tion due to hardware faults or radiation, certain pathological memory access patterns can flip bits even in memory that has no faults [62]—an effect that can be used to break security mechanisms in operating systems [63] (this technique is known as rowhammer). Once you look closely, hardware isn’t quite the perfect abstraction that it may seem.</p>
+</blockquote>
+<h4 id="in-the-face-of-software-bugs">In the face of software bugs<a class="headerlink" href="#in-the-face-of-software-bugs" title="Permanent link">&para;</a></h4>
+<p>Besides hardware bugs, we also face software bugs. Even widely used database has bugs: Martin has personally seen cases of MySQL failing to correctly maintain a uniqueness constraint and PostgreSQL's serializable isolation level exhibiting write skew anomalies. even though MySQL and PostgreSQL are robust and well-regarded databases that have been battle-tested by many people for many years. In less mature software, the situation is likely to be much worse.</p>
+<h4 id="dont-just-blindly-trust-what-they-promise">Don't just blindly trust what they promise<a class="headerlink" href="#dont-just-blindly-trust-what-they-promise" title="Permanent link">&para;</a></h4>
+<p>With both hardware and software problems, it seems that data corruption is inevitable sooner or later. Thus we should have at least a way of finding out if data has been corrupted so that we can fix it. Checking the integrity of data is known as <em>auditing</em></p>
+<p>Auditing is not just for financial applications. It is highly important in finance because we know mistakes happen and we recognize the need to be able to detect and fix problems.</p>
+<p>Mature systems tend to consider the possibility of unlikely things going wrong and manage that risk. For example, large scale storage such as HDFS and S3 do not fully trust disks. they run background processes to continually read back files and move files from one disk to another in order to mitigate risk of silent corruption</p>
+<h4 id="a-culture-of-verification">A culture of verification<a class="headerlink" href="#a-culture-of-verification" title="Permanent link">&para;</a></h4>
+<p>HDFS and S3 assume disk work correctly most of the time. But not many system have this "trust but verify" approach of continually auditing themselves. We should think about designing auditability</p>
+<h4 id="designing-for-auditability">Designing for auditability<a class="headerlink" href="#designing-for-auditability" title="Permanent link">&para;</a></h4>
+<p>Database with log of multiple insertions, updates, and deletions in various tables doesn't give full picture of <em>why</em> those mutations were performed. </p>
+<p>By contrast, event-based systems can provide better auditability. In event sourcing approach, user input to the system is represented as a single immutable event, any resulting state is derived from that event. </p>
+<p>Being explicit about dataflow makes the <em>provenance</em> of data much clearer, resulting integrity checking to be more feasible. For event log, we can check the hashes which event storage has not been corrupted. For derived state, we can rerun the batch or stream processors to check whether we get the same result. </p>
+<p>A deterministic and well-defined dataflow also makes it easier to debug and trace the execution of a system in order to determine why it did something [4, 69].</p>
+<h4 id="tools-for-auditable-data-systems">Tools for auditable data systems<a class="headerlink" href="#tools-for-auditable-data-systems" title="Permanent link">&para;</a></h4>
+<p>It would be interesting to use cryptographic tools to prove the integrity of a system in a way that is robust to a wide range of hardware and software issues, and even potentially malicious actions. </p>
+<blockquote>
+<p>Cryptocurrencies, blockchains, and distributed ledger technologies such as Bitcoin, Ethereum, Ripple, Stellar, and various others [71, 72, 73] have sprung up to explore this area.</p>
+</blockquote>
+<p>From a data systems point of view they contain some interesting ideas. Essentially they are distributed databases, with a data model and transaction mechanism, in which different replicas can be hosted by mutually untrusting organizations. The replicas continually check each other's integrity and use a consensus protocol to agree on the transactions that should be executed.</p>
+<blockquote>
+<p>I am somewhat skeptical about the Byzantine fault tolerance aspects of these technol‐ ogies (see “Byzantine Faults” on page 304), and I find the technique of proof of work (e.g., Bitcoin mining) extraordinarily wasteful. The transaction throughput of Bitcoin is rather low, albeit for political and economic reasons more than for technical ones. However, the integrity checking aspects are interesting.</p>
+</blockquote>
+<p>Cryptographic auditing and integrity checking often relies on <em>Merkle trees</em> and certificate transparency relies on Merkle trees to check validity of TLS/SSL certificate. </p>
+<p>It could be an area where auditing algorithms become more widely used in data systems </p>
+<h2 id="doing-the-right-thing">Doing the Right Thing<a class="headerlink" href="#doing-the-right-thing" title="Permanent link">&para;</a></h2>
+<p>Every system is built for a purpose; every action we take has both intended and unintended consequences. The purpose might be making money, but the consequences for the world may reach far beyond that original purpose. As engineer we should consider what kind of world we want to live in when building systems. </p>
+<p>A technology is not good or bad in itself. What matters is how it is used and how it effects people. Software system like search engine is much the same way as it is for weapon like a gun. </p>
+<h3 id="predictive-analytics">Predictive Analytics<a class="headerlink" href="#predictive-analytics" title="Permanent link">&para;</a></h3>
+<p>Predictive analytics is major part of "Big Data" hype. Using data to predict weather or spread of diseases is one thing but a different matter when predict a convict is likely to reoffend, or applicant of a loan is likely to default, or whether a customer of insurance is likely to make expensive claims. Latter has direct impact on people's lives.</p>
+<h4 id="bias-and-discrimination">Bias and discrimination<a class="headerlink" href="#bias-and-discrimination" title="Permanent link">&para;</a></h4>
+<p>Decisions made by an algorithm are not necessarily any better or any worse than those made by a human. Every person is likely to have bias even if they actively try to counteract them. There is hope that basing decisions on data, rather than subjective and instinctive assessments by people could be more fair and give a better chance for people who are often overlooked in the traditional system</p>
+<p>Current predictive analytics system not only automating a human's decision by specify the rules to say yes or no; but also leaving the rules themselves to be inferred from data. But those patterns are opaque: even if there is correlation, we may not know why. </p>
+<p>In many countries, anti-discrimination laws prohibit treating people differently on protected traits such as ethnicity, age, gender, sexuality, disability or beliefs. but person's data contain those traits, for example in racially segregated neighborhoods, a person's postal code or even IP address is strong predictor of race. Predictive analytics systems merely extrapolate from the past; if we want future to be better than the past, moral imagination is required. And this is something only human can provide. </p>
+<h4 id="responsibility-and-accountability">Responsibility and accountability<a class="headerlink" href="#responsibility-and-accountability" title="Permanent link">&para;</a></h4>
+<p>Credit rating agencies are an old example of collecting data to make decisions about people. Bad credit score can make life difficult, but at least credit score is based on actual borrowing history. However, scoring algorithms based on machine learning typically use a much wider range of inputs and more opaque. </p>
+<p>Blind belief in the supremacy of data for making decisions is not only delusional but dangerous. </p>
+<h4 id="feedback-loops">Feedback loops<a class="headerlink" href="#feedback-loops" title="Permanent link">&para;</a></h4>
+<p>When services become good at predicting what content users want to see, they may end up showing people only opinions they already agree with, leading to echo chambers in which stereotypes, misinformation, and polarization can breed. As we already seeing in social media on election campaigns</p>
+<p>We can't always predict when such feedback loops happen. But many consequences can be predicted by thinking about the entire system. </p>
+<h3 id="privacy-and-tracking">Privacy and Tracking<a class="headerlink" href="#privacy-and-tracking" title="Permanent link">&para;</a></h3>
+<p>There are ethical problems with data collection itself. When user's activity is tracked and logged as a side effect of other things they are doing, what is the relationship between the organizations collecting the data and the user? The service no longer just does what the user tells it to do, but takes on interest of its own which may conflict with the user's interest.</p>
+<p>Tracking behavioral data can be helpful where search results are improved by ranking of search results click through rate; recommending "people who liked X also liked Y" helps users discover interesting and useful things. However, depending on company's business model, tracking doesn't stop there. If service is funded through advertising and advertisers are customers, then user's interests take second place. Tracking become more detailed and analysis become further reaching. </p>
+<p>Matin think this relationship can be appropriately described with a word that has more sinister connotations: <em>surveillance</em></p>
+<h4 id="surveillance">Surveillance<a class="headerlink" href="#surveillance" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>As a thought experiment, try replacing the word data with surveillance, and observe if common phrases still sound so good [93]. How about this: “In our surveillance- driven organization we collect real-time surveillance streams and store them in our surveillance warehouse. Our surveillance scientists use advanced analytics and surveillance processing in order to derive new insights.”</p>
+</blockquote>
+<p>As we rush toward internet of things, we are rapidly approaching a world in which every inhabited space contains at least one internet connected microphone, in the form of smartphones, smart TVs, voice controlled assistant device, baby monitors. Many of those devices have terrible security record. </p>
+<blockquote>
+<p>Even the most totalitarian and repressive regimes could only dream of putting a microphone in every room and forcing every person to constantly carry a device capable of tracking their location and movements. Yet we apparently voluntarily, even enthusiastically, throw ourselves into this world of total surveillance. The difference is just that the data is being collected by corporations rather than government agencies</p>
+</blockquote>
+<h4 id="consent-and-freedom-of-choice">Consent and freedom of choice<a class="headerlink" href="#consent-and-freedom-of-choice" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>the relationship between the service and the user is very asymmetric and one- sided. The terms are set by the service, not by the user [99].</p>
+</blockquote>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This chapter discussed new approaches to design data systems, Martin included personal opinions and speculations about the future. We discussed how to solve <em>data integration</em> problem by using batch processing and event streams to let data changes flow between different systems.</p>
+<p>In this approach, certain system are acting as systems of record, and other data is derived from them through transformations. in this way we can maintain indexes, cache, machine learning models, statistical summaries and more. By making these derivation and transformations asynchronous and loosely coupled, it increased robustness and fault tolerance of the system as a whole. </p>
+<p>These process are quite similar to what databases already do internally, so we recast the idea of <em>unbundling</em> the components of a database. And building an application by composing these loosely coupled components</p>
+<p>Derived state can be updated by observing changes in underlying data. We can extend this idea all the way through to the end user device and build user interfaces that dynamically update to reflect data changes and continue to work offline. </p>
+<p>Then we discussed end to end operation ID to make operations idempotent and by checking constraints asynchronously, client can either wait until the check has passed, or go ahead without waiting but risk having to apologize about a constraint violation. This approach is much more scalable and robust than distributed transactions. </p>
+<p>By structuring applications around dataflow and checking constraints asynchronously, we can avoid most coordination and create systems that maintain integrity that still performs well. </p>
+<p>Finally we took step back and discussed about ethical aspects of building data intensive applications. As software and data are having such a large impact on the world, we engineers must remember that we carry a responsibility to work toward the kind of world that we want to live in: a world that treats people with humanity and respect. </p>
+<p>reference that are mentioned multiple times 3, 59, 60</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

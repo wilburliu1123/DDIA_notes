@@ -1,0 +1,1546 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter%203/">
+      
+      
+        <link rel="next" href="../Chapter%205/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 4 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#formats-for-encoding-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2011/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#formats-for-encoding-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formats for Encoding Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formats for Encoding Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#language-specific-foramts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Specific Foramts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-xml-and-binary-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON, XML, and Binary variants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON, XML, and Binary variants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary encoding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thrift-and-protocol-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thrift and Protocol Buffers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thrift and Protocol Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-tags-and-schema-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field tags and schema evolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datatypes-and-schema-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datatypes and schema evolution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avro
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Avro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writers-schema-and-reads-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writer's schema and read's schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-evolution-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema evolution rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-generated-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamically generated schemas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-generation-and-dynamically-typed-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code generation and dynamically typed languages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-merits-of-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Merits of Schemas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modes-of-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modes of Dataflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modes of Dataflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-through-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow Through Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataflow Through Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#different-values-written-at-different-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different values written at different times
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archival-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archival storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-through-services-rest-and-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow Through Services: REST and RPC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataflow Through Services: REST and RPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      web services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problems-with-remote-procedure-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems with remote procedure calls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-directions-for-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current directions for RPC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-encoding-and-evolution-for-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data encoding and evolution for RPC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-passing-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message-Passing Dataflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message-Passing Dataflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-brokers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message brokers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-actor-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed actor frameworks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%208/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#formats-for-encoding-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formats for Encoding Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formats for Encoding Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#language-specific-foramts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language Specific Foramts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-xml-and-binary-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON, XML, and Binary variants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON, XML, and Binary variants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary encoding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thrift-and-protocol-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thrift and Protocol Buffers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thrift and Protocol Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-tags-and-schema-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field tags and schema evolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datatypes-and-schema-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datatypes and schema evolution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avro
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Avro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writers-schema-and-reads-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writer's schema and read's schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-evolution-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema evolution rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-generated-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamically generated schemas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-generation-and-dynamically-typed-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code generation and dynamically typed languages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-merits-of-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Merits of Schemas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modes-of-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modes of Dataflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modes of Dataflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-through-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow Through Databases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataflow Through Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#different-values-written-at-different-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different values written at different times
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archival-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archival storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-through-services-rest-and-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataflow Through Services: REST and RPC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataflow Through Services: REST and RPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      web services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problems-with-remote-procedure-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems with remote procedure calls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-directions-for-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current directions for RPC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-encoding-and-evolution-for-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data encoding and evolution for RPC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-passing-dataflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message-Passing Dataflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message-Passing Dataflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-brokers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message brokers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-actor-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed actor frameworks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 4</h1>
+
+<p>Encoding and Evolution 
+Application 会因为新的需求而不断改变，这也在<a href="../Chapter%201/#evolvability-making-change-easy">Chapter 1#Evolvability Making change easy</a> 里面提到过了，那就是我们需要让我们的 system easy to adapt change </p>
+<p>通常情况下，application 功能的变化也意味着对应的 data 发生改变，new fields being added, record type needs to be captured, or exisiting data needs to be presented in a new way</p>
+<p><a href="../Chapter%202/">Chapter 2</a> 里面提到的 relational data 通常 assume 所有的 data 会根据已经定义好的 schema 来操作，尽管 schema 可以更新，但一个时间点只能有一个 schema 有效</p>
+<p>与之相对的是 schema on read ("schemaless") database. 这种database 可以同时存老的和新的 data formats，这时候如果有 schema change，那么 application 层就需要做出相应的改变，比如你新加了一个 field， 你application就要判断这个 field 是否为空
+但当一个 application 变得复杂或者很庞大的时候这种方法通常不行
+- With server-side app you may want to perform a <em>rolling upgrade</em>, deploy new version to few nodes at a time to ensure it can run smoothly.
+- With client-side applications, 你就只能祈祷用户及时安装你的更新了</p>
+<p>这也意味着新/老的代码，新/老的 data formats 可能同时存在，所以为了我们的 system 能正常运转，我们需要两个方向的 compactibility
+- <em>Backward compatibility</em>. Newer code can read data that was written by older code.
+- <em>Forward compatibility</em>. Older code can read data that was written by newer code.</p>
+<p>backward compatibility 通常不难实现，作为更新代码的人，你知道之前的 data format 所以只需要添加相应的判断就可以了
+forward compatibility 则需要older code to ignore additions made by a newer version of the code</p>
+<p>这一章会看几种不同的 data format encoding (JSON, XML, Protocol Buffers, Thrift, and Avro) 以及它们如何 handle schema changes 并且保证 old/new data and code coexist in the system</p>
+<p>然后会讨论这些 formats used for data storage and communication: web services, Representational State Transfer (REST), and remote procedure calls (RPC), as well as message passing system (message queues and actors)</p>
+<h2 id="formats-for-encoding-data">Formats for Encoding Data<a class="headerlink" href="#formats-for-encoding-data" title="Permanent link">&para;</a></h2>
+<p>Programs 通常跟 2种数据打交道
+- In memory, data kept in objects, arrays, maps, trees, and these data structure are optimized for CPU access (pointers)
+- When write data to file or over network, you have to <em>encode</em> it as some kind of self-contained sequence of bytes (e.g. JSON document). Since a pointer wouldn't make sense to any other process, this sequence of bytes looks quite different from the data structures used in memory</p>
+<p>所以在这两种 representation 就需要一种转换  (translation), 从 in-memory 到 byte sequence is called <em>encoding</em> (also called <em>serialization</em> or <em>marshalling</em>), 反过来叫做 <em>decoding</em> (<em>parsing</em>, <em>deserialization</em>, <em>unmarshalling</em>)</p>
+<p>因为 <em>serialization</em> 这个词在 transaction isolation level 里面还会用到，这本书就用 <em>encoding</em> 这个词了，尽管现实普遍用 <em>serialization</em> 这个词</p>
+<p>下面过一下不同的 encoding formats</p>
+<h3 id="language-specific-foramts">Language Specific Foramts<a class="headerlink" href="#language-specific-foramts" title="Permanent link">&para;</a></h3>
+<p>每个语言都有自己的 encoding 方式</p>
+<blockquote>
+<p>Java has java.io.Serializable [1], Ruby has Marshal [2], Python has pickle [3], and so on. Many third-party libraries also exist, such as Kryo for Java [4].</p>
+</blockquote>
+<p>但他们有很多限制
+- Tied to a particular programming language. Not possible to integrate your system to other organizations
+- Security problem because decoding process need to construct object from bytes and attacker can instantiate arbitrary class when passing byte sequence to your system
+- Hard to versioning data
+- Efficiency is bad (Java is famous for bad performance)</p>
+<h3 id="json-xml-and-binary-variants">JSON, XML, and Binary variants<a class="headerlink" href="#json-xml-and-binary-variants" title="Permanent link">&para;</a></h3>
+<p>JSON 和 XML 可能是很普遍的 encoding 格式了，widely known, widely supported, and widely disliked. XML 被认为 too verbose. JSON 是因为 build-in support by web browsers
+CSV 也是另一个 popular format 尽管没那么强大</p>
+<p>JSON, XML, CSV 是以文字形式存储的，所以也是 “human readable" format
+但他们还是有不少问题
+- Ambiguity around encoding of numbers. In XML and CSV, 0. you cannot distinguish between a number and a string that happens to consist of digits (except by referring to an external schema). JSON 能区分，但不区分 integer and float point numbers which has precision issue (JSON 无法辨识大于 <span class="arithmatex">\(2^{53}\)</span>的数，The JSON returned by Twitter’s API includes tweet IDs twice, once as a JSON number and once as a decimal string, to work around the fact that the numbers are not correctly parsed by JavaScript applications )
+- JSON, XML have good support for Unicode (human readable text) but not binary strings. Binary strings are useful (such as picture) so people get around by encoding the binary data as text using Base64. This works but increases the data size by 33%
+- There is optional schema support for both XML [11] and JSON [12]. These schema languages are quite powerful, and thus quite complicated to learn and implement.
+- CSV does not have any schema, so it is up to the application to define the mean‐ ing of each row and column. If an application change adds a new row or column, you have to handle that change manually. CSV is also a quite vague format (what happens if a value contains a comma or a newline character?).</p>
+<p>即使有这些不足，JSON, XML, CSV 在很多场景下足够用了</p>
+<h4 id="binary-encoding">Binary encoding<a class="headerlink" href="#binary-encoding" title="Permanent link">&para;</a></h4>
+<p>如果只在内部使用 JSON 或者 XML，那么就可以用 binary 的方式(BSON, BJSON, UBJSON, BISON, WBXML, Fast Infoset) 来存储和传输，因为数据越大 binary 节省的空间就越多
+书里要用下面这个例子来看 binary encoding
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;userName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Martin&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;favoriteNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;interests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;daydreaming&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hacking&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><img alt="message_pack_encoing_ex.png" src="../img/message_pack_encoing_ex.png" /></p>
+<ol>
+<li>0x83 用0/1 表示出来是 <code>1000 0011</code> 也就是top 4 bit indicate it is an <em>object</em> with 3 fields. (In case you’re wondering what hap‐ pens if an object has more than 15 fields, so that the number of fields doesn’t fit in four bits, it then gets a different type indicator, and the number of fields is encoded in two or four bytes.)</li>
+<li><code>0xa8</code> 是 <code>1010 1000</code> 表示接下来的数据是一个 长度为8(<code>1000</code>) 的 string (<code>1010</code>) </li>
+<li>接下来的 8 bytes 就是 前面提到的 string 的数据，因为已经知道了长度，这里不需要任何 marker 告诉我们string 哪里结束</li>
+<li><code>0xa6</code> 表示一个长度为 6 的 string </li>
+</ol>
+<blockquote>
+<p>The binary encoding is 66 bytes long, which is only a little less than the 81 bytes taken by the textual JSON encoding (with whitespace removed). All the binary encodings of JSON are similar in this regard. It’s not clear whether such a small space reduction (and perhaps a speedup in parsing) is worth the loss of human-readability.</p>
+</blockquote>
+<p>下面举的例子是如何把这个 66 bytes 的data 用仅 32 bytes 表示出来</p>
+<h3 id="thrift-and-protocol-buffers">Thrift and Protocol Buffers<a class="headerlink" href="#thrift-and-protocol-buffers" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Apache Thrift [15] and Protocol Buffers (protobuf) [16] are binary encoding libraries that are based on the same principle. Protocol Buffers was originally developed at Google, Thrift was originally developed at Facebook, and both were made open source in 2007–08 [17].</p>
+<p>Both Thrift and Protocol Buffers require a schema for any data that is encoded. To encode the data in Example 4-1 in Thrift, you would describe the schema in the Thrift interface definition language (IDL) like this:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w">  </span><span class="n">userName</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kt">i64</span><span class="w">     </span><span class="n">favoriteNumber</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kt">list</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="w"> </span><span class="n">interest</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">user_name</span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">optional</span><span class="w"> </span><span class="kt">int64</span><span class="w">  </span><span class="na">favorite_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">repeated</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">interests</span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+Thrift and protobuf both has code generation tool that takes the schema definition and produces classes that implement the schema in various programming languages. </p>
+<p>Application code can call this generated code to encode or decode records of the schema 
+<img alt="Thrift_binary_ex.png" src="../img/Thrift_binary_ex.png" /></p>
+<p>跟 figure 4.1 一样，每一个 field 有一个 type annotation (whether it is a string, integer, list, etc) and length indication. Strings are encoded in UTF8 
+The big difference is that there is no field names. (userName, favoriteNumber, interest) 
+Instead, the encoded data contains <em>field tags</em>, which are numbers (1, 2, 3) Those are numbers in schema definition </p>
+<p>Thrift CompactProtocol encoding is semantically equivalent to BinaryProtocol, but it packs field type and tag number into a single byte and by using variable-length integers, (use 2 bytes rather than 8 bytes for number 1337)
+This way it can pack this message into 34 bytes
+<img alt="Thrift_Compact_Protocol.png" src="../img/Thrift_Compact_Protocol.png" />
+ProtoBuf is very similar to Thrift's CompactProtocol
+<img alt="ProtoBuf.png" src="../img/ProtoBuf.png" /></p>
+<h4 id="field-tags-and-schema-evolution">Field tags and schema evolution<a class="headerlink" href="#field-tags-and-schema-evolution" title="Permanent link">&para;</a></h4>
+<p>Schemas inevitably change over time. How do Thrift and ProtoBuf handle schema changes while keeping backward and forward compactibility? 
+Each field is identified by its tag number and annotated with a datatype. Field tag is important to the meaning of encoded data. You can change the name of a field in the schema, since the encoded data never refers to field names, but you cannot change a field tag, since it will make all existing encoded data invalid.</p>
+<p>You can adding new field by giving each new field a new tag number. If old code tries to read data written by new code, including a new field with a tag number it doesn't recognize, it can simply ignore it. </p>
+<p>The datatype annotation allows the parser to determine how many bytes it needs to skip. This maintains forward compatibility: old code can read records written by new code</p>
+<p><em>What about backward compatibility</em>? As long as each field has a unique tag number, new code can always read old data, because tag number <em>don't change</em> and thus have same meaning</p>
+<p>The only detail is if you add a new field, you cannot make it required since old code cannot write new data field and new code will fail upon parsing</p>
+<p>Thus every field you add after the initial deployment of the schema must be optional or have a default value </p>
+<p>Removing a field is same, you can only remove a field that is optional and never use the same tag number again </p>
+<h4 id="datatypes-and-schema-evolution">Datatypes and schema evolution<a class="headerlink" href="#datatypes-and-schema-evolution" title="Permanent link">&para;</a></h4>
+<p>What about changing the datatype of a field? (int to string, etc) 
+It is certainly possible but be careful of losing precision or data get truncated. For example, change a 32bit integer to 64 bit integer. New code can easily fill the rest with 0 but old code will use 32bit to try to hold 64 bit value. If the decoded value doesn't fit in 32 bits, it will be truncated.</p>
+<p>Protobuf uses <em>repeated</em> instead of array datatype. This has nice effect that it's okay to change an <code>optional</code> to <code>repeated</code>. New code reading old data sees a 0 or 1 elements and old code read new data see only the last element of the list</p>
+<p>Thrift has list type which is parameterized with the datatype of the list elements. This doesn't allow evolution from single valued to multivalued datatype but it has advantage of nested lists </p>
+<h3 id="avro">Avro<a class="headerlink" href="#avro" title="Permanent link">&para;</a></h3>
+<p>Apache Avro is another binary encoding format. Started as a subproject of Hadoop
+Avro also uses schema and has 2 schema languages 
+1. Avro IDL intended for human editing
+2. Based on JSON that is more easily machine readable
+<div class="highlight"><pre><span></span><code>record Person {
+    string userName;
+    union {null, long} favoriteNumber = null;
+    array&lt;string&gt; interests;
+}
+</code></pre></div></p>
+<p>equivalent JSON 
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;record&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;userName&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;favoriteNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;null&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;long&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;interests&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">}},</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>no tag number in Avro's schema, but Avro binary encoding is just 32 bytes 
+<img alt="avro_encoding.png" src="../img/avro_encoding.png" />
+Nothing to identify fields or their datatypes. The encoding simply consists of values concatenated together. Integer is encoded using a variable-length encoding</p>
+<p>The parse the binary data, you need to go through the fields in the order they appear in the schema. This means the binary data can only be decoded correctly if the code reading the data is using <em>exact same schema</em> as the code that wrote the data. 
+So how does Avro support schema evolution? </p>
+<h4 id="writers-schema-and-reads-schema">Writer's schema and read's schema<a class="headerlink" href="#writers-schema-and-reads-schema" title="Permanent link">&para;</a></h4>
+<p>Avro encodes the data using whatever version it knows about. This is known as <em>writer's schema</em></p>
+<p>When an application want to decode some data (read from file or database, receive from network etc), it is expecting the data to be in some schema, which is known as <em>reader's schema</em>
+The key idea with Avro is that writer's schema and reader's schema don't have to be the same. They only need to be compatible. </p>
+<blockquote>
+<p>Avro library resolves the differences by looking at the writer’s schema and the reader’s schema side by side and translating the data from the writer’s schema into the reader’s schema. The Avro specification [20] defines exactly how this resolution works, and it is illustrated in Figure 4-6.</p>
+</blockquote>
+<p><img alt="avro_schema_evolution.png" src="../img/avro_schema_evolution.png" />
+order doesn't matter because schema resolution matches up by the fields name 
+If writer schema has a field that is not showing in reader's schema, reader's schema will fill it with default value</p>
+<h4 id="schema-evolution-rules">Schema evolution rules<a class="headerlink" href="#schema-evolution-rules" title="Permanent link">&para;</a></h4>
+<p>With Avro, forward compatibility means you can have newer version of the schema as writer and older version of the schema as reader. And reverse, <em>backward compatibility</em> means new version of the schema as reader and an old version as writer </p>
+<p>To maintain compatibility, you may only add or remove a field that has a default value. </p>
+<p>In Avro, if you want to allow a field to be null, you have to use a <em>union</em> type. For example, <code>union { null, long, string }</code> field indicates that field can be a number, or a string, or null. You can only use null as a default value if it is one branch of the union. This is verbose but help prevent some bugs</p>
+<p>So Avro doesn't have <code>optional</code> and <code>required</code> markers like ProtoBuf or Thrift </p>
+<blockquote>
+<p>There is an important question that we’ve glossed over so far: <em>how does the reader know the writer’s schema with which a particular piece of data was encoded?</em> We can’t just include the entire schema with every record, because the schema would likely be much bigger than the encoded data, making all the space savings from the binary encoding futile.</p>
+</blockquote>
+<p>Depends on the context. given few examples
+<em>Large file with lots of records</em></p>
+<blockquote>
+<p>A common use for Avro—especially in the context of Hadoop—is for storing a large file containing millions of records, all encoded with the same schema. (We will discuss this kind of situation in Chapter 10.) In this case, the writer of that file can just include the writer’s schema once at the beginning of the file. Avro specifies a file format (object container files) to do this.</p>
+</blockquote>
+<p><em>Database with individually written records</em></p>
+<blockquote>
+<p>In a database, different records may be written at different points in time using different writer’s schemas—you cannot assume that all the records will have the same schema. The simplest solution is to include a version number at the beginning of every encoded record, and to keep a list of schema versions in your database. 
+A reader can fetch a record, extract the version number, and then fetch the writer’s schema for that version number from the database. Using that writer’s schema, it can decode the rest of the record.</p>
+</blockquote>
+<p><em>Sending records over a network connection</em></p>
+<blockquote>
+<p>When two processes are communicating over a bidirectional network connection, they can negotiate the schema version on connection setup and then use that schema for the lifetime of the connection.</p>
+</blockquote>
+<h4 id="dynamically-generated-schemas">Dynamically generated schemas<a class="headerlink" href="#dynamically-generated-schemas" title="Permanent link">&para;</a></h4>
+<p>Avro 没有 tag number 是一种优势， 因为他可以更容易实现 dynamically generate schemas。 比如你想把一个 relational database 的内容用binary 格式 dump 到一个 file 里面，Avro 可以根据 relational schema generate Avro schema 然后直接 dump 到一个 Avro object container file 里面， column name match field name in Avro (<a href="http://radar.oreilly.com/2014/11/the-problem-of-managing-schemas.html">reference</a>)</p>
+<p>与之相对的，thrift and protobuf 则需要手动给一个 field tag. 每一次 database schema changes, 一个 admin 就需要手动更新 mapping from database column names to field tags. </p>
+<h4 id="code-generation-and-dynamically-typed-languages">Code generation and dynamically typed languages<a class="headerlink" href="#code-generation-and-dynamically-typed-languages" title="Permanent link">&para;</a></h4>
+<p>Thrift and protobuf's code generation is helpful for statically typed languages but not much useful in dynamically typed languages </p>
+<blockquote>
+<p>Avro provides optional code generation for statically typed programming languages, but it can be used just as well without any code generation. If you have an object con‐ tainer file (which embeds the writer’s schema), you can simply open it using the Avro library and look at the data in the same way as you could look at a JSON file. The file is self-describing since it includes all the necessary metadata.</p>
+<p>This property is especially useful in conjunction with dynamically typed data pro‐ cessing languages like Apache Pig [26]. In Pig, you can just open some Avro files, start analyzing them, and write derived datasets to output files in Avro format without even thinking about schemas.</p>
+</blockquote>
+<h3 id="the-merits-of-schemas">The Merits of Schemas<a class="headerlink" href="#the-merits-of-schemas" title="Permanent link">&para;</a></h3>
+<p>ProtoBuf, Thrift, and Avro all use schema for encoding. </p>
+<p>这主意也不是新发明的</p>
+<blockquote>
+<p>The ideas on which these encodings are based are by no means new. For example, they have a lot in common with ASN.1, a schema definition language that was first standardized in 1984 [27]. It was used to define various network protocols, and its binary encoding (DER) is still used to encode SSL certificates (X.509), for example [28].
+ASN.1 supports schema evolution using tag numbers, similar to Protocol Buffers and Thrift [29] However, it’s also very complex and badly documented, so ASN.1 is probably not a good choice for new applications.</p>
+</blockquote>
+<p>Compare to text based encoding, binary encoding have a number of nice properties:
+- They can be much more <em>compact</em> than the various “binary JSON” variants, since they can omit field names from the encoded data.</p>
+<ul>
+<li>
+<p><em>The schema is a valuable form of documentation</em>, and because the schema is required for decoding, you can be sure that it is up to date (whereas manually maintained documentation may easily diverge from reality).</p>
+</li>
+<li>
+<p>Keeping a database of schemas allows you to check forward and backward com‐ patibility of schema changes, before anything is deployed.</p>
+</li>
+<li>
+<p>For users of statically typed programming languages, the ability to generate code from the schema is useful, since it enables type checking at compile time.</p>
+</li>
+</ul>
+<p>In summary, schema evolution allows the same kind of flexibility as schemaless/ schema-on-read JSON databases provide</p>
+<h2 id="modes-of-dataflow">Modes of Dataflow<a class="headerlink" href="#modes-of-dataflow" title="Permanent link">&para;</a></h2>
+<p>每当你从一个 process 给另一个不 share memory的 process 发数据的时候 (比如写入一个文件或者网络传输)，你就需要 encode data as sequence of bytes, 上面已经讨论了不同的encoding 的方式了</p>
+<p>而数据从一个 process flow 到另一个 process 有很多不同的方式，below introduce most common ways of how data flow through one process to another
+- Via Database
+- Via service calls
+- Via async message passing</p>
+<h3 id="dataflow-through-databases">Dataflow Through Databases<a class="headerlink" href="#dataflow-through-databases" title="Permanent link">&para;</a></h3>
+<p>In Database, the process that <em>writes</em> to database encodes the data, and process that <em>reads</em> from database decodes it. There may be just one process, in this case you can think of this as <em>sending a message to your future self</em>.</p>
+<p>Backward compatibility is clearly necessary here; otherwise your future self won't be able to decode what you previously wrote. 就好像拉丁文一样，如果没有对照书籍，大部分人已经看不懂了</p>
+<blockquote>
+<p>In general, it’s common for several different processes to be accessing a database at the same time.</p>
+</blockquote>
+<p>上面提到的 rolling upgrade 就会让不同的 process access 一个database 并且 newer code maybe write to database where older code reads it</p>
+<blockquote>
+<p>the desirable behavior is usually for the old code to keep the new field intact, even though it couldn’t be interpreted.</p>
+</blockquote>
+<p>老代码对新的 field 不进行改动，而且 encoding 的时候要小心，不然的话有可能丢失数据
+<img alt="lost_data_from_old_code.png" src="../img/lost_data_from_old_code.png" /></p>
+<h4 id="different-values-written-at-different-times">Different values written at different times<a class="headerlink" href="#different-values-written-at-different-times" title="Permanent link">&para;</a></h4>
+<p>DB 通常接受任何时间的写入请求，这意味着你数据库里可能有 5 ms 或者 5 年前的数据。如果你deploy new version of your application (server-side), 你几分钟之内可能就把新版本部署了，但是DB 里面的数据还在那里，除非一个5年前的 record 刚好被重写过，不然还是 5年前的 schema。这种现象也叫 <em>data outlives code</em></p>
+<blockquote>
+<p>Rewriting (migrating) data into a new schema is certainly possible, but it’s an expen‐ sive thing to do on a large dataset, so most databases avoid it if possible. Most rela‐ tional databases allow simple schema changes, such as adding a new column with a null default value, without rewriting existing data.
+...
+Schema evolution thus allows the entire database to appear as if it was encoded with a single schema, even though the underlying storage may contain records encoded with various historical versions of the schema.</p>
+</blockquote>
+<p>重写数据当然可行但是代价太高，schema evolution 则更实用，更现实</p>
+<blockquote>
+<p>LinkedIn’s document database Espresso uses Avro for storage, allowing it to use Avro’s schema evolution rules</p>
+</blockquote>
+<p>原来 linkedin 用 Avro，我说 Martin 怎么这么喜欢 Avro </p>
+<h4 id="archival-storage">Archival storage<a class="headerlink" href="#archival-storage" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Perhaps you take a snapshot of your database from time to time, say for backup pur‐ poses or for loading into a data warehouse</p>
+</blockquote>
+<p>时不时给 DB 做一次备份，而这一个时间点的备份也意味着当时的 schema 跟着被备份了，所以用最新的 schema 备份更好</p>
+<h3 id="dataflow-through-services-rest-and-rpc">Dataflow Through Services: REST and RPC<a class="headerlink" href="#dataflow-through-services-rest-and-rpc" title="Permanent link">&para;</a></h3>
+<p>当一个 process 要通过网络传输数据的时候，也有很多种方法可以选择。最常见的是 clients and servers. Server 提供一个 API 然后 client 可以用这个 API 发送请求，这个 server 提供的 API 也叫做 <em>service</em> </p>
+<p>web works this way: clients (web browsers) make requests to web servers, making <code>GET</code> requests to download HTML, CSS, JS, images etc. Because browsers, server agree on this standard, you could use any browser to access any website. </p>
+<p>Web browser is not only type of client. Mobile device or desktop computer can also make network request to a server. Client side JavaScript application running inside the browser can use XMLHttpRequest to become a HTTP client (this technique is known as <em>Ajax</em>) In this case, server response is typically not HTTP but encoding that is convenient for client side application to process (JSON for example) </p>
+<p>A server can itself be a client to another service. Which mean it make request to other service to get some data it needed. This is also called <em>service oriented architecture (SOA)</em> or <em>microservices</em> architecture</p>
+<p>service are similar to database: they allow clients to submit and query data. But service expose application specific API rather than query language that can query any data. </p>
+<p>This allows inputs and outputs predetermine by the business logic 
+Key goal of service-oriented/microservices architecture is to make application easier to change and maintain</p>
+<h4 id="web-services">web services<a class="headerlink" href="#web-services" title="Permanent link">&para;</a></h4>
+<p>When HTTP is used as protocol for talking to a service, it is called <em>web service</em>. This is misleading because web services are used in many other context
+- A client application running on user's device (mobile, JavaScript web app using Ajax) making requests to a service over HTTP. These request go over public internet
+- One service make requests to another service own by the same organization. (often in same datacenter) As part of service-oriented architecture (software support those use case is sometimes called <em>middleware</em>)
+- One service making requests to a service owned by a different organization via internet. (data exchange between different organization backend system) This include public APIs provided by online services, such as credit card processing systems, or OAuth for shared access to user data. <em>REST</em> and <em>SOAP</em> are 2 popular approaches </p>
+<p>REST is not a protocol but a design philosophy that builds upon HTTP. It emphasizes simple data formats, using URLs for identifying resources and using HTTP features for cache control, authentication, and content type negotiation. </p>
+<p>REST is gaining popularity compared to SOAP and is often associated with microservices. An API designed according to the principles of REST is called RESTful</p>
+<p>SOAP is an XML-based protocol for making network API requests. Although it is most commonly used over HTTP, it aims to be independent from HTTP. </p>
+<p>The API of SOAP web service is described using an XML based language called the <em>Web Services Description Language (WSDL)</em> WSDL enables code generation so that a client can access a remote service using local classes and method calls</p>
+<p>WSDL is not designed to be human-readable, SOAP messages are often too complex to construct manually. So it rely heavily on tool support. For users of programming languages that are not supported SOAP vendors, integration with SOAP is difficult
+这也是为什么 JSON 这么流行了吧， browser natively support and easy to construct by hand</p>
+<blockquote>
+<p>RESTful APIs tend to favor simpler approaches, typically involving less code genera‐ tion and automated tooling. A definition format such as OpenAPI, also known as Swagger [40], can be used to describe RESTful APIs and produce documentation.</p>
+</blockquote>
+<h4 id="problems-with-remote-procedure-calls">Problems with remote procedure calls<a class="headerlink" href="#problems-with-remote-procedure-calls" title="Permanent link">&para;</a></h4>
+<p>Remote procedure call 有很多局限性，Enterprise Java Bean (EJB), Java's Remote Method Invocation 局限于 Java，Distributed Component Object Model (DCOM) 局限于 microsoft. RPC 诞生于 1970s，目的就是为了通过网络能像在本地一样 call 一个 function，但这个主意从根本上就有问题，主要还是因为网络这个不确定性因素。整个 distributed system 那么复杂就是因为网络的问题……
+- local function either succeed for fail. RPC might fail due to network issue, machine being slow 
+- Local function either return result, throws exception, never returns. Network request might <em>time out</em> which you don't know what happened. <a href="../Chapter%208/">Chapter 8</a> 会详细讲
+- Retry on network request needs to be idempotent (deduplication or result is always the same) <a href="../Chapter%2011/">Chapter 11</a> will talk more about this
+- Network is slower than a local function call. 
+- Local function call just use memory where network call needs to encode data into sequence of bytes 
+- Client and service might be in different language so RPC framework must translate datatypes from one language into another</p>
+<h4 id="current-directions-for-rpc">Current directions for RPC<a class="headerlink" href="#current-directions-for-rpc" title="Permanent link">&para;</a></h4>
+<p>RPC isn't going away. Thrift and Avro come with RPC support. gRPC is an RPC implementation using protobuf</p>
+<p>New generation of RPC framework use <em>futures (promises)</em> to encapsulate asynchronous action that may fail. gRPC supports <em>streams</em> where a call consists of not just one request and one response but series of request and response</p>
+<p>Some framework provide <em>service discovery</em> which allow client to find out which IP address and port number it can find a particular service. </p>
+<p>Binary encoding achieve better performance where RESTful is good for experimentation and debugging </p>
+<blockquote>
+<p>(you can simply make requests to it using a web browser or the command-line tool curl, without any code generation or software installation), it is supported by all main‐ stream programming languages and platforms, and there is a vast ecosystem of tools available (servers, caches, load balancers, proxies, firewalls, monitoring, debugging tools, testing tools, etc.).</p>
+</blockquote>
+<p>public API often use REST API where main focus of RPC is services owned by same organization (typically within same datacenter)</p>
+<h4 id="data-encoding-and-evolution-for-rpc">Data encoding and evolution for RPC<a class="headerlink" href="#data-encoding-and-evolution-for-rpc" title="Permanent link">&para;</a></h4>
+<p>跟 database 一样， RPC 的 client 和 server 也需要deployed independently. 不过 RPC 相对来说更容易一些，假设 server 都先 update了，client 其次，那么我们只需要在 request 的时候考虑backward compatibility， forward compatibility on response</p>
+<p>RPC scheme are inherited from whatever encoding it is used
+- Thrift, gRPC, Avro can be evolved based on the compatibility rules
+- SOAP are specified with XML schemas 
+- RESTful API commonly use JSON or URI encoded request parameters for request. </p>
+<blockquote>
+<p>Service compatibility is made harder by the fact that RPC is often used for communi‐ cation across organizational boundaries, so the provider of a service often has no control over its clients and cannot force them to upgrade. Thus, compatibility needs to be maintained for a long time, perhaps indefinitely. If a compatibility-breaking change is required, the service provider often ends up maintaining multiple versions of the service API side by side.</p>
+</blockquote>
+<p>public API 通常是需要多个版本同时支持的, 因为他们没法控制 client 什么时候更新
+说这让client 发送请求的时候给出 version number </p>
+<blockquote>
+<p>There is no agreement on how API versioning should work (i.e., how a client can indicate which version of the API it wants to use [48]). For RESTful APIs, common approaches are to use a version number in the URL or in the HTTP Accept header. For services that use API keys to identify a particular client, another option is to store a client’s requested API version on the server and to allow this version selection to be updated through a separate administrative interface</p>
+</blockquote>
+<h3 id="message-passing-dataflow">Message-Passing Dataflow<a class="headerlink" href="#message-passing-dataflow" title="Permanent link">&para;</a></h3>
+<p>我们已经看了信息是如何从一个 process flow 到另一个 process了，其中包括 REST and RPC (network that expect response as soon as possible) 以及 database (one process write encoded data, another process reads it in future)</p>
+<p>this section will talk about <em>asynchronous message-passing</em> systems which are somewhere between RPC and databases</p>
+<p>They are similar to RPC where client sends a request called <em>message</em> 
+They are similar to database in that message is not sent via direct network connection, but via an intermediary called <em>message broker</em> (also called <em>message queue</em> or <em>message oriented middleware</em>) which stores the message temporarily </p>
+<p>Message broker 对于direct RPC 有几个好处
+- Act as buffer if recipient is unavailable or overloaded 
+- It can auto redeliver messages to a process that has crashed (prevent message being lost)
+- Avoids sender needing to know the IP address and port number of the recipient (useful in cloud where VM come and go)
+- Allows one message send to several clients
+- logically decouples. the sender from recipient </p>
+<p>Message passing communication is usually one-way: sender don't expect receiving a reply from recipient. </p>
+<blockquote>
+<p>This communication pattern is asynchronous: the sender doesn’t wait for the message to be delivered, but simply sends it and then forgets about it.</p>
+</blockquote>
+<h4 id="message-brokers">Message brokers<a class="headerlink" href="#message-brokers" title="Permanent link">&para;</a></h4>
+<p>以前 message broker 都是商用软件主导的 TIBCO, IBM etc. 最近则是开源更加流行 RabbitMQ, ActiveMQ, HornetQ, NETS, Kafka</p>
+<p>details vary but in general, message brokers are used as follows:
+1 process sends a message to a named <em>queue</em> or <em>topic</em>, the broker ensures that the message is delivered to 1 or more <em>consumers</em> or <em>subscribers</em> to that queue or topic. There can be many producers and consumers on same topic </p>
+<p>Topic is one-way dataflow. however, consumer itself may publish message to another topic (you can chain them together) or to a reply queue for sender (request/response dataflow similar to RPC)</p>
+<h4 id="distributed-actor-frameworks">Distributed actor frameworks<a class="headerlink" href="#distributed-actor-frameworks" title="Permanent link">&para;</a></h4>
+<p>The <em>actor model</em> is a programming model for concurrency in a single process. Rather than dealing with threads (which is associated with lock, deadlock, racing problem), logic is encapsulated in <em>actors</em>. Each actor represents 1 client or entity. It may have some local state and it communicates with other actors by sending and receiving async messages. Since actor process 1 message at a time, it doesn't need to worry about threads. </p>
+<p>In <em>distributed actor frameworks</em>, this programming model is used to scale an application across multiple nodes. Same mechanism is used, no matter whether the sender and recipient are on the same node or different nodes. </p>
+<blockquote>
+<p>A distributed actor framework essentially integrates a message broker and actor programming model into a single framework. </p>
+</blockquote>
+<p>3 popular distributed actor frameworks handle encoding as follows: 
+- <em>Akka</em> uses Java’s built-in serialization by default, which does not provide forward or backward compatibility. However, you can replace it with something like Protocol Buffers, and thus gain the ability to do rolling upgrades
+- <em>Orleans</em> by default uses a custom data encoding format that does not support rolling upgrade deployments; to deploy a new version of your application, you need to set up a new cluster, move traffic from the old cluster to the new one, and shut down the old one [51, 52]. Like with Akka, custom serialization plug-ins can be used.
+- In <em>Erlang OTP</em> it is surprisingly hard to make changes to record schemas (despite the system having many features designed for high availability); rolling upgrades are possible but need to be planned carefully [53]. An experimental new maps datatype (a JSON-like structure, introduced in Erlang R17 in 2014) may make this easier in the future</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>这一章我们看了将 data structures encoding into bytes(network or disk) 的不同方式。 encoding 的细节不仅影响了他们的效率 (space util) 而且还能影响你 application 的结构以及 deploy 的 options</p>
+<p>很多 service 需要 rolling upgrade (new version deployed to few nodes at a time). Rolling upgrade 的 property 就需要我们支持 <em>evolvability</em> 
+- we must assume that different nodes are running the different versions of our application’s code. data flowing around the system provide <em>backward compatibility</em>(new code can read old data) and <em>forward compatibility</em> (old code can read new data) 就是如果你穿越到未来依然能读懂那时候的文字，这就需要文字基本含义不能被删</p>
+<p>我们讨论了几种 encoding formats 以及他们的 compatibility properties:
+- Programming languages - restricted to single language and bad at forward and backward compatibility
+- Text formats (JSON, XML, CSV) compatibility depends on how you use them and not efficient
+- Binary formats (Thrift, ProtoBuf, Avro) -&gt; efficient and clearly defined forward and backward compatibility semantics. Downside is data needs to be decoded before it is human readable.
+我们还讨论了 data flow
+- <em>Database</em> 
+- <em>RPC and REST</em> API
+- <em>Async message passing</em></p>
+<p>有了这些工具，我们的 application 就可以实现 rolling upgrade (evolvability). 快速迭代</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1833 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter%2010/">
+      
+      
+        <link rel="next" href="../Chapter%2012/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>Chapter 11 - DDIA Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transmitting-event-streams" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DDIA Notes" class="md-header__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDIA Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 11
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DDIA Notes" class="md-nav__button md-logo" aria-label="DDIA Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DDIA Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transmitting-event-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmitting Event Streams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transmitting Event Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#messaging-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messaging Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Messaging Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-messaging-from-producers-to-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct messaging from producers to consumers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-brokers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message brokers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-brokerqueue-compare-to-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message broker/queue compare to databases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple consumers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ack-and-redelivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ack and redelivery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioned-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioned Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partitioned Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-logs-for-message-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using logs for message storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-vs-traditional-messaging-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log vs traditional messaging system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer-offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer offset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-space-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk space usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-consumers-cannot-keep-up-with-producers" class="md-nav__link">
+    <span class="md-ellipsis">
+      When consumers cannot keep up with producers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replaying-old-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replaying old messages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#databases-and-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Databases and Streams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Databases and Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keeping-systems-in-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keeping Systems in Sync
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-data-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Data Capture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Change Data Capture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-change-data-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing change data capture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial snapshot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-compaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log compaction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Sourcing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Sourcing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-and-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command and events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-stream-and-immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      State, Stream, and Immutability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State, Stream, and Immutability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-immutable-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of immutable events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deriving-several-views-from-the-same-event-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deriving several views from the same event log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrency control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Streams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uses-of-stream-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uses of Stream Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uses of Stream Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complex-event-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex event processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-on-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search on streams
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reasoning-about-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reasoning About Time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reasoning About Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-time-vs-processing-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event time vs processing time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whose-clock-are-you-using-anyway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whose clock are you using, anyway?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream Joins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stream Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stream-stream-join-window-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream-stream join (window join)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-table-join-stream-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream-table join (stream enrichment)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-table-join-materialized-view-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table-table join (materialized view maintenance)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault Tolerance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fault Tolerance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microbatching-checkpointing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microbatching checkpointing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuilding-state-after-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rebuilding state after failure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%2012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%206/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%207/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%208/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter%209/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Part%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transmitting-event-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmitting Event Streams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transmitting Event Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#messaging-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messaging Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Messaging Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-messaging-from-producers-to-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct messaging from producers to consumers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-brokers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message brokers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-brokerqueue-compare-to-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message broker/queue compare to databases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple consumers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ack-and-redelivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ack and redelivery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioned-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioned Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partitioned Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-logs-for-message-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using logs for message storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-vs-traditional-messaging-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log vs traditional messaging system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer-offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer offset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-space-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk space usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-consumers-cannot-keep-up-with-producers" class="md-nav__link">
+    <span class="md-ellipsis">
+      When consumers cannot keep up with producers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replaying-old-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replaying old messages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#databases-and-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Databases and Streams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Databases and Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keeping-systems-in-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keeping Systems in Sync
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-data-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Data Capture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Change Data Capture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-change-data-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing change data capture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial snapshot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-compaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log compaction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Sourcing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Sourcing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-and-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command and events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-stream-and-immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      State, Stream, and Immutability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State, Stream, and Immutability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-immutable-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of immutable events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deriving-several-views-from-the-same-event-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deriving several views from the same event log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrency control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Streams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uses-of-stream-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uses of Stream Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uses of Stream Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complex-event-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex event processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-on-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search on streams
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reasoning-about-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reasoning About Time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reasoning About Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-time-vs-processing-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event time vs processing time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whose-clock-are-you-using-anyway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whose clock are you using, anyway?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream Joins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stream Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stream-stream-join-window-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream-stream join (window join)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-table-join-stream-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stream-table join (stream enrichment)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-table-join-materialized-view-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table-table join (materialized view maintenance)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fault Tolerance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fault Tolerance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microbatching-checkpointing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microbatching checkpointing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuilding-state-after-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rebuilding state after failure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Chapter 11</h1>
+
+<p>Chapter 10 discussed about taking a set of input files, process it and output it into another set of files. This output is a form of <em>derived data</em>, i.e. a dataset that can be derived when needed </p>
+<p>One assumption on chapter 10 is that the input are <em>bounded</em> which means finite size. And batch process is often rely on this property because sorting a set of data need to read all data before proceeding to the next job. But in reality a lot of data is unbounded where it arrives gradually over time, such as user activity. Batch process often need to set a end time such as end of a day to process daily user activity. </p>
+<p>But this approach only reflect the output a day later, which might be slow for some users. We can run the process more frequent to reduce the delay (e.g. a second worth of data). Or just continuously process the data. This approach is called <em>stream processing</em>. This concept is in many places. Stdin and stdout in Unix system, TCP connections, deliver audio or video on internet etc.</p>
+<p>This chapter will focus on <em>event streams</em>. First discuss about how stream is represented, stored, transmitted over the network. Compare those stream system with databases, and finally discuss about those tools for processing streams</p>
+<h2 id="transmitting-event-streams">Transmitting Event Streams<a class="headerlink" href="#transmitting-event-streams" title="Permanent link">&para;</a></h2>
+<p>When processing input, batch will parse the input bytes into records, this is <em>event</em> in terms of stream system. They are essentially the same thing, a self contained immutable object that does something at a point of time. An event usually contains a timestamp. </p>
+<p>For example, user make a purchase at certain time, temperature from a sensor, CPU metrics etc. Event may be encoded as text or JSON or binary form as discussed in <a href="../Chapter%204/">Chapter 4</a>. Compare to batch process where file is written once and might be read multiple times, stream system has a <em>producer</em> (<em>publisher</em> or <em>sender</em>) that generate an event and potentially multiple <em>consumers</em> (<em>subscribers</em> or <em>recipients</em>) </p>
+<p>In a file system, file name group records together. In stream system, a <em>topic</em> or <em>stream</em> group related events together. </p>
+<h3 id="messaging-systems">Messaging Systems<a class="headerlink" href="#messaging-systems" title="Permanent link">&para;</a></h3>
+<p>A common approach for notifying consumers about new events is to use <em>messaging system</em>: Producer sends a message and push it to consumers. Unix pipe or TCP connection would be a simple way of implementing a message system. Many system expand on this where unix pipe or TCP connection only allow one to one connection whereas messaging system allows multiple  producer to send message into a topic and allows multiple consumer connect to this topic. </p>
+<p>This is called <em>publish/subscribe</em> model and different system take a different approaches. To distinguish those system, two question might be helpful
+1. What happens if producer is faster than consumer? Generally there are 3 options. 
+    1. drop the message.
+    2. buffer message in a queue
+    3. apply back pressure (TCP and unix pipe does this. if the small buffer fills up, they slow down the producer)
+    What happen if the queue grows very large? If we write it to disk, how does it impact performance?
+2. What happens if a node crash or temporarily go offline? any message get lost? Writing to disk or replication has cost</p>
+<h4 id="direct-messaging-from-producers-to-consumers">Direct messaging from producers to consumers<a class="headerlink" href="#direct-messaging-from-producers-to-consumers" title="Permanent link">&para;</a></h4>
+<p>A number of messaging system use direct network to connect between producers and consumers:
+- UDP broadcast is widely used in financial industry where latency matters. Although UDP itself is unreliable, application layer can recover the lost messages (producer must remember packet and resend on demand)
+- Brokerless messaging libraries such as ZeroMQ [9] and nanomsg take a similar approach, implementing publish/subscribe messaging over TCP or IP multicast.
+- StatsD [10] and Brubeck [7] use unreliable UDP messaging for collecting metrics from all machines on the network and monitoring them.
+- If consumer expose a service over the network, producer can send a request by using HTTP or RPC call. This is the idea behind webhooks [12] a pattern where a callback url is registered inside another service. 
+This approach has limited reliability </p>
+<h4 id="message-brokers">Message brokers<a class="headerlink" href="#message-brokers" title="Permanent link">&para;</a></h4>
+<p>Another approach that is widely used is <em>message brokers</em> (aka <em>message queue</em>) which is kind of a database that is optimized for handling message streams [13]. It runs as a server and producer and consumer connect to it.</p>
+<p>This way client can come and go because durability problem goes into broker instead. Some broker only keep message in memory and other write to disk</p>
+<p>broker/queue are often asynchronous (producer don't wait for consumer to respond, only wait for broker to respond) </p>
+<h4 id="message-brokerqueue-compare-to-databases">Message broker/queue compare to databases<a class="headerlink" href="#message-brokerqueue-compare-to-databases" title="Permanent link">&para;</a></h4>
+<p>There are many differences between message queue and databases despite they both store data</p>
+<ul>
+<li>Database usually keep data until it is deleted explicitly. On the other hand, most message broker delete the message when it successfully deliver to consumer. </li>
+<li>Since they delete the message, message queue often assume their working set if often small. </li>
+<li>Database often support secondary indexes but not message queue (message queue can let consumer to select subset of data but it is different mechanism)</li>
+<li>Database support arbitrary queries but not message brokers/queue</li>
+</ul>
+<h4 id="multiple-consumers">Multiple consumers<a class="headerlink" href="#multiple-consumers" title="Permanent link">&para;</a></h4>
+<p>Two patterns are used when multiple consumers are connect to same topic. 
+<img alt="load_balancing_and_fan_out.png" src="../img/load_balancing_and_fan_out.png" /></p>
+<p><em>Load balancing</em>
+    Each message is delivered to 1 of the consumer. This is useful when message are expensive to process 
+<em>Fanout</em>
+    Each message is delivered to all consumers </p>
+<p>two patterns can be combined</p>
+<h4 id="ack-and-redelivery">Ack and redelivery<a class="headerlink" href="#ack-and-redelivery" title="Permanent link">&para;</a></h4>
+<p>Broker use ack to ensure consumer received its message and successfully processed it.
+unacknowledged message can be redelivered to consumer but this will cause message out of order even if message queue try to preserve the order
+<img alt="out_of_order_messages.png" src="../img/out_of_order_messages.png" /></p>
+<h3 id="partitioned-logs">Partitioned Logs<a class="headerlink" href="#partitioned-logs" title="Permanent link">&para;</a></h3>
+<p>Database and files are designed with permanent storage in mind and it is very good for reprocessing the data when needed (as in batch processing system) message queue doesn't have this in mind </p>
+<p>Why can we not have a hybrid, combining the durable storage approach of databases with the low-latency notification facilities of messaging? This is the idea behind <em>log- based</em> message brokers.</p>
+<h4 id="using-logs-for-message-storage">Using logs for message storage<a class="headerlink" href="#using-logs-for-message-storage" title="Permanent link">&para;</a></h4>
+<p>A log is simply an append only sequence of bytes on disk. Same can be used to implement a message broker: producer append the message at the end of the log. Consumer read the log sequentially and waits for the log to be updated if it reaches the end of the log. Unix tool <code>tail -f</code> which watches a file of data to be appended work like this</p>
+<p>In order to scale to higher throughput, the log can be <em>partitioned</em>. Different partition can then be hosted on different machines. 
+<img alt="partitioned_log.png" src="../img/partitioned_log.png" /></p>
+<p>Within each partition, broker assign a monotonic increasing number or <em>offset</em> for each message. Apache Kafka [17, 18], Amazon Kinesis Streams [19], and Twitter’s DistributedLog [20, 21] are log-based message brokers that work like this.</p>
+<p>Even though these message brokers write all messages to disk, they are able to achieve throughput of millions of messages per second by partitioning across multiple machines, and fault tolerance by replicating messages [22, 23].</p>
+<h4 id="log-vs-traditional-messaging-system">Log vs traditional messaging system<a class="headerlink" href="#log-vs-traditional-messaging-system" title="Permanent link">&para;</a></h4>
+<p>Log natively support fanout because consumer can just read from an offset of a log. </p>
+<p>To achieve load balancing, broker can assign a partition to a consumer group. Typically consumer will read all messages inside a partition in a straight forward single threaded manner. This approach has some downside
+- Number of nodes sharing the work can be at most the number of partitions 
+- If a single message is slow to process, it holds up the processing of subsequent messages in that partition</p>
+<p>When you want to parallelize message by message base, JMS/AMPQ works well. When you want to increase message throughput where each message is fast to process and ordering is important, log based is better</p>
+<h4 id="consumer-offset">Consumer offset<a class="headerlink" href="#consumer-offset" title="Permanent link">&para;</a></h4>
+<p>With offset, broker doesn't need to wait consumer's ack but simply periodically remember which offset this consumer was on. With offset, batching and pipelining make increase in throughput possible. </p>
+<p>This offset is similar to <em>log sequence number</em> from leader-follower replication scheme. In replication context, leader allows follower to reconnect and resume replication based on previous log sequence number. Same thing applies here, consumer act like a follower and message broker act like leader.</p>
+<h4 id="disk-space-usage">Disk space usage<a class="headerlink" href="#disk-space-usage" title="Permanent link">&para;</a></h4>
+<p>If we keep append to a log, we will run out of disk space eventually. To reclaim disk space, older segments are deleted or moved to archive storage. </p>
+<p>The log implements bounded buffer by using circular buffer or ring buffer where old message get overwrite by newer messages. </p>
+<p>With 6TB disk and 150MB/s rate of writing, you could keep 11 hours of log history. And usually we don't keep full write speed all the time, so this log can sometime goes to days or weeks worth of messages </p>
+<h4 id="when-consumers-cannot-keep-up-with-producers">When consumers cannot keep up with producers<a class="headerlink" href="#when-consumers-cannot-keep-up-with-producers" title="Permanent link">&para;</a></h4>
+<p>We have talked about 3 options previously 
+1. disgard the message
+2. buffering 
+3. apply back pressure
+In this taxonomy, log based approach is under buffering category. </p>
+<p>You can set alarms for consumer when it falls behind significantly because log buffer is large enough where human intervention can fix the consumer and allow it to catch up before missing messages </p>
+<h4 id="replaying-old-messages">Replaying old messages<a class="headerlink" href="#replaying-old-messages" title="Permanent link">&para;</a></h4>
+<p>For JMS and AMQP style message broker, processing and acknowledging message is a destructive operation. Whereas log based mess</p>
+<h2 id="databases-and-streams">Databases and Streams<a class="headerlink" href="#databases-and-streams" title="Permanent link">&para;</a></h2>
+<p>We see log based message system take idea from databases and apply them to messaging. Reverse is also possible: take ideas from messaging and streams, and apply them to databases</p>
+<p>Event is a record of something that happened at some point in time. This could be user action or sensor reading. Or it could be <em>write to database</em>. The <em>write</em> operation can be seen as an event that can be captured, stored, and processed. </p>
+<p>In fact, replication log is a stream of database <em>write events</em>. Follower process this stream of write events to their own database and end up with an accurate copy of the same data. </p>
+<p><em>state machine replication</em> principle in <a href="../Chapter%209/#total-order-broadcast">Chapter 9#Total Order Broadcast</a> states: if every event represents a write to the database, and every replica processes the same events in the same order, then replicas will all end up in the same final state. </p>
+<p>This is a hint for how we can solve heterogeneous data systems problems by bringing ideas from event streams to databases</p>
+<h3 id="keeping-systems-in-sync">Keeping Systems in Sync<a class="headerlink" href="#keeping-systems-in-sync" title="Permanent link">&para;</a></h3>
+<p>Throughout this book, we have seen no single data system can satisfy all storage, querying, processing needs. In practice, applications need to combine several different technologies in order to satisfy their requirements: An OLTP database to serve user requests, a cache to speed up common requests, full text index to handle search queries, and a data warehouse for analytics </p>
+<p>Same as for computing, GPU and CPU all have memory in common to process different needs</p>
+<p>As related data appears in several different places, they need to be kept in sync. If item is updated in database, it also needs to be updated in the cache, search indexes, and data warehouse. </p>
+<p>As we see batch process from previous chapter, we can see it can create search indexes and copy of database during each batch job. But periodic full data dump is too slow. An alternative is dual writes. But this can face race conditions </p>
+<p><img alt="dual_writes_race.png" src="../img/dual_writes_race.png" /></p>
+<p>Another problem is one of the write may fail. In order to ensure that they either both succeed or fail, we need to solve atomic commit problem which could be expensive (2PC or consensus) </p>
+<p>Figure 11-4 isn't single leader so conflicts can occur. If we could make the search index a follower of the database, it could be much better.</p>
+<h3 id="change-data-capture">Change Data Capture<a class="headerlink" href="#change-data-capture" title="Permanent link">&para;</a></h3>
+<p>Replication log has long been consider an internal implementation detail of database. More recently, there has been growing interest in <em>change data capture</em> (CDC), which is the process of observing all data changes written to a database and extracting them in a form in which they can be replicated to other system</p>
+<p>You can capture changes in database and continually apply them in search index
+<img alt="CDC_DDIA.png" src="../img/CDC_DDIA.png" /></p>
+<h4 id="implementing-change-data-capture">Implementing change data capture<a class="headerlink" href="#implementing-change-data-capture" title="Permanent link">&para;</a></h4>
+<p>Log consumers can be called <em>derived data systems</em> as discussed in <a href="../Part%203/">Part 3</a>: data stored in search index and data warehouse is just another view onto the data in the system of record. </p>
+<p>Change data capture can be seen as mechanism for ensuring all changes made to the system of record is reflected in derived data systems</p>
+<p>CDC basically made one database the leader and all into followers. A log based message broker is well suited for transporting source database changes to all followers</p>
+<p>Change data capture can implemented by using database triggers, but trigger based tend to be fragile and have performance overhead. More robust approach is to parse the replication log. </p>
+<blockquote>
+<p>LinkedIn’s Databus [25], Facebook’s Wormhole [26], and Yahoo!’s Sherpa [27] use this idea at large scale. Bottled Water implements CDC for PostgreSQL using an API that decodes the write-ahead log [28], Maxwell and Debezium do something similar for MySQL by parsing the binlog [29, 30, 31], Mongoriver reads the MongoDB oplog [32, 33], and GoldenGate provides similar facilities for Oracle [34, 35].</p>
+</blockquote>
+<h4 id="initial-snapshot">Initial snapshot<a class="headerlink" href="#initial-snapshot" title="Permanent link">&para;</a></h4>
+<p>If you have all the changes from a log, then you can reconstruct the database by replaying the log. But keep all changes forever is not feasible in reality (too much disk space), replaying it takes too long. so the log needs to be truncated</p>
+<p>If you don't have entire snapshot history, you need to start with a snapshot. Which is all data that are stored at some point in time in that database. With this snapshot, you know at which point to start applying changes after the snapshot has been processed. Some CDC tools integrate this snapshot facility. </p>
+<h4 id="log-compaction">Log compaction<a class="headerlink" href="#log-compaction" title="Permanent link">&para;</a></h4>
+<p>Log compaction is a good alternative if you don't want to go through snapshot process every time you want to add a new derived data system</p>
+<p>Log compaction is done by periodically throw away duplicate record for same key and only keep the latest value (most recent update) </p>
+<p>With this compaction, you can scan through the change log and apply them to get the full copy of the database without having to take another snapshot of the CDC source database.</p>
+<p>This log compaction feature is supported by Apache Kafka. </p>
+<h3 id="event-sourcing">Event Sourcing<a class="headerlink" href="#event-sourcing" title="Permanent link">&para;</a></h3>
+<p>There are some parallels between the ideas we’ve discussed here and <em>event sourcing</em>, which is storing all changes to the application state as a log of change events. The biggest idea is that event sourcing applies the idea at a different level of abstraction:
+- In CDC, it is low level ensured by the database where application doesn't have to be aware of this is happening
+- In event sourcing, event store are designed to reflect the changes at application level 
+For example, game replay can use event sourcing to store all user activity to replay an entire game</p>
+<p>Event sourcing helps to debug application by making it easier to understand after the fact why something happened. </p>
+<p>For example, storing the event "student cancelled their course enrollment" is way better than "one entry was deleted from the enrollments table, and one cancellation reason was added to the student feedback table"</p>
+<h4 id="command-and-events">Command and events<a class="headerlink" href="#command-and-events" title="Permanent link">&para;</a></h4>
+<p>The event sourcing philosophy carefully distinguish between <em>events</em> and <em>commands</em>. </p>
+<p>When user request arrives, it may still fail so it is initially a command. If the validation is successful and command is accepted, it becomes an event (which is durable and immutable)</p>
+<p>At the event is generated, it becomes a <em>fact</em>. A consumer of the event stream is not allowed to reject an event. </p>
+<h3 id="state-stream-and-immutability">State, Stream, and Immutability<a class="headerlink" href="#state-stream-and-immutability" title="Permanent link">&para;</a></h3>
+<p>The principle of immutability makes event sourcing and change data capture powerful</p>
+<p>mutable state and log of immutable events are two sides of the same coin. where current state is the integral of event stream over time and stream at time t will be the differentiate of the state by time
+$$
+state(now) = \int_{t=0}^{now} stream(t)  dt
+$$</p>
+<h4 id="advantages-of-immutable-events">Advantages of immutable events<a class="headerlink" href="#advantages-of-immutable-events" title="Permanent link">&para;</a></h4>
+<p>Immutability is an old idea in database. For example, accountants have been using immutability for centuries in financial bookkeeping. When transaction occurs, it is recorded in an append-only <em>ledger</em>.</p>
+<p>If a mistake is made, accountants don't erase or change the incorrect transaction in the ledge but add another transaction to compensate for the mistake instead. </p>
+<p>Immutable events capture more information than just the current state. For example if a user add an item to their cart and latter deletes it, from order fulfillment's view nothing happens, but for analytics purposes the customer was considering a particular item but then decided against it. This information is captured in an event log but lost in a database</p>
+<h4 id="deriving-several-views-from-the-same-event-log">Deriving several views from the same event log<a class="headerlink" href="#deriving-several-views-from-the-same-event-log" title="Permanent link">&para;</a></h4>
+<p>separate logs from mutable state can derive several different read-oriented representation. For example, analytic database Druid ingests from Kafka, Pistachio k-v store uses Kafka as a commit log. It would make sense for many other storage to take their input from distributed log</p>
+<p>Having a translation step from event log to a database makes it easier to evolve application over time. If you want to introduce new features, you can use the event log to build a separate view for the new feature and run it alongside the existing systems without modifying them. Running old and new systems side by side is often easier than performing complicated schema migration in an existing system. </p>
+<p>With log based approach, you don't have to assume data must be written in the same form as it will be queried. </p>
+<h4 id="concurrency-control">Concurrency control<a class="headerlink" href="#concurrency-control" title="Permanent link">&para;</a></h4>
+<p>The biggest downside of event sourcing and change data capture is that consumer are usually asynchronous. So it is possible for a user make a write to the log and find their write has not been reflected in the read view. </p>
+<p>One solution would be perform the updates of the read view synchronously with appending the event to the log which requires atomic transaction and requires keep the event log and read view in the same storage system. Or we can use distributed transaction to achieve this</p>
+<p>Deriving current state from event log simplifies concurrency control. With event sourcing, you can design an event such that it is self-contained where user action only requires a single write in one place -- namely appending the events to the log</p>
+<h2 id="processing-streams">Processing Streams<a class="headerlink" href="#processing-streams" title="Permanent link">&para;</a></h2>
+<p>There are 3 options for processing streams
+1. Take the data in events and write it to a database, cache, search index, or similar storage system
+2. Push events to user in some way, for example by sending email notifications, or streaming events by real-time dashboard. In this case, human is the consumer of the stream
+3. Process 1 or more input streams and produce 1 or more output streams and output either option 1 or 2 (machine or human)</p>
+<p>The rest will discuss about option 3: processing streams to produce other derived streams. A piece of code that process streams is known as an <em>operator</em> or a <em>job</em>. It is closely related to Unix processes and MapReduce jobs</p>
+<p>The patterns of partitioning and parallelization in stream processors are very similar to those in MapReduce in <a href="../Chapter%2010/">Chapter 10</a> so we won't repeat those topics here. </p>
+<p>Since stream data is unbounded, sort-merge joins cannot be used. Fault tolerance mechanisms must change: batch job can restart a failed task, but with streaming job that has been running for a long time is not a viable option</p>
+<h3 id="uses-of-stream-processing">Uses of Stream Processing<a class="headerlink" href="#uses-of-stream-processing" title="Permanent link">&para;</a></h3>
+<p>Stream has long been used for monitoring purposes. For example
+- Fraud detection systems need to determine if the usage patterns of a credit card have unexpectedly changed, and block the card if it is likely to have been stolen
+- Trading systems need to examine price changes in a financial market and execute trades according to specified rules.
+- Manufacturing systems need to monitor the status of machines in a factory and quickly identify the problem if there is a malfunction
+- Military and intelligence systems need to track potential sign of attack</p>
+<h4 id="complex-event-processing">Complex event processing<a class="headerlink" href="#complex-event-processing" title="Permanent link">&para;</a></h4>
+<p><em>Complex event processing</em>(CEP) is an approach developed in the 1990s for analyzing event streams, especially when application need to search for certain event patterns. Just like regular expression allows you to search for certain patterns of characters in a string, CEP allows you to specify rules to search for certain patterns of events in a stream</p>
+<p>CEP systems often use a declarative query language like SQL or a graphical user interface. These queries are submitted to a processing engine that consumes the input streams and maintains a state machine that performs required matching. When a match is found, it emits a <em>complex event</em> with details of the event pattern that was detected</p>
+<p>The relationship between queries and data is reversed in these system compare to normal databases. </p>
+<p>Normally, databases store data persistently and queries are consider transient. CEP engines reverse these roles: queries are stored long-term, and events from the input streams continuously flow past them.</p>
+<h4 id="stream-analytics">Stream analytics<a class="headerlink" href="#stream-analytics" title="Permanent link">&para;</a></h4>
+<p>Another area for stream processing is to add analytics on streams. The boundary is blurry between stream analytics and CEP. As a general rule, analytics is less interested in specific event and is more interested toward aggregations and statistical metrics over large number of events. For example,</p>
+<ul>
+<li>Measuring the rate of some type of event</li>
+<li>Calculating rolling average of a value over some time period</li>
+<li>Comparing current statistics to previous time intervals </li>
+</ul>
+<p>Such statistics are usually computed over fixed time intervals. For example, you want to know average QPS for a service over last 5 mins. Or average TPS in 5 mins period over last day, and 99th percentile response time during that period. </p>
+<p>Many open source distributed stream processing frameworks are designed with analytics in mind: for example, Apache Storm, Spark Streaming, Flink, Concord, Samza, and Kafka Streams [74]. Hosted services include Google Cloud Dataflow and Azure Stream Analytics.</p>
+<p>~~#### Maintaining materialized views 
+We have discussed about materialized view previously where it is an alternative view on some dataset so we could query it more efficiently 
+In event sourcing, the application state is kind of a materialized view. ~~</p>
+<h4 id="search-on-streams">Search on streams<a class="headerlink" href="#search-on-streams" title="Permanent link">&para;</a></h4>
+<p>Sometimes we need to search for individual events based on complex criteria, such as full text search queries.</p>
+<p>For example, media monitoring services subscribe to feeds of news articles and broadcasts from media outlets and search for any news mentioning companies, products or topics of interests. This is done by creating a search query in advance and then continually matching the stream of news items against the query. Similar feature existing on website, user get notification when a house that matches their criteria shows up on the market. </p>
+<p>The percolator feature of Elasticsearch is one option of implementing this kind of stream search</p>
+<h3 id="reasoning-about-time">Reasoning About Time<a class="headerlink" href="#reasoning-about-time" title="Permanent link">&para;</a></h3>
+<p>Stream processor often need to deal with time, especially when used for analytics such as "average over last 5 minutes" </p>
+<p>Many stream processing framework use local system clock to determine windowing. This approach has advantage of being simple, but it breaks down if there is significant processing lag, i.e. if the processing may happen way much later than the time at which the event actually occurred. </p>
+<h4 id="event-time-vs-processing-time">Event time vs processing time<a class="headerlink" href="#event-time-vs-processing-time" title="Permanent link">&para;</a></h4>
+<p>There are many reason why processing might get delayed. Network fault, queueing, a restart of consumer process, or reprocessing past events. </p>
+<p>On top of that, message delay can lead to unpredictable ordering of messages. If user first make web request handled by web server A and then second request handled by web server B. A and B emits event to message broker and B's event reaches message broker first. Now stream processor will see B's event first even though they actually occurred in the other way around. </p>
+<blockquote>
+<p>If it helps to have an analogy, consider the Star Wars movies: Episode IV was released in 1977, Episode V in 1980, and Episode VI in 1983, followed by Episodes I, II, and III in 1999, 2002, and 2005, respectively, and Episode VII in 2015 [80].ii If you watched the movies in the order they came out, the order in which you processed the movies is inconsistent with the order of their narrative.</p>
+</blockquote>
+<p>(The episode number is like the event timestamp, and the date when you watched the movie is the processing time.)</p>
+<p><img alt="restart_cause_spike.png" src="../img/restart_cause_spike.png" /></p>
+<p>You can declare when to timeout for a window to process all the events. 
+For example, when we grouping events into 1 min windows and after 1 min passed, it could still happen that some events were buffered on another machine somewhere, delayed due to a network interruption. These <em>straggler</em> events need to be handled. We have 2 options: 
+1. Ignore it. Alert if we start dropping a significant amount of data
+2. Publish a <em>correction</em>, an updated value for the window with stragglers included. </p>
+<h4 id="whose-clock-are-you-using-anyway">Whose clock are you using, anyway?<a class="headerlink" href="#whose-clock-are-you-using-anyway" title="Permanent link">&para;</a></h4>
+<p>Event may be delayed for hours or days if mobile device doesn't have internet connection. (events are buffered locally) </p>
+<p>In this context, the timestamp on the events should really be the time at which user interaction occurred, according to the mobile's local clock. However it cannot be trusted, because user might accidentally or deliberately set to the wrong time. The time at which event was received by the server is more accurate since you have control over your server. </p>
+<p>To adjust for incorrect device clocks, one approach is to log 3 timestamps:
+1. At time at which the event occurred (device clock)
+2. At time event was sent to server (device clock)
+3. Time at which event was received by the server (server clock)</p>
+<p>subtracting 3rd and 2nd, you can estimate the offset between device clock and server clock. You can then apply that offset to the event timestamp thus estimate true time at which event occurred</p>
+<h4 id="types-of-windows">Types of windows<a class="headerlink" href="#types-of-windows" title="Permanent link">&para;</a></h4>
+<p><em>Tumbling window</em>
+    A tumbling window has fixed length, and every event belongs to exactly one window. For example, if you have 1min tumbling window, all timestamp between 10:03:00 and 10:03:59 are grouped into one, and 10:04:00 to 10:04:59 grouped into another. 
+<em>Hopping window</em>
+    A hopping window also has a fixed length, but allows windows to overlap in order to provide some smoothing. For example, 5 mins window with a hop size of 1 min would contain events from 10:03:00 and 10:07:59 and next window would cover between 10:04:00 and 10:08:59
+<em>Sliding window</em>
+    A sliding window contains all the events that occur within some interval of each other. For example, a 5 mins sliding window would cover events at 10:03:39 to 10:08:12
+<em>Session window</em>
+    Session window has no fixed length. It is defined by grouping together all events for the same user that occur closely together in time. </p>
+<h3 id="stream-joins">Stream Joins<a class="headerlink" href="#stream-joins" title="Permanent link">&para;</a></h3>
+<p>Joins on streams are more challenging than batch jobs. We have 3 types of joins 
+<em>stream-stream</em> joins, <em>stream-table</em> joins and <em>table-table</em> joins </p>
+<h4 id="stream-stream-join-window-join">Stream-stream join (window join)<a class="headerlink" href="#stream-stream-join-window-join" title="Permanent link">&para;</a></h4>
+<p>Let's say you want to detect recent trends in searched-for URLs. Every time someone types a search query, you log an event containing the query and results returned. Every search result clicked by user is recorded as an event. In order to calculate the click-through rate for each URL in the search results, you need to join the events for the search action and the click action </p>
+<p>The click may never come if user abandons their search. Or they may be hours or days apart (user searched for something and left the tab open and only click after few days later) In this case, we can choose suitable window for the join -- for example, only join a click with a search if they occur at most one hour apart</p>
+<p>To implement this type of join, a stream processor needs to maintain <em>state</em>: for example, all the events that occurred in the last hour, indexed by session id. Whenever a search event or click event occurs, it is added to the appropriate session.</p>
+<h4 id="stream-table-join-stream-enrichment">Stream-table join (stream enrichment)<a class="headerlink" href="#stream-table-join-stream-enrichment" title="Permanent link">&para;</a></h4>
+<p>In previous chapter, we see example of joining user activities with user profile. Naturally user activity can be think of a stream and processed continuously by stream processor. To perform this join, the stream process needs to look at one activity at a time and look up user ID from the database (remotely), and add profile information to the activity event. </p>
+<p>Another approach is to load a copy of the database into the stream processor so that it saves network trip. </p>
+<h4 id="table-table-join-materialized-view-maintenance">Table-table join (materialized view maintenance)<a class="headerlink" href="#table-table-join-materialized-view-maintenance" title="Permanent link">&para;</a></h4>
+<p>Consider Twitter timeline example and that when a user wants to view their home timeline, it is too expensive to iterate over all the people the user is following</p>
+<p>We want the timeline cached instead, per user "inbox" so that reading the timeline is a single lookup. Materializing and maintaining this cache requires the following:
+- When user u sends a new tweet, it is added to the timeline of every user who is following u
+- when a user deletes a tweet, it is removed from all user's timelines.
+- when user <span class="arithmatex">\(u_{1}\)</span> starts following user <span class="arithmatex">\(u_{2}\)</span> recent tweets by <span class="arithmatex">\(u_{2}\)</span> are added to <span class="arithmatex">\(u_{1}\)</span>'s timeline.
+- When user <span class="arithmatex">\(u_{1}\)</span> unfollows <span class="arithmatex">\(u_{2}\)</span>, tweets by <span class="arithmatex">\(u_{2}\)</span> are removed from <span class="arithmatex">\(u_{1}\)</span>'s timeline. </p>
+<p>To implement this in a cache by stream processor, you need streams of events for tweets and follow relationships. </p>
+<p>Basically joining two tables (tweets and follows) 
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">follows</span><span class="p">.</span><span class="n">follower_id</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">timeline_id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">array_agg</span><span class="p">(</span><span class="n">tweets</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">tweets</span><span class="p">.</span><span class="k">timestamp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">tweets</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">follows</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">follows</span><span class="p">.</span><span class="n">followee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tweets</span><span class="p">.</span><span class="n">sender_id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">follows</span><span class="p">.</span><span class="n">follower_id</span>
+</code></pre></div></p>
+<h3 id="fault-tolerance">Fault Tolerance<a class="headerlink" href="#fault-tolerance" title="Permanent link">&para;</a></h3>
+<p>Batch process can tolerate fault pretty easily because all outputs are written to file. 
+Fault tolerance is less straightforward for streaming </p>
+<h4 id="microbatching-checkpointing">Microbatching checkpointing<a class="headerlink" href="#microbatching-checkpointing" title="Permanent link">&para;</a></h4>
+<p>One solution is to break stream into small blocks and treat it as mini batch process called <em>microbatching</em> and it is used by Spark Streaming. </p>
+<p>Another approach is used in Apache Flink where it periodically generate rolling check points and write them to durable storage. </p>
+<h4 id="rebuilding-state-after-failure">Rebuilding state after failure<a class="headerlink" href="#rebuilding-state-after-failure" title="Permanent link">&para;</a></h4>
+<p>Any stream that requires state -- any tables or indexes used for joins-- must ensure this state can be recovered after a failure. </p>
+<p>One option is to keep state in remote datastore and replicate it. Or keep state local to the stream processor and replicate it periodically. so when stream processor fails, it can recover by reading replicated state and resume processing</p>
+<p>For example, Flink periodically captures snapshots of operator state and writes them to durable storage such as HDFS </p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>In this chapter we have discussed event streams, why we need them and how to process them. It is similar to batch process but with unbounded data. </p>
+<p>We spent time comparing two types of message brokers
+<em>AMQP/JMS-style message broker</em>
+    The broker assign individual messages to consumers and consumers ack individual messages when they successfully processed them. This approach is appropriate as an asynchronous form of RPC 
+<em>Log based message broker</em>
+    The broker assigns all messages in a partition to the same consumer node. consumer get message by reading from an offset. </p>
+<p>Stream can come from user activities, sensors, data feeds (market data in finance) </p>
+<p>Representing database as streams opens up the possibility of integrating different data systems. You can keep derived data such as search indexes, caches up to date by consuming the log of changes and applying them to the derived system. </p>
+<p>We discussed several purpose of stream processing, such as searching for event patterns (complex event processing), aggregations (stream analytics), and keep derived data system up to date. </p>
+<p>We also talked about 3 types of joins
+<em>stream-stream</em> joins: related events within some window of time
+<em>stream-table</em> joins: one side is input from stream, another is data from database (user profile)
+<em>table-table</em> joins: both input are database changelogs. </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
